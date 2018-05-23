@@ -186,4 +186,167 @@ import UIKit
 //nn=Int(aa)
 //print(nn * 10)
 
-var dict: [String:String] = [:]
+//var arr = [String]()
+//arr.append("A")
+//arr.append("C")
+//arr.append("D")
+
+//var arr : [[String:String]] = []
+//arr.append(["姓名":"王大明","地址":"文心路一號","電話":"0421111"])
+//arr.append(["姓名":"李大媽","地址":"文心路二號","電話":"0431111"])
+//arr.append(["姓名":"王小明","地址":"文心路三號","電話":"0441111"])
+//
+////print(arr[1]["地址"])
+//arr.forEach{(element) in
+////    if(element["姓名"]=="李大媽"){
+////        print(element["姓名"])
+////    }
+//    if(element["姓名"] == "李大媽"){
+//        print(element["地址"]!)
+//    return
+//    }
+//
+////    element.forEach{ (x) in
+////        if(x.value == "李大媽"){
+////            element["地址"]
+//////        print(value)
+////
+////        }
+////    }
+//
+//
+//}
+//
+//for data in arr{
+//    if data["姓名"]=="李大媽"{
+//
+//        print(data["地址"])
+//    }
+//}
+//
+//
+//
+//var t:(y:Int, x:Int)=(y:20, x:10)  //tuple
+//
+//print(t.0)
+//print(t.1)
+//
+////print(t)
+//
+//t.0=30
+//print(t.0)
+//print(t.x)
+//
+//var a = 10
+//var b = 20
+//
+//
+//print("a=\(a) , b=\(b)")
+//(a,b)=(b,a)
+//print("a=\(a) , b=\(b)")
+
+
+//func myPring(外部看的到 內部使用的:String){
+//    print(內部使用的)
+//    print(內部使用的)
+//    print(內部使用的)
+//}
+//myPring(外部看的到: "hello")
+//
+//
+////名字是：addTwoValuesAndPrint(x:y:)
+//func addTwoValuesAndPrint(x v1:Int, y v2:Int){
+//    print(v1+v2)
+//
+//}
+//addTwoValuesAndPrint(x: 2, y: 3)
+//
+//
+//
+////名字是addTwoValuesWith(firstValue:andSecondValue:)
+//func addTwoValuesWith(firstValue x: Int, andSecondValue y: Int){
+//    print(x+y)
+//}
+//addTwoValuesWith(firstValue: 10, andSecondValue: 20)
+//
+//
+////normal declaration_1 外部名稱想省略
+//func addTwoValues(_ x:Int,_ y:Int){
+//    print(x+y)
+//}
+//
+//addTwoValues(2, 9)
+//
+//
+////normal declaration_2, 內部與外部名稱一樣
+//func addTwoValue1(x: Int,y: Int){
+//    print(x+y)
+//}
+//addTwoValue1(x:10,y:3)
+//
+//
+////return
+//func addTwoValues3(x: Int,y:Int) -> Int{
+//
+//    return x + y
+//}
+//let ans = addTwoValues3(x: 10, y: 9)
+//
+//
+//
+////return with nil
+//func divide(x: Float, y: Float)->Float?{
+//    guard y != 0 else {
+//        return nil
+//    }
+//    return x / y
+//}
+//
+//if let ans = divide(x: 5, y: 0){
+//    print("答案為： ）\(ans)")
+//}else{
+//    print("運算錯誤，建議檢查分母是否為零")
+//
+//}
+//
+//
+////參數預設值
+//func myPower(value: Decimal, power: Int = 2) ->Decimal{
+//
+//    return pow(value, power)
+//}
+//
+//myPower(value: 10)
+//myPower(value: 10, power: 10)
+//
+//
+////動態參數數量
+//func mySum(_ arr: Int...) -> Int{
+//    var sum = 0
+//    for n in arr{
+//        sum += n
+//    }
+//    return sum
+//}
+//
+//mySum(2,5,19,1,20)
+//
+//mySum(2,5,19,1,20,30)
+//mySum(2,5,19,1,20,30,100)
+
+
+var a = 10;
+var b = 20;
+
+//  call by address
+func mySwap(x: inout Int, y: inout Int){
+    let tmp = x
+    x = y
+    y = tmp
+}
+
+mySwap(x: &a, y: &b)
+print("a=\(a) , b=\(b)")
+
+
+
