@@ -11,14 +11,17 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var height: UITextField!
-    @IBOutlet weak var text: UITextField!
+   
+    @IBOutlet weak var weight: UITextField!
     
+    @IBOutlet weak var suggestion: UILabel!
     @IBOutlet weak var label: UILabel!
     @IBAction func onclick(_ sender: Any) {
         
 
-            let weinum = Float(text.text!)
+            let weinum = Float(weight.text!)
             let heinum = Float(height.text!)
+            suggestion.text = ""
             if(weinum == nil || heinum == nil){
                 label.text = "輸入錯誤!!"
                 
@@ -28,7 +31,16 @@ class ViewController: UIViewController {
             }else{
 
                 let bmiResult = weinum! / (heinum!/100 * heinum!/100)
-                label.text = "BMI : \(bmiResult)"
+                label.text = "BMI值 : \(bmiResult)"
+                if (bmiResult>25){
+                    suggestion.text = "建議：體重過重"
+                }else if bmiResult<18.5 {
+                    suggestion.text = "建議：體重過輕"
+                    
+                }else{
+                    suggestion.text = "建議：體重正常"
+                    
+                }
                 
                 
             }
