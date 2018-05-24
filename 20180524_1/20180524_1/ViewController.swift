@@ -94,7 +94,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         case 0..<3:
             color = UIColor(red: 46/255, green: 255/255, blue: 23/255, alpha: 1)
             cell.imageView?.image = UIImage(named: "green")
-            cell.textLabel?.textColor = UIColor.yellow
+            cell.textLabel?.textColor = UIColor.brown
             cell.detailTextLabel?.textColor = cell.textLabel?.textColor
         case 3..<6:
             color = UIColor(red: 246/255, green: 226/255, blue: 50/255, alpha: 1)
@@ -113,6 +113,9 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             cell.detailTextLabel?.textColor = cell.textLabel?.textColor
         case 11..<100:
             color = UIColor(red: 222/255, green: 151/255, blue: 141/255, alpha: 1)
+            cell.imageView?.image = UIImage(named: "purple")
+            cell.textLabel?.textColor = UIColor.green
+            cell.detailTextLabel?.textColor = cell.textLabel?.textColor
         default:
             break
         }
