@@ -335,18 +335,34 @@ import UIKit
 //mySum(2,5,19,1,20,30,100)
 
 
-var a = 10;
-var b = 20;
+//var a = 10;
+//var b = 20;
+//
+////  call by address
+//func mySwap(x: inout Int, y: inout Int){
+//    let tmp = x
+//    x = y
+//    y = tmp
+//}
+//
+//mySwap(x: &a, y: &b)
+//print("a=\(a) , b=\(b)")
 
-//  call by address
-func mySwap(x: inout Int, y: inout Int){
-    let tmp = x
-    x = y
-    y = tmp
+class Peolpe {
+    private var hairColor = "black"
+    
+    func adder(_ 輸入1: Int,_ 輸入2: Int) -> Int {
+        return (輸入1+輸入2)
+    }
+    
 }
 
-mySwap(x: &a, y: &b)
-print("a=\(a) , b=\(b)")
+class NewPeople: Peolpe{
+    
+}
+
+let wang = NewPeople()
+print wang.adder(3, 5)
 
 
 
