@@ -13,6 +13,10 @@
 		CE42B7ED20B64A07004A730E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE42B7EC20B64A07004A730E /* Assets.xcassets */; };
 		CE42B7F020B64A07004A730E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE42B7EE20B64A07004A730E /* LaunchScreen.storyboard */; };
 		CE42B7F820B69B24004A730E /* OpenData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42B7F720B69B24004A730E /* OpenData.swift */; };
+		CEA15CAB20B7DF1E00F25A6B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA15CAA20B7DF1E00F25A6B /* MapKit.framework */; };
+		CEA15CAD20B7DFA700F25A6B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA15CAC20B7DFA700F25A6B /* MapViewController.swift */; };
+		CEA15CB120B7FB1600F25A6B /* ResultTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA15CB020B7FB1600F25A6B /* ResultTVC.swift */; };
+		CEA15CB320B7FB4F00F25A6B /* AllTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA15CB220B7FB4F00F25A6B /* AllTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		CE42B7EF20B64A07004A730E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE42B7F120B64A07004A730E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE42B7F720B69B24004A730E /* OpenData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenData.swift; sourceTree = "<group>"; };
+		CEA15CAA20B7DF1E00F25A6B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CEA15CAC20B7DFA700F25A6B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CEA15CB020B7FB1600F25A6B /* ResultTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTVC.swift; sourceTree = "<group>"; };
+		CEA15CB220B7FB4F00F25A6B /* AllTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA15CAB20B7DF1E00F25A6B /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +51,7 @@
 			children = (
 				CE42B7E420B64A05004A730E /* 20180524_1 */,
 				CE42B7E320B64A05004A730E /* Products */,
+				CEA15CA920B7DF1E00F25A6B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,8 +73,19 @@
 				CE42B7EE20B64A07004A730E /* LaunchScreen.storyboard */,
 				CE42B7F120B64A07004A730E /* Info.plist */,
 				CE42B7F720B69B24004A730E /* OpenData.swift */,
+				CEA15CAC20B7DFA700F25A6B /* MapViewController.swift */,
+				CEA15CB020B7FB1600F25A6B /* ResultTVC.swift */,
+				CEA15CB220B7FB4F00F25A6B /* AllTVC.swift */,
 			);
 			path = 20180524_1;
+			sourceTree = "<group>";
+		};
+		CEA15CA920B7DF1E00F25A6B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEA15CAA20B7DF1E00F25A6B /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,6 +120,11 @@
 				TargetAttributes = {
 					CE42B7E120B64A05004A730E = {
 						CreatedOnToolsVersion = 9.4;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -138,9 +164,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA15CB120B7FB1600F25A6B /* ResultTVC.swift in Sources */,
+				CEA15CB320B7FB4F00F25A6B /* AllTVC.swift in Sources */,
 				CE42B7F820B69B24004A730E /* OpenData.swift in Sources */,
 				CE42B7E820B64A05004A730E /* ViewController.swift in Sources */,
 				CE42B7E620B64A05004A730E /* AppDelegate.swift in Sources */,
+				CEA15CAD20B7DFA700F25A6B /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     var jsonObject: [[String:Any]] = []
     
+
+    
+    
     
     
     
@@ -27,24 +30,24 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        
+        cell.textLabel?.text = "AAA";
         var item = jsonObject[indexPath.row]
         var county: String = "未知"
         var siteName: String = "未知"
         var uvi: String = "未知"
-        cell.backgroundColor  = UIColor.black
-        
+       // cell.backgroundColor  = UIColor.black
+
         if item["County"] is String{
-            
+
             county = item["County"] as! String
         }
 
         if item["SiteName"] is String{
-            
+
             siteName = item["SiteName"] as! String
         }
         if item["UVI"] is String{
-            
+
             uvi = item["UVI"] as! String
         }
 
@@ -55,17 +58,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
     }
     
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         if let url = URL(string: "http://opendata2.epa.gov.tw/UV/UV.json"){
             do{
                 
                 let data = try Data(contentsOf: url)
                 jsonObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [[String : Any]]
-
+                
             }catch{
                 
                 print(error)
@@ -73,6 +77,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             
             
         }
+
         
         
         

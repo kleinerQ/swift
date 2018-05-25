@@ -365,14 +365,6 @@ let wang = NewPeople()
 //print wang.adder(3, 5)
 
 
-var a = 10;
-var b = 20;
+print("a")
 
 
-func mySwap(x:Int, y:Int){
-    let tmp = x
-    y = x //error occur
-}
-
-mySwap(x: a, y: b)
-print("a=\(a) , b=\(b)")

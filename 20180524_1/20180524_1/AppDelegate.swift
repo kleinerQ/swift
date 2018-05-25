@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+//    let list = ["A01", "A02", "B01"]
 
     var uviData = OpenData();
     //launch for once as lanch the app
