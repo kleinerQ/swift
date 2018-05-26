@@ -34,6 +34,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     var searchCtrl: UISearchController!
     
     var jsonObject: [[String:Any]] = []
+    var tableItemList: [[[String:Any]]] = [[],[],[],[],[]]
     
     let list = ["台北","台中","高雄"]
     
@@ -41,6 +42,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     func 資料準備好通知我(){
         print("data ready")
         jsonObject = app.uviData.getJsonObject()
+        //calculateNumberRows(&numberOfRowsInSection)
+        setTableItemList(&tableItemList)
         tableView.reloadData()
         activity.stopAnimating()
         UIView.animate(withDuration: 0.5) {
@@ -51,13 +54,87 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         refreshBtn.isEnabled = true
     }
     
+
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.gray
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 5
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    
+    func setTableItemList(_ tableItemList:inout [[[String:Any]]]){
+        tableItemList = [[],[],[],[],[]]
+        for item in jsonObject{
+            
+            if item ["WGS84Lat"] is String, item ["WGS84Lon"] is String{
+                
+                lat_arr = (item["WGS84Lat"] as! String).split(separator: ",")
+                lot_arr = (item["WGS84Lon"] as! String).split(separator: ",")
+                
+                if lat_arr!.count == 3, lot_arr!.count == 3 {
+                    for index in 0..<3 {
+                        lat_arr![index] = Substring(lat_arr![index].trimmingCharacters(in: .whitespaces))
+                        
+                    }
+                    for index in 0..<3 {
+                        lot_arr![index] = Substring(lot_arr![index].trimmingCharacters(in: .whitespaces))
+                        
+                    }
+                    let wgsToDoubleLat = Double(lat_arr![0])! + Double(lat_arr![1])! / 60 + Double(lat_arr![2])!/3600
+                    let wgsToDoubleLot = Double(lot_arr![0])! + Double(lot_arr![1])! / 60 + Double(lot_arr![2])!/3600
+//                    print(wgsToDoubleLat)
+                    if wgsToDoubleLot < 120{
+                        //離島
+                        tableItemList[4].append(item)
+                        
+                        
+                        
+                    }else if wgsToDoubleLat > 24.8 {
+                        //北
+                        tableItemList[0].append(item)
+                        
+                    }else if wgsToDoubleLot > 121.1{
+                        //東
+                        if(wgsToDoubleLat < 22.1){
+                            //蘭嶼特例
+                            tableItemList[4].append(item)
+                        }else{
+                        
+                            tableItemList[3].append(item)
+                        }
+                    }else if wgsToDoubleLat > 23.3 {
+                        //中
+                        tableItemList[1].append(item)
+                        
+                    }else{
+                        //南
+                        tableItemList[2].append(item)
+                    }
+                    
+                    
+                    
+                }
+                
+                
+                
+            }
+            
+        }
         
-        return jsonObject.count
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //print(numberOfRowsInSection)
+//        if section == 4 {
+//            return numberOfRowsInSection[4]
+//        }
+        return tableItemList[section].count
+//        return jsonObject.count
     }
 
     
@@ -72,9 +149,11 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             title = "南"
         case 3:
             title = "東"
+        case 4:
+            title = "離島"
             
         default:
-            title = "離島"
+            break
         }
         
         
@@ -83,17 +162,29 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     }
     
     
+    
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        let item = jsonObject[indexPath.row]
+        let item = tableItemList[indexPath.section][indexPath.row]
+//        print(item)
         
         var county: String = "未知"
         var siteName: String = "未知"
         var uvi: String = "未知"
-        cell.imageView?.image=nil
-        cell.textLabel?.textColor = UIColor.black
+
+        
+        cell.backgroundColor = .white
+        cell.imageView?.image = nil
+        cell.textLabel?.textColor = .black
         cell.detailTextLabel?.textColor = cell.textLabel?.textColor
+        
+        
+        
         
         if item["County"] is String{
             county = item["County"] as! String
@@ -137,8 +228,45 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             
             
         }
-        cell.textLabel?.text = county + "/" + siteName
-        cell.detailTextLabel?.text = uvi
+        
+        
+        
+        if item ["WGS84Lat"] is String, item ["WGS84Lon"] is String{
+            lat_arr = (item["WGS84Lat"] as! String).split(separator: ",")
+            lot_arr = (item["WGS84Lon"] as! String).split(separator: ",")
+            
+//            print(lat_arr)
+//            print(lot_arr)
+            if lat_arr!.count == 3, lot_arr!.count == 3 {
+                for index in 0..<3 {
+                    lat_arr![index] = Substring(lat_arr![index].trimmingCharacters(in: .whitespaces))
+                    
+                }
+                for index in 0..<3 {
+                    lot_arr![index] = Substring(lot_arr![index].trimmingCharacters(in: .whitespaces))
+                    
+                }
+                let wgsToDoubleLat = Double(lat_arr![0])! + Double(lat_arr![1])! / 60 + Double(lat_arr![2])!/3600
+                let wgsToDoubleLot = Double(lot_arr![0])! + Double(lot_arr![1])! / 60 + Double(lot_arr![2])!/3600
+//                print(wgsToDoubleLat , wgsToDoubleLot)
+//                if wgsToDoubleLot < 120{
+                    cell.textLabel?.text = county + "/" + siteName
+                    cell.detailTextLabel?.text = uvi
+                    
+                    
+//                }else{
+//
+//                }
+                
+                
+                
+            }
+            
+            
+        }
+        
+//        cell.textLabel?.text = county + "/" + siteName
+//        cell.detailTextLabel?.text = uvi
         return cell
     }
     
@@ -252,6 +380,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         tableView.alpha = 0
         refreshBtn.isEnabled = false
         activity.startAnimating()
+        
     }
 
     override func didReceiveMemoryWarning() {
