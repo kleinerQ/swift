@@ -52,11 +52,13 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         tableView.isHidden=false
         tableView.isUserInteractionEnabled = true
         refreshBtn.isEnabled = true
+        
     }
     
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         view.tintColor = UIColor.gray
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -178,7 +180,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         var uvi: String = "未知"
 
         
-        cell.backgroundColor = .white
+        cell.backgroundColor = UIColor.black
         cell.imageView?.image = nil
         cell.textLabel?.textColor = .black
         cell.detailTextLabel?.textColor = cell.textLabel?.textColor
@@ -196,7 +198,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         
         if item["UVI"] is String{
             uvi = item["UVI"] as! String
-            
+
             cell.backgroundColor = getCellBGColorByUVI(Float(uvi),cell: cell);
 
 //            if Float(uvi) != nil{
@@ -246,34 +248,23 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
                     lot_arr![index] = Substring(lot_arr![index].trimmingCharacters(in: .whitespaces))
                     
                 }
-                let wgsToDoubleLat = Double(lat_arr![0])! + Double(lat_arr![1])! / 60 + Double(lat_arr![2])!/3600
-                let wgsToDoubleLot = Double(lot_arr![0])! + Double(lot_arr![1])! / 60 + Double(lot_arr![2])!/3600
-//                print(wgsToDoubleLat , wgsToDoubleLot)
-//                if wgsToDoubleLot < 120{
-                    cell.textLabel?.text = county + "/" + siteName
-                    cell.detailTextLabel?.text = uvi
-                    
-                    
-//                }else{
-//
-//                }
-                
-                
-                
+
+                cell.textLabel?.text = county + "/" + siteName
+                cell.detailTextLabel?.text = uvi
+
             }
             
             
         }
         
-//        cell.textLabel?.text = county + "/" + siteName
-//        cell.detailTextLabel?.text = uvi
+
         return cell
     }
     
     func getCellBGColorByUVI(_ value: Float?, cell: UITableViewCell)-> UIColor{
-        var color: UIColor = UIColor.white
-        
+        var color: UIColor = UIColor.black
         guard let value = value else{
+            //print("BB")
             return color
         }
         switch value {
@@ -303,6 +294,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             cell.textLabel?.textColor = UIColor.green
             cell.detailTextLabel?.textColor = cell.textLabel?.textColor
         default:
+            color = UIColor.black
             break
         }
         return color
@@ -316,10 +308,10 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "vc_to_mapvc"{
-            
+        
             let indexPath = tableView.indexPathForSelectedRow!
-            let item = jsonObject[indexPath.row]
-            
+            let item = tableItemList[indexPath.section][indexPath.row]
+            print(item)
             if item ["WGS84Lat"] is String, item ["WGS84Lon"] is String{
                 lat_arr = (item["WGS84Lat"] as! String).split(separator: ",")
                 lot_arr = (item["WGS84Lon"] as! String).split(separator: ",")

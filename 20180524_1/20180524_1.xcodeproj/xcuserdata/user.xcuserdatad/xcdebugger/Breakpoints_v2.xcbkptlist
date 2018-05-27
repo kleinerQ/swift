@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "20180524_1/ViewController.swift"
-            timestampString = "549015504.8271821"
+            timestampString = "549085769.129235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "20180524_1/ViewController.swift"
-            timestampString = "549015504.827639"
+            timestampString = "549085769.1296901"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
             landmarkName = "getCellBGColorByUVI(_:cell:)"
             landmarkType = "7">
          </BreakpointContent>
