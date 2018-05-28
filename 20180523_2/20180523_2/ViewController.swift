@@ -39,7 +39,7 @@ class ViewController: UIViewController {
                     
                 }else{
                     suggestion.text = "建議：體重正常"
-                    /Users/user/Desktop/Swift
+                    
                 }
                 
                 

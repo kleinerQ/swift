@@ -11,7 +11,18 @@ import SafariServices
 
 class ViewController: UIViewController {
 
+    
+    @IBAction func ontab2(_ sender: Any) {
+        
+        print("AAABA")
+        let url = URL(string: "https://goo.gl/maps/htKTFHYrwTy")
+        let vc = SFSafariViewController(url:url!)
+        showDetailViewController(vc, sender: self)
+    }
+    
+    
     @IBAction func onTab(_ sender: Any) {
+        print("AAAB")
         let url = URL(string: "https://goo.gl/maps/pzkBrUmxSNm")
         let vc = SFSafariViewController(url:url!)
         showDetailViewController(vc, sender: self)
