@@ -16,9 +16,11 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         tableView.alpha = 0
         refreshBtn.isEnabled = false
         activity.startAnimating()
+        
         app.uviData.clearJsonObject()
-        print(jsonObject)
+        jsonObject.removeAll();
         app.uviData.loadUVIData()
+        
         資料準備好通知我()
         
         
@@ -36,13 +38,16 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
                 
                 sleep(1)
                 self.jsonObject=self.app.uviData.getJsonObject()
+            
+                print("AA")
             }
             print("data ready")
 
             DispatchQueue.main.async{
+                print("BB")
                 self.tableView.reloadData()
                 self.activity.stopAnimating()
-                UIView.animate(withDuration: 0.5){
+                UIView.animate(withDuration: 1){
                     self.tableView.alpha = 1
                 }
             }
@@ -91,8 +96,57 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         return cell
     }
     
+    var lat_arr : [Substring] = []
+    var log_arr : [Substring] = []
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "vc_to_mpvc"{
+            let indexPath = tableView.indexPathForSelectedRow!
+            let item = jsonObject[indexPath.row]
+            //            "WGS84Lat": "23,29,45",
+            //            "WGS84Lon": "120,25,58"
+            
+            if item["WGS84Lat"] is String,item["WGS84Lon"] is String{
+                
+                lat_arr = (item["WGS84Lat"] as! String).trimmingCharacters(in: .whitespaces).split(separator: ",")
+               
+                log_arr = (item["WGS84Lon"] as! String).trimmingCharacters(in: .whitespaces).split(separator: ",")
+                
+              
+                if lat_arr.count == 3, log_arr.count == 3{
+                    
+                    return true
+                }
+                
+                return false
+                
+                
+            }
+            
+            
+            
+            return false
+            
+            
+        }
+            
+        return true
+        
     
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "vc_to_mpvc"{
+            let vc = segue.destination as! MapViewController
+            vc.lat_arr = lat_arr
+            vc.log_arr = log_arr
+//            print(lat_arr)
+//            print(log_arr)
+        }
+        
+        
+        
+    }
     
 
     override func viewDidLoad() {

@@ -16,7 +16,7 @@ class OpenData: NSObject {
     
     
     func loadUVIData(){
-        
+//        self.clearJsonObject()
         if jsonObject.count == 0{
         
             loadJsonObject()
@@ -30,7 +30,7 @@ class OpenData: NSObject {
         let q = DispatchQueue.global()
         q.async {
             if let url = URL(string: "http://opendata2.epa.gov.tw/UV/UV.json") {
-                sleep(3)
+                sleep(1)
                 do{
                     let data = try Data(contentsOf: url)
                     self.jsonObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments ) as! [[String : Any]]
