@@ -30,23 +30,23 @@ class ViewController: UIViewController {
         
         
         //get
-        if let url = URL(string: "http://localhost/swift/logincheck.php?uid=\(uid.text!)&pwd=\(pwd.text!)"){
-            do{
-                print(url)
-                html = try String(contentsOf: url)
-                print(html)
-                if html == "1"{
-                    performSegue(withIdentifier: "vc_to_welcome", sender: self)
-                }
-
-
-
-            }catch{
-
-               print(error)
-            }
-
-        }
+//        if let url = URL(string: "http://localhost/swift/logincheck.php?uid=\(uid.text!)&pwd=\(pwd.text!)"){
+//            do{
+//                print(url)
+//                html = try String(contentsOf: url)
+//                print(html)
+//                if html == "1"{
+//                    performSegue(withIdentifier: "vc_to_welcome", sender: self)
+//                }
+//
+//
+//
+//            }catch{
+//
+//               print(error)
+//            }
+//
+//        }
         
         //post
      
@@ -70,9 +70,9 @@ class ViewController: UIViewController {
 
                                     }else{
 
-                                        let alert = UIAlertController(title: "Title", message: "Message", preferredStyle: .alert)
+                                        let alert = UIAlertController(title: "登入失敗", message: "請重新登入", preferredStyle: .alert)
                                         
-                                        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                                        let okAction = UIAlertAction(title: "重試", style: .default) { (action) in
                                                 
                                                 print("login Fail")
                                             }

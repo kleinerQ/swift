@@ -97,11 +97,22 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kqj-R3-xOT">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="UDK-HU-CnY">
+                                        <barButtonItem key="leftBarButtonItem" title="relog" style="plain" id="fcj-CQ-dt8"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="oBf-BS-bbB" firstAttribute="centerY" secondItem="fyK-va-gJ9" secondAttribute="centerY" id="O2Z-SU-XES"/>
+                            <constraint firstItem="Kqj-R3-xOT" firstAttribute="top" secondItem="LeG-Yj-dkk" secondAttribute="top" id="Spi-PW-EBX"/>
                             <constraint firstItem="oBf-BS-bbB" firstAttribute="centerX" secondItem="fyK-va-gJ9" secondAttribute="centerX" id="ZNH-BM-nQg"/>
+                            <constraint firstItem="Kqj-R3-xOT" firstAttribute="leading" secondItem="LeG-Yj-dkk" secondAttribute="leading" id="o7E-GG-3yc"/>
+                            <constraint firstItem="Kqj-R3-xOT" firstAttribute="trailing" secondItem="LeG-Yj-dkk" secondAttribute="trailing" id="onp-CG-VrW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LeG-Yj-dkk"/>
                     </view>
