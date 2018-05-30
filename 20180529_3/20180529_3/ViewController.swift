@@ -30,6 +30,15 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
         let cellRight = (parent?.view.viewWithTag(200) as! UITableViewCell).viewWithTag(500) as! UILabel
         
 
+        //also can use restorationIdentifier
+//        for p in (parent?.childViewControllers)!{
+//            if p.restorationIdentifier == "up_vc"{
+//                (p.view.viewWithTag(400) as! UILabel).text = left
+//            }
+//        }
+//
+        
+        
         cellLeft.text = left
         cellRight.text = right
 
@@ -39,10 +48,10 @@ class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSour
 //                break
 //            }
 //        }
-        let v =  (parent as! MainViewViewController).titleItem.subviews.first?.viewWithTag(400)
-        if v is UILabel {
-            (v as! UILabel).text = left
-        }
+//        let v =  (parent as! MainViewViewController).titleItem.subviews.first?.viewWithTag(400)
+//        if v is UILabel {
+//            (v as! UILabel).text = left
+//        }
         
         
     }

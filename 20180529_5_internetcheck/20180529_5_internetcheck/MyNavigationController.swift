@@ -19,34 +19,43 @@ class MyNavigationController: UINavigationController,UINavigationControllerDeleg
         
         var flag = SCNetworkReachabilityFlags()
         SCNetworkReachabilityGetFlags(reach!, &flag)
-        if flag.contains(.reachable){
-            
-            
-        }else{
-            
-            
+        DispatchQueue.main.async {
+            if flag.contains(.reachable){
+                
+                bt.image = UIImage(named: "wifi")?.withRenderingMode(.alwaysOriginal)
+                
+                
+            }else{
+                bt.image = UIImage(named: "nowifi")?.withRenderingMode(.alwaysOriginal)
+                
+            }
         }
+
     }
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         print("Hello")
-        
+
         var btn = viewController.navigationItem.rightBarButtonItem
         if btn == nil {
             btn = UIBarButtonItem()
             viewController.navigationItem.rightBarButtonItem = btn
             
         }
+        checkNetwork(btn!)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
 
-        checkNetwork()
+//        checkNetwork()
         
         Timer.scheduledTimer(withTimeInterval: 2, repeats: true){ (timer) in
-            self.checkNetwork()
+            if let btn = self.topViewController?.navigationItem.rightBarButtonItem{
+                self.checkNetwork(btn)
+            }
+            
             
         }
         // Do any additional setup after loading the view.

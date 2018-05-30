@@ -80,7 +80,7 @@
         <!--My Table Controller-->
         <scene sceneID="eY9-49-RVu">
             <objects>
-                <tableViewController id="svK-FZ-oIs" customClass="MyTableController" customModule="_0180529_3" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="up_vc" id="svK-FZ-oIs" customClass="MyTableController" customModule="_0180529_3" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mq0-t4-JTS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="234"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
