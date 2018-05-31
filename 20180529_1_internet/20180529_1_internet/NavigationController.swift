@@ -66,12 +66,16 @@ class NavigationController: UINavigationController,UINavigationControllerDelegat
                
             }else{
                bn.image = UIImage(named: "disconnected")?.withRenderingMode(.alwaysOriginal)
+             
+                let alert = self.storyboard?.instantiateViewController(withIdentifier: "myalert")
+                self.present(alert!, animated: true, completion: nil)
                 
             }
             
         }
         
     }
+
     /*
     // MARK: - Navigation
 

@@ -10,10 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var label: UILabel!
+    
+    @IBOutlet weak var alertText: UITextField!
     
     func 完成後請通知我(_ text:String?){
         if let text = text{
-            print(text)
+            //print(text)
+            alertText.isHidden = false
+            label.isHidden = false
+            alertText.text = text
+            
         }
     }
 
@@ -24,6 +31,8 @@ class ViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        alertText.isHidden = true
+        label.isHidden = true
         // Do any additional setup after loading the view, typically from a nib.
     }
 

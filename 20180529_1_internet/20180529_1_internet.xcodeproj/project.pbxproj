@@ -13,6 +13,7 @@
 		CE24932820BCDF2200E21145 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE24932720BCDF2200E21145 /* Assets.xcassets */; };
 		CE24932B20BCDF2200E21145 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE24932920BCDF2200E21145 /* LaunchScreen.storyboard */; };
 		CE24933320BCE95400E21145 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE24933220BCE95400E21145 /* NavigationController.swift */; };
+		CE752D1A20C0246F00FAB647 /* MyAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE752D1920C0246F00FAB647 /* MyAlertViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		CE24932A20BCDF2200E21145 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE24932C20BCDF2200E21145 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE24933220BCE95400E21145 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		CE752D1920C0246F00FAB647 /* MyAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlertViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				CE24932920BCDF2200E21145 /* LaunchScreen.storyboard */,
 				CE24932C20BCDF2200E21145 /* Info.plist */,
 				CE24933220BCE95400E21145 /* NavigationController.swift */,
+				CE752D1920C0246F00FAB647 /* MyAlertViewController.swift */,
 			);
 			path = 20180529_1_internet;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				CE24932320BCDF2100E21145 /* ViewController.swift in Sources */,
 				CE24933320BCE95400E21145 /* NavigationController.swift in Sources */,
 				CE24932120BCDF2100E21145 /* AppDelegate.swift in Sources */,
+				CE752D1A20C0246F00FAB647 /* MyAlertViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,6 +27,7 @@ class ContainerViewController: UIViewController {
                 vc.leadingConstrainMovingBar.constant = 0
             }else if vc.leadingConstrainMovingBar.constant < 0 {
                 vc.leadingConstrainMovingBar.constant = (-1 * vc.movingBarWidth.constant)
+                
             }
             
             
@@ -34,11 +35,12 @@ class ContainerViewController: UIViewController {
                 vc.leadingConstrainContainer.constant = vc.containerWidth.constant - vc.movingBarWidth.constant
             }else if vc.leadingConstrainContainer.constant < 0 {
                 vc.leadingConstrainContainer.constant = (-1 * vc.containerWidth.constant)
-            }
-            
-            if vc.leadingConstrainTube.constant < 0 {
                 vc.leadingConstrainTube.constant = (-1 * vc.tubeWidth.constant)
             }
+            
+//            if vc.leadingConstrainTube.constant < 0 {
+//                vc.leadingConstrainTube.constant = (-1 * vc.tubeWidth.constant)
+//            }
             
             UIView.animate(withDuration: 0.5){
                 vc.view.layoutIfNeeded()
@@ -55,16 +57,17 @@ class ContainerViewController: UIViewController {
             }
 //
             vc.leadingConstrainContainer.constant = 0 + movingQuantity
-            
+            print(vc.leadingConstrainContainer.constant)
             
 
-            if movingQuantity < 0{
-                
-                vc.leadingConstrainTube.constant = 0 + movingQuantity
-            }
-            UIView.animate(withDuration: 0.5){
-                vc.view.layoutIfNeeded()
-            }
+//            if movingQuantity < 0{
+//
+//                vc.leadingConstrainTube.constant = 0 + movingQuantity
+//            }
+//            print(vc.leadingConstrainTube.constant)
+//            UIView.animate(withDuration: 0.5){
+//                vc.view.layoutIfNeeded()
+//            }
             
         default:
             break
@@ -84,7 +87,9 @@ class ContainerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
 
+    
     /*
     // MARK: - Navigation
 
