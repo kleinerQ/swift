@@ -14,12 +14,64 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var alertText: UITextField!
     
-    func 完成後請通知我(_ text:String?){
+    var html: String = "0"
+    
+    func 完成後請通知我(_ text:String?,_ pwd:String?){
         if let text = text{
             //print(text)
             alertText.isHidden = false
             label.isHidden = false
-            alertText.text = text
+            
+            
+            if let url = URL(string: "http://localhost/swift/logincheck.php"){
+                do{
+                    
+                    var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
+                    
+                    request.httpBody = "uid=\(text)&pwd=\(pwd!)".data(using: .utf8)
+                    request.httpMethod = "POST"
+                    let config = URLSessionConfiguration.default
+                    let session = URLSession(configuration: config)
+                    let dataTask = session.dataTask(with: request){ (data, response,error) in if let data = data{
+                        self.html = String(data: data , encoding: .utf8)!
+                        print("html = \(self.html)")
+                        print(pwd)
+                        print(text)
+                        DispatchQueue.main.async{
+                            if self.html == "1"{
+                                
+                                
+                                self.alertText.text = "登入成功"
+                                
+                                
+                            }else{
+                                
+                                
+                                self.alertText.text = "登入失敗，請重新登入"
+                            }
+                        }
+                        
+                        
+                        }
+                        
+                        
+                    }
+                    dataTask.resume()
+                    
+                }catch{
+                    
+                    print(error)
+                }
+                
+            }
+            
+            
+            
+            
+            
+            
+            
+            
             
         }
     }

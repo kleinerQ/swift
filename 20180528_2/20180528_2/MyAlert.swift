@@ -10,6 +10,7 @@ import UIKit
 
 class MyAlert: UIViewController {
 
+    @IBOutlet weak var pwd: UITextField!
     @IBOutlet weak var text: UITextField!
     @IBOutlet weak var alertView: UIView!
     
@@ -17,7 +18,8 @@ class MyAlert: UIViewController {
 
         
         let vc = presentingViewController as! ViewController
-        vc.完成後請通知我(text.text)
+        
+        vc.完成後請通知我(text.text,pwd.text)
         toggleControlEnabled(true)
         
         dismiss(animated: true, completion: nil)

@@ -18,17 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOn-J9-1wN">
-                                <rect key="frame" x="54" y="138" width="138" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="按我顯示提示輸入框"/>
-                                <connections>
-                                    <action selector="onclick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EUj-A9-CMK"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wfl-6p-Bd7">
-                                <rect key="frame" x="73" y="237" width="138" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wfl-6p-Bd7">
+                                <rect key="frame" x="118" y="237" width="8" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -40,15 +31,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="我：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Mq-XR-W3L">
-                                <rect key="frame" x="30" y="242" width="35" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登入結果：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Mq-XR-W3L">
+                                <rect key="frame" x="30" y="242" width="87" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOn-J9-1wN">
+                                <rect key="frame" x="30" y="142" width="62" height="30"/>
+                                <state key="normal" title="按我登入"/>
+                                <connections>
+                                    <action selector="onclick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EUj-A9-CMK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfl-6p-Bd7" firstAttribute="leading" secondItem="0Mq-XR-W3L" secondAttribute="trailing" constant="1" id="FRc-WT-ix9"/>
+                            <constraint firstItem="0Mq-XR-W3L" firstAttribute="top" secondItem="LOn-J9-1wN" secondAttribute="bottom" constant="70" id="GIn-Zt-9Bw"/>
+                            <constraint firstItem="0Mq-XR-W3L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="JWx-dI-fhl"/>
+                            <constraint firstItem="wfl-6p-Bd7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="217" id="RIM-HC-6Qr"/>
+                            <constraint firstItem="LOn-J9-1wN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="122" id="e3J-aK-Sdt"/>
+                            <constraint firstItem="LOn-J9-1wN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="rkL-a7-mqK"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
@@ -145,6 +150,7 @@
                     </view>
                     <connections>
                         <outlet property="alertView" destination="ft7-zm-s2W" id="7h6-Nh-rSu"/>
+                        <outlet property="pwd" destination="fcW-h7-hf6" id="CUH-O3-Q2X"/>
                         <outlet property="text" destination="obS-OY-m3e" id="gCf-Bl-bIZ"/>
                     </connections>
                 </viewController>

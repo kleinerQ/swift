@@ -18,7 +18,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var isSectionCollapse:Bool = false
     var nowActionSection = 0
     var headerHeight:CGFloat = 0
-    var headerLocationArray:[CGFloat?] = [nil,nil,nil,nil]
+    //var headerLocationArray:[CGFloat?] = [nil,nil,nil,nil]
+    var hearderVcArray:[UITableViewHeaderFooterView?] = [nil,nil,nil,nil]
+    
     @IBAction func onTabGesture(_ sender: UITapGestureRecognizer) {
         
 //        print("AA")
@@ -32,31 +34,31 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     @IBAction func onTapGestureTest(_ sender: UITapGestureRecognizer) {
-//        let location = sender.location(in: tableView)
-////        print(location)
-//
-////        let data = [10,21,12,3]
-////        for (index,element) in data.enumerated() {
-////            if element == 3{
-////                print(index)
-////            }
-////        }
-//
-//        for i  in 0 ..< list.count {
-////            print(i)
-////            print(headerLocationArray[i])
-//            print("User: \(location.y)")
-//            if findInRangeOrNot(Double(headerLocationArray[i]!), Double(location.y), headerHeight: headerHeight){
-//
-//                isSectionCollapseArray[i] = !isSectionCollapseArray[i]
-//                //tableView.reloadSections(IndexSet(integer: i), with: .automatic)
-//            }
+        let location = sender.location(in: tableView)
+        
+
+
+        for i  in 0 ..< list.count {
+
+            print("User: \(location.y)")
+
+            
+            if let vc = hearderVcArray[i] {
+                print("section\(i)")
+                print(vc.frame)
+                if findInRangeOrNot(Double(vc.frame.origin.y), Double(location.y), headerHeight: vc.frame.size.height){
+
+                isSectionCollapseArray[i] = !isSectionCollapseArray[i]
+                tableView.reloadSections(IndexSet(integer: i), with: .automatic)
+                }
+                
+            }
 //           tableView.reloadSections(IndexSet(integer: i), with: .automatic)
-//
+
+        }
+//        for i in 0 ..< list.count{
+//             tableView.reloadSections(IndexSet(integer: i), with: .automatic)
 //        }
-////        for i in 0 ..< list.count{
-////             tableView.reloadSections(IndexSet(integer: i), with: .automatic)
-////        }
         
         
     }
@@ -155,33 +157,35 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let v = view as! UITableViewHeaderFooterView
+        print(v)
         v.textLabel?.textAlignment = .center
         v.tag = section
-        headerHeight = 28
+//        headerHeight = 28
         //print("headerHeight\(headerHeight)")
         print("section: \(section)")
-        print(v.frame)
-        headerLocationArray[section] = v.frame.origin.y
+        
+        hearderVcArray[section] = v
 //        print(section)
+//        print(v)
 //        print(headerLocationArray)
 //        print(v.frame.origin.y)
         //print(v.frame.size.he)
         
 //        v.contentView.addGestureRecognizer(tapGesture)
         
-        switch section {
-        case 0:
-            print("CC")
-            v.contentView.addGestureRecognizer(tapGesture)
-//            print(tapGesture)
-
-        case 1:
-            print("DD")
-            v.contentView.addGestureRecognizer(tapGesture2)
-//            print(tapGesture)
-        default:
-            break
-        }
+//        switch section {
+//        case 0:
+//            print("CC")
+//            v.contentView.addGestureRecognizer(tapGesture)
+////            print(tapGesture)
+//
+//        case 1:
+//            print("DD")
+//            v.contentView.addGestureRecognizer(tapGesture2)
+////            print(tapGesture)
+//        default:
+//            break
+//        }
         
         
 //        if section == 1{
