@@ -18,16 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wfl-6p-Bd7">
-                                <rect key="frame" x="118" y="237" width="8" height="17"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlG-Zi-UUQ">
                                 <rect key="frame" x="16" y="219" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -44,13 +38,20 @@
                                     <action selector="onclick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EUj-A9-CMK"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wfl-6p-Bd7">
+                                <rect key="frame" x="116" y="242" width="9" height="21"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfl-6p-Bd7" firstAttribute="leading" secondItem="0Mq-XR-W3L" secondAttribute="trailing" constant="1" id="FRc-WT-ix9"/>
+                            <constraint firstItem="wfl-6p-Bd7" firstAttribute="leading" secondItem="0Mq-XR-W3L" secondAttribute="trailing" constant="-1" id="FRc-WT-ix9"/>
                             <constraint firstItem="0Mq-XR-W3L" firstAttribute="top" secondItem="LOn-J9-1wN" secondAttribute="bottom" constant="70" id="GIn-Zt-9Bw"/>
                             <constraint firstItem="0Mq-XR-W3L" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="JWx-dI-fhl"/>
-                            <constraint firstItem="wfl-6p-Bd7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="217" id="RIM-HC-6Qr"/>
+                            <constraint firstItem="wfl-6p-Bd7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="222" id="RIM-HC-6Qr"/>
+                            <constraint firstItem="wfl-6p-Bd7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="116" id="YhC-7M-fYE"/>
                             <constraint firstItem="LOn-J9-1wN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="122" id="e3J-aK-Sdt"/>
                             <constraint firstItem="LOn-J9-1wN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="rkL-a7-mqK"/>
                         </constraints>
@@ -63,7 +64,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="669.60000000000002" y="106.59670164917542"/>
+            <point key="canvasLocation" x="592.79999999999995" y="41.829085457271368"/>
         </scene>
         <!--My Alert-->
         <scene sceneID="KBg-is-kEd">

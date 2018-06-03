@@ -77,6 +77,8 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onclick(_ sender: Any) {
+        alertText.isHidden = true
+        label.isHidden = true
         
         let alert = storyboard?.instantiateViewController(withIdentifier: "myalert")
         present(alert!, animated: true, completion: nil)
