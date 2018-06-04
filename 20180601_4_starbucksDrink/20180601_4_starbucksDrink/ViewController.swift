@@ -24,6 +24,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         
+        
+        
         let leftLabel = cell.viewWithTag(1000) as! UILabel
         
         let rightLabel = cell.viewWithTag(2000) as! UILabel

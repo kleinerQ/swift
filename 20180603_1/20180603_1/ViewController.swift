@@ -47,7 +47,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list[section].count
+        
+        return isSectionCollapseArray[section] ? 0 : list[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,7 +63,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let v = view as! UITableViewHeaderFooterView
-        print(v)
+//        print(v)
         v.textLabel?.textAlignment = .center
         v.tag = section
         

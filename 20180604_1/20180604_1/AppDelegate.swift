@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  20180530_2_starbucks
+//  20180604_1
 //
-//  Created by user on 2018/5/30.
-//  Copyright © 2018年 iii. All rights reserved.
+//  Created by Yen on 2018/6/4.
+//  Copyright © 2018年 Yen. All rights reserved.
 //
 
 import UIKit
@@ -14,8 +14,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        
+//        let fm = FileManager.default
+//        let src = Bundle.main.path(forResource: "Property List", ofType: "plist")
+//        let dst = NSHomeDirectory() + "/Documents/Property List.plist"
+//        if !fm.fileExists(atPath: dst){
+//            try! fm.copyItem(atPath: src!, toPath: dst)
+//        }
+        
+//        var db = DMDatabase()
+//
+//        db.sqlite3Open(db.copyToSandBoxDocument())
+    
+        let _ = DMDatabase.shared
+        
+        
         // Override point for customization after application launch.
         return true
     }

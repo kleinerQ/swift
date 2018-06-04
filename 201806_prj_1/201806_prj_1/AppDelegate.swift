@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  20180530_2_starbucks
+//  201806_prj_1
 //
-//  Created by user on 2018/5/30.
-//  Copyright © 2018年 iii. All rights reserved.
+//  Created by Yen on 2018/6/4.
+//  Copyright © 2018年 Yen. All rights reserved.
 //
 
 import UIKit
@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true

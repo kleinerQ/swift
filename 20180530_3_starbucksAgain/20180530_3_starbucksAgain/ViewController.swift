@@ -10,13 +10,7 @@ import UIKit
 
 class ViewController: UIViewController,UIGestureRecognizerDelegate {
     
-    @IBAction func onTabClose(_ sender: UITapGestureRecognizer) {
-        
-        print("AAA")
-    }
-    
-    
-    
+
     @IBOutlet weak var tubeWidth: NSLayoutConstraint!
     @IBOutlet weak var containerWidth: NSLayoutConstraint!
     

@@ -12,6 +12,21 @@ class ContainerViewController: UIViewController {
     
     var originalX:CGFloat! = 0
     
+    
+    @IBAction func onTapGesture(_ sender: UITapGestureRecognizer) {
+        
+        let vc = (parent as! ViewController)
+        vc.leadingConstrainMovingBar.constant = (-1 * vc.movingBarWidth.constant)
+        vc.leadingConstrainContainer.constant = (-1 * vc.containerWidth.constant)
+        vc.leadingConstrainTube.constant = (-1 * vc.tubeWidth.constant)
+        
+        UIView.animate(withDuration: 0.5){
+            vc.view.layoutIfNeeded()
+        }
+        
+        
+    }
+    
     @IBAction func onPanSwipe(_ sender: UIGestureRecognizer) {
         let vc = parent as! ViewController
         let location = sender.location(in: vc.view )
