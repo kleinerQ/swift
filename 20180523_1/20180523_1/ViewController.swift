@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     @IBAction func on(_ sender: Any) {
         label.text = "Hello World!"
-        label.
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()

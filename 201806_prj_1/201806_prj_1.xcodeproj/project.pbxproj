@@ -14,6 +14,7 @@
 		AC11908520C58F15004DD48E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC11908320C58F15004DD48E /* LaunchScreen.storyboard */; };
 		AC11908D20C59695004DD48E /* MyTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11908C20C59695004DD48E /* MyTabBarViewController.swift */; };
 		AC11908F20C59B76004DD48E /* MyHomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11908E20C59B76004DD48E /* MyHomePageViewController.swift */; };
+		AC22AA1B20C6B91200CC3CFF /* MypickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC22AA1A20C6B91200CC3CFF /* MypickViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		AC11908620C58F15004DD48E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC11908C20C59695004DD48E /* MyTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarViewController.swift; sourceTree = "<group>"; };
 		AC11908E20C59B76004DD48E /* MyHomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHomePageViewController.swift; sourceTree = "<group>"; };
+		AC22AA1A20C6B91200CC3CFF /* MypickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypickViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				AC11908620C58F15004DD48E /* Info.plist */,
 				AC11908C20C59695004DD48E /* MyTabBarViewController.swift */,
 				AC11908E20C59B76004DD48E /* MyHomePageViewController.swift */,
+				AC22AA1A20C6B91200CC3CFF /* MypickViewController.swift */,
 			);
 			path = 201806_prj_1;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 				AC11908F20C59B76004DD48E /* MyHomePageViewController.swift in Sources */,
 				AC11908D20C59695004DD48E /* MyTabBarViewController.swift in Sources */,
 				AC11907D20C58F13004DD48E /* ViewController.swift in Sources */,
+				AC22AA1B20C6B91200CC3CFF /* MypickViewController.swift in Sources */,
 				AC11907B20C58F13004DD48E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
