@@ -14,12 +14,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-    @IBAction func onClickChangeScene(_ sender: UIButton) {
-        
-    
-        let vc = parent as! UITabBarController
-        vc.selectedIndex = 2
-    }
+//    @IBAction func onClickChangeScene(_ sender: UIButton) {
+//
+//
+//        let vc = parent as! UITabBarController
+//        vc.selectedIndex = 2
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
