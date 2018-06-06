@@ -15,6 +15,9 @@
 		AC11908D20C59695004DD48E /* MyTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11908C20C59695004DD48E /* MyTabBarViewController.swift */; };
 		AC11908F20C59B76004DD48E /* MyHomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11908E20C59B76004DD48E /* MyHomePageViewController.swift */; };
 		AC22AA1B20C6B91200CC3CFF /* MypickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC22AA1A20C6B91200CC3CFF /* MypickViewController.swift */; };
+		AC854D1020C7F4AE0089256D /* MySegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC854D0F20C7F4AE0089256D /* MySegmentedControl.swift */; };
+		ACBD2B6920C7AB1C0030C517 /* MyBookingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD2B6820C7AB1C0030C517 /* MyBookingTableViewController.swift */; };
+		ACBD2B6B20C7B0FC0030C517 /* MyDatePickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD2B6A20C7B0FC0030C517 /* MyDatePickViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		AC11908C20C59695004DD48E /* MyTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarViewController.swift; sourceTree = "<group>"; };
 		AC11908E20C59B76004DD48E /* MyHomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHomePageViewController.swift; sourceTree = "<group>"; };
 		AC22AA1A20C6B91200CC3CFF /* MypickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypickViewController.swift; sourceTree = "<group>"; };
+		AC854D0F20C7F4AE0089256D /* MySegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySegmentedControl.swift; sourceTree = "<group>"; };
+		ACBD2B6820C7AB1C0030C517 /* MyBookingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookingTableViewController.swift; sourceTree = "<group>"; };
+		ACBD2B6A20C7B0FC0030C517 /* MyDatePickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDatePickViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,8 +69,11 @@
 				AC11907A20C58F13004DD48E /* AppDelegate.swift */,
 				AC11907C20C58F13004DD48E /* ViewController.swift */,
 				AC11907E20C58F13004DD48E /* Main.storyboard */,
+				ACBD2B6820C7AB1C0030C517 /* MyBookingTableViewController.swift */,
 				AC11908120C58F15004DD48E /* Assets.xcassets */,
+				AC854D0F20C7F4AE0089256D /* MySegmentedControl.swift */,
 				AC11908320C58F15004DD48E /* LaunchScreen.storyboard */,
+				ACBD2B6A20C7B0FC0030C517 /* MyDatePickViewController.swift */,
 				AC11908620C58F15004DD48E /* Info.plist */,
 				AC11908C20C59695004DD48E /* MyTabBarViewController.swift */,
 				AC11908E20C59B76004DD48E /* MyHomePageViewController.swift */,
@@ -145,10 +154,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC11908F20C59B76004DD48E /* MyHomePageViewController.swift in Sources */,
+				ACBD2B6B20C7B0FC0030C517 /* MyDatePickViewController.swift in Sources */,
 				AC11908D20C59695004DD48E /* MyTabBarViewController.swift in Sources */,
 				AC11907D20C58F13004DD48E /* ViewController.swift in Sources */,
 				AC22AA1B20C6B91200CC3CFF /* MypickViewController.swift in Sources */,
 				AC11907B20C58F13004DD48E /* AppDelegate.swift in Sources */,
+				AC854D1020C7F4AE0089256D /* MySegmentedControl.swift in Sources */,
+				ACBD2B6920C7AB1C0030C517 /* MyBookingTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

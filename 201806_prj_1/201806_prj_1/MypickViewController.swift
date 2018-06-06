@@ -9,20 +9,28 @@
 import UIKit
 
 class MypickViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
+    
+    
+    
     @IBAction func onComplete(_ sender: UIButton) {
         
+        let parentVc = parent as! ViewController
         
-        let picker = view.viewWithTag(100) as! UIPickerView
+        let picker = view.viewWithTag(1000) as! UIPickerView
         let leftPickedValue = list[0][picker.selectedRow(inComponent: 0)]
         let rightPickedValue = list[1][picker.selectedRow(inComponent: 1)]
         
         
-        (parent as! ViewController).pickViewBottomConstraint.constant = -300
+        
+        parentVc.pickViewBottomConstraint.constant = -300
         UIView.animate(withDuration: 0.5){
             (self.parent as! ViewController).view.layoutIfNeeded()
         }
         
-        
+        let startLabel = parentVc.view.viewWithTag(2000)?.viewWithTag(100) as! UILabel
+        let destLabel = parentVc.view.viewWithTag(2000)?.viewWithTag(200) as! UILabel
+        startLabel.text = leftPickedValue
+        destLabel.text = rightPickedValue
         
     }
     
