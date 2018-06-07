@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var datePickViewBottom: NSLayoutConstraint!
+    @IBOutlet weak var ticketNumberPickViewBottomConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var pickViewBottomConstraint: NSLayoutConstraint!
     override func viewDidLoad() {

@@ -10,6 +10,14 @@ import UIKit
 
 class MyBookingTableViewController: UITableViewController {
     
+    @IBAction func onClickShowNumberTicketPickView(_ sender: UITapGestureRecognizer) {
+        
+        (parent as! ViewController).ticketNumberPickViewBottomConstraint.constant = 0
+        UIView.animate(withDuration: 0.5){
+            (self.parent as! ViewController).view.layoutIfNeeded()
+        }
+        
+    }
     @IBAction func onClickShowDatePickView(_ sender: Any) {
         (parent as! ViewController).datePickViewBottom.constant = 0
         UIView.animate(withDuration: 0.5){
