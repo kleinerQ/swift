@@ -53,7 +53,7 @@
                                     <segue destination="b6W-sC-hIL" kind="embed" id="1tS-OX-Xyd"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkP-8n-Zax">
+                            <containerView opaque="NO" tag="3000" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkP-8n-Zax">
                                 <rect key="frame" x="0.0" y="467" width="375" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="GkV-2e-Jxs"/>
@@ -257,6 +257,9 @@
                                                         <segment title="標準"/>
                                                         <segment title="商務"/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="onChoiceCarType:" destination="syo-sg-Fv8" eventType="valueChanged" id="MQy-La-9qd"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -620,12 +623,12 @@
         <!--My Number Ticket Pick View Controller-->
         <scene sceneID="8i7-CY-app">
             <objects>
-                <viewController id="DwJ-yG-a6n" customClass="MyNumberTicketPickViewController" customModule="_01806_prj_1" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="numberTicketView" id="DwJ-yG-a6n" customClass="MyNumberTicketPickViewController" customModule="_01806_prj_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xka-oC-L3x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TkZ-XV-pFj">
+                            <pickerView tag="9000" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TkZ-XV-pFj">
                                 <rect key="frame" x="0.0" y="38" width="375" height="162"/>
                                 <connections>
                                     <outlet property="dataSource" destination="DwJ-yG-a6n" id="b6A-li-JFZ"/>
@@ -647,6 +650,7 @@
                             <constraint firstAttribute="trailing" secondItem="TkZ-XV-pFj" secondAttribute="trailing" id="GOb-3z-i1P"/>
                             <constraint firstItem="TkZ-XV-pFj" firstAttribute="leading" secondItem="Xka-oC-L3x" secondAttribute="leading" id="SCy-vB-G0O"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="dXF-jn-22n"/>
                     </view>
                     <connections>
                         <outlet property="numberTicketPicker" destination="TkZ-XV-pFj" id="43G-Ae-3B1"/>

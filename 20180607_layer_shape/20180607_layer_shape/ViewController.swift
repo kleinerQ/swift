@@ -11,10 +11,11 @@ import UIKit
 class ViewController: UIViewController {
     
 
+    let shapeLayer = CAShapeLayer()
     func drawLine() -> CAShapeLayer{
         
         let linePath = UIBezierPath()
-        let shapeLayer = CAShapeLayer()
+        
         
         
         
@@ -34,20 +35,20 @@ class ViewController: UIViewController {
         shapeLayer.path = linePath.cgPath
         
         
-        let screenSize = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
+
         
         //print(shapeLayer.frame)
         //        print(screenHeight)
         return shapeLayer
         
     }
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-//        view.layer.addSublayer(drawLine())
+        view.layer.addSublayer(drawLine())
        
         
     }
@@ -58,23 +59,30 @@ class ViewController: UIViewController {
             print("AAA4")
             return
         }
-        print(point)
-        guard let layer = view.layer.hitTest(point) else{
-            print("AAA5")
-            return
-        }
-        print(layer)
-        guard let layerName = layer.name else{
-            print("AAA6")
-            return
-        }
-        print(layerName)
+//        print(point)
+//        guard let layer = view.layer.hitTest(point) else{
+//            print("AAA5")
+//            return
+//        }
+//        print(layer)
+//        guard let layerName = layer.name else{
+//            print("AAA6")
+//            return
+//        }
+        print(shapeLayer.path?.contains(point))
+        
+        
     }
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! CircleViewController
-        vc.currentValue = 10
+        if segue.identifier == "collection"{
+            let vc = segue.destination as! CircleViewController
+            vc.currentValue = 34
+        }else{
+            
+        }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

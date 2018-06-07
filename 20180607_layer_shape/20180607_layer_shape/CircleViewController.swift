@@ -10,7 +10,7 @@ import UIKit
 
 class CircleViewController: UIViewController {
     
-    var currentValue:CGFloat = 0
+    var currentValue:CGFloat = 30
     
     
     func drawCircle(withColor color: CGColor) -> CAShapeLayer{
@@ -63,6 +63,47 @@ class CircleViewController: UIViewController {
         return ani
     }
     
+    func strokeEndAnimationSlow(to: CGFloat)-> CAKeyframeAnimation {
+        
+        let ani = CAKeyframeAnimation(keyPath: "strokeEnd")
+        ani.duration = 3
+
+        ani.values = [0, to / 35.0]
+        
+        ani.timingFunctions = [
+            CAMediaTimingFunction(controlPoints: 0.71, 0.67, 0.4, 0.94)
+        ]
+//        .17,.67,.4,.92
+        
+        
+        ani.isRemovedOnCompletion = false
+        
+        ani.fillMode = kCAFillModeForwards
+        ani.repeatCount = 0
+        
+        return ani
+    }
+    
+    
+    
+    func strokeEndAnimationChangeColor(to: CGFloat)-> CAKeyframeAnimation {
+        
+        let ani = CAKeyframeAnimation(keyPath: "strokeColor")
+        ani.duration = 3
+        
+        ani.values = [UIColor.red.cgColor,UIColor.green.cgColor]
+        
+        
+        
+        ani.isRemovedOnCompletion = false
+        
+        ani.fillMode = kCAFillModeForwards
+        ani.repeatCount = 0
+        
+        return ani
+    }
+    
+    
     @IBOutlet weak var label: UILabel!
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -75,7 +116,8 @@ class CircleViewController: UIViewController {
         
         let currentColor = UIColor.white
         let currentLayer = drawCircle(withColor: currentColor.cgColor)
-        currentLayer.add(strokeEndAnimation(to: currentValue), forKey: nil)
+        currentLayer.add(strokeEndAnimationSlow(to: currentValue), forKey: nil)
+        currentLayer.add(strokeEndAnimationChangeColor(to: currentValue), forKey: nil)
         view.layer.addSublayer(currentLayer)
         
         

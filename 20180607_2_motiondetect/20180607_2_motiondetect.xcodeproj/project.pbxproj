@@ -7,29 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC90087C20C8BC5900D788CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC90087B20C8BC5900D788CF /* AppDelegate.swift */; };
-		AC90087E20C8BC5900D788CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC90087D20C8BC5900D788CF /* ViewController.swift */; };
-		AC90088120C8BC5900D788CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC90087F20C8BC5900D788CF /* Main.storyboard */; };
-		AC90088320C8BC5A00D788CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC90088220C8BC5A00D788CF /* Assets.xcassets */; };
-		AC90088620C8BC5A00D788CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC90088420C8BC5A00D788CF /* LaunchScreen.storyboard */; };
-		AC90088E20C8C40D00D788CF /* CircleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC90088D20C8C40D00D788CF /* CircleViewController.swift */; };
-		AC90089020C8DAAB00D788CF /* MyChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC90088F20C8DAAB00D788CF /* MyChartViewController.swift */; };
+		AC90089E20C9011900D788CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC90089D20C9011900D788CF /* AppDelegate.swift */; };
+		AC9008A020C9011900D788CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC90089F20C9011900D788CF /* ViewController.swift */; };
+		AC9008A320C9011900D788CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9008A120C9011900D788CF /* Main.storyboard */; };
+		AC9008A520C9011A00D788CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC9008A420C9011A00D788CF /* Assets.xcassets */; };
+		AC9008A820C9011A00D788CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9008A620C9011A00D788CF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AC90087820C8BC5900D788CF /* 20180607_layer_shape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 20180607_layer_shape.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		AC90087B20C8BC5900D788CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AC90087D20C8BC5900D788CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AC90088020C8BC5900D788CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		AC90088220C8BC5A00D788CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AC90088520C8BC5A00D788CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		AC90088720C8BC5A00D788CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AC90088D20C8C40D00D788CF /* CircleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewController.swift; sourceTree = "<group>"; };
-		AC90088F20C8DAAB00D788CF /* MyChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChartViewController.swift; sourceTree = "<group>"; };
+		AC90089A20C9011900D788CF /* 20180607_2_motiondetect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 20180607_2_motiondetect.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC90089D20C9011900D788CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AC90089F20C9011900D788CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AC9008A220C9011900D788CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AC9008A420C9011A00D788CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC9008A720C9011A00D788CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AC9008A920C9011A00D788CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		AC90087520C8BC5900D788CF /* Frameworks */ = {
+		AC90089720C9011900D788CF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -39,73 +35,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AC90086F20C8BC5900D788CF = {
+		AC90089120C9011900D788CF = {
 			isa = PBXGroup;
 			children = (
-				AC90087A20C8BC5900D788CF /* 20180607_layer_shape */,
-				AC90087920C8BC5900D788CF /* Products */,
+				AC90089C20C9011900D788CF /* 20180607_2_motiondetect */,
+				AC90089B20C9011900D788CF /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		AC90087920C8BC5900D788CF /* Products */ = {
+		AC90089B20C9011900D788CF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AC90087820C8BC5900D788CF /* 20180607_layer_shape.app */,
+				AC90089A20C9011900D788CF /* 20180607_2_motiondetect.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AC90087A20C8BC5900D788CF /* 20180607_layer_shape */ = {
+		AC90089C20C9011900D788CF /* 20180607_2_motiondetect */ = {
 			isa = PBXGroup;
 			children = (
-				AC90087B20C8BC5900D788CF /* AppDelegate.swift */,
-				AC90087D20C8BC5900D788CF /* ViewController.swift */,
-				AC90088D20C8C40D00D788CF /* CircleViewController.swift */,
-				AC90088F20C8DAAB00D788CF /* MyChartViewController.swift */,
-				AC90087F20C8BC5900D788CF /* Main.storyboard */,
-				AC90088220C8BC5A00D788CF /* Assets.xcassets */,
-				AC90088420C8BC5A00D788CF /* LaunchScreen.storyboard */,
-				AC90088720C8BC5A00D788CF /* Info.plist */,
+				AC90089D20C9011900D788CF /* AppDelegate.swift */,
+				AC90089F20C9011900D788CF /* ViewController.swift */,
+				AC9008A120C9011900D788CF /* Main.storyboard */,
+				AC9008A420C9011A00D788CF /* Assets.xcassets */,
+				AC9008A620C9011A00D788CF /* LaunchScreen.storyboard */,
+				AC9008A920C9011A00D788CF /* Info.plist */,
 			);
-			path = 20180607_layer_shape;
+			path = 20180607_2_motiondetect;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AC90087720C8BC5900D788CF /* 20180607_layer_shape */ = {
+		AC90089920C9011900D788CF /* 20180607_2_motiondetect */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AC90088A20C8BC5A00D788CF /* Build configuration list for PBXNativeTarget "20180607_layer_shape" */;
+			buildConfigurationList = AC9008AC20C9011A00D788CF /* Build configuration list for PBXNativeTarget "20180607_2_motiondetect" */;
 			buildPhases = (
-				AC90087420C8BC5900D788CF /* Sources */,
-				AC90087520C8BC5900D788CF /* Frameworks */,
-				AC90087620C8BC5900D788CF /* Resources */,
+				AC90089620C9011900D788CF /* Sources */,
+				AC90089720C9011900D788CF /* Frameworks */,
+				AC90089820C9011900D788CF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = 20180607_layer_shape;
-			productName = 20180607_layer_shape;
-			productReference = AC90087820C8BC5900D788CF /* 20180607_layer_shape.app */;
+			name = 20180607_2_motiondetect;
+			productName = 20180607_2_motiondetect;
+			productReference = AC90089A20C9011900D788CF /* 20180607_2_motiondetect.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		AC90087020C8BC5900D788CF /* Project object */ = {
+		AC90089220C9011900D788CF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Yen;
 				TargetAttributes = {
-					AC90087720C8BC5900D788CF = {
+					AC90089920C9011900D788CF = {
 						CreatedOnToolsVersion = 9.4;
 					};
 				};
 			};
-			buildConfigurationList = AC90087320C8BC5900D788CF /* Build configuration list for PBXProject "20180607_layer_shape" */;
+			buildConfigurationList = AC90089520C9011900D788CF /* Build configuration list for PBXProject "20180607_2_motiondetect" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -113,56 +107,54 @@
 				en,
 				Base,
 			);
-			mainGroup = AC90086F20C8BC5900D788CF;
-			productRefGroup = AC90087920C8BC5900D788CF /* Products */;
+			mainGroup = AC90089120C9011900D788CF;
+			productRefGroup = AC90089B20C9011900D788CF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AC90087720C8BC5900D788CF /* 20180607_layer_shape */,
+				AC90089920C9011900D788CF /* 20180607_2_motiondetect */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		AC90087620C8BC5900D788CF /* Resources */ = {
+		AC90089820C9011900D788CF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC90088620C8BC5A00D788CF /* LaunchScreen.storyboard in Resources */,
-				AC90088320C8BC5A00D788CF /* Assets.xcassets in Resources */,
-				AC90088120C8BC5900D788CF /* Main.storyboard in Resources */,
+				AC9008A820C9011A00D788CF /* LaunchScreen.storyboard in Resources */,
+				AC9008A520C9011A00D788CF /* Assets.xcassets in Resources */,
+				AC9008A320C9011900D788CF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		AC90087420C8BC5900D788CF /* Sources */ = {
+		AC90089620C9011900D788CF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC90087E20C8BC5900D788CF /* ViewController.swift in Sources */,
-				AC90089020C8DAAB00D788CF /* MyChartViewController.swift in Sources */,
-				AC90087C20C8BC5900D788CF /* AppDelegate.swift in Sources */,
-				AC90088E20C8C40D00D788CF /* CircleViewController.swift in Sources */,
+				AC9008A020C9011900D788CF /* ViewController.swift in Sources */,
+				AC90089E20C9011900D788CF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AC90087F20C8BC5900D788CF /* Main.storyboard */ = {
+		AC9008A120C9011900D788CF /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				AC90088020C8BC5900D788CF /* Base */,
+				AC9008A220C9011900D788CF /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		AC90088420C8BC5A00D788CF /* LaunchScreen.storyboard */ = {
+		AC9008A620C9011A00D788CF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				AC90088520C8BC5A00D788CF /* Base */,
+				AC9008A720C9011A00D788CF /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -170,7 +162,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		AC90088820C8BC5A00D788CF /* Debug */ = {
+		AC9008AA20C9011A00D788CF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -230,7 +222,7 @@
 			};
 			name = Debug;
 		};
-		AC90088920C8BC5A00D788CF /* Release */ = {
+		AC9008AB20C9011A00D788CF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -284,34 +276,34 @@
 			};
 			name = Release;
 		};
-		AC90088B20C8BC5A00D788CF /* Debug */ = {
+		AC9008AD20C9011A00D788CF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = 20180607_layer_shape/Info.plist;
+				INFOPLIST_FILE = 20180607_2_motiondetect/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "tw.iii.-0180607-layer-shape";
+				PRODUCT_BUNDLE_IDENTIFIER = "tw.iii.-0180607-2-motiondetect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		AC90088C20C8BC5A00D788CF /* Release */ = {
+		AC9008AE20C9011A00D788CF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = 20180607_layer_shape/Info.plist;
+				INFOPLIST_FILE = 20180607_2_motiondetect/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "tw.iii.-0180607-layer-shape";
+				PRODUCT_BUNDLE_IDENTIFIER = "tw.iii.-0180607-2-motiondetect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -321,25 +313,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AC90087320C8BC5900D788CF /* Build configuration list for PBXProject "20180607_layer_shape" */ = {
+		AC90089520C9011900D788CF /* Build configuration list for PBXProject "20180607_2_motiondetect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AC90088820C8BC5A00D788CF /* Debug */,
-				AC90088920C8BC5A00D788CF /* Release */,
+				AC9008AA20C9011A00D788CF /* Debug */,
+				AC9008AB20C9011A00D788CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AC90088A20C8BC5A00D788CF /* Build configuration list for PBXNativeTarget "20180607_layer_shape" */ = {
+		AC9008AC20C9011A00D788CF /* Build configuration list for PBXNativeTarget "20180607_2_motiondetect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AC90088B20C8BC5A00D788CF /* Debug */,
-				AC90088C20C8BC5A00D788CF /* Release */,
+				AC9008AD20C9011A00D788CF /* Debug */,
+				AC9008AE20C9011A00D788CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = AC90087020C8BC5900D788CF /* Project object */;
+	rootObject = AC90089220C9011900D788CF /* Project object */;
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class MyNumberTicketPickViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
     
-    
+    var numberOfType = 5
     
     @IBAction func onClickComplete(_ sender: UIButton) {
         
@@ -48,7 +48,7 @@ class MyNumberTicketPickViewController: UIViewController,UIPickerViewDelegate,UI
     let list = ["0","1","2","3","4","5","6","7","8","9","10"]
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 5
+        return numberOfType
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {

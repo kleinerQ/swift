@@ -9,6 +9,7 @@
 import UIKit
 
 class MyBookingTableViewController: UITableViewController {
+
     
     @IBAction func onClickShowNumberTicketPickView(_ sender: UITapGestureRecognizer) {
         
@@ -47,6 +48,25 @@ class MyBookingTableViewController: UITableViewController {
             bookingTableView.reloadData()
         }
         
+        
+        
+    }
+    
+    
+ 
+    
+    @IBAction func onChoiceCarType(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0{
+            (view.viewWithTag(800) as! UILabel).isHidden = false
+            //(view.viewWithTag(800) as! UILabel).text = "大學生"
+            let myNumberTicketView = storyboard?.instantiateViewController(withIdentifier: "numberTicketView")
+            
+//            myNumberTicketView.numberOfType = 4
+//            myNumberTicketView.numberTicketPicker.reloadAllComponents()
+        }else{
+
+            (view.viewWithTag(800) as! UILabel).isHidden = true
+        }
         
         
     }
