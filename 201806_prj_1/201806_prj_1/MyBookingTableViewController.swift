@@ -7,23 +7,46 @@
 //
 
 import UIKit
-
-class MyBookingTableViewController: UITableViewController {
+import CoreLocation
+class MyBookingTableViewController: UITableViewController,CLLocationManagerDelegate {
+    
+    let lm = CLLocationManager()
 
     
+    let gpsList = ["南港":"25.052639,121.603764",
+                   "台北":"25.045981,121.526531",
+                   "板橋":"25.019709,121.472915",
+                   "桃園":"25.014226,121.216088",
+                   "新竹":"24.809755,121.040587",
+                   "苗栗":"24.606453,120.82781",
+                   "台中":"24.1138,120.616112",
+                   "彰化":"23.875424,120.577253",
+                   "雲林":"23.738777,120.417013",
+                   "嘉義":"23.461747,120.323899",
+                   "台南":"22.927007,120.285267",
+                   "高雄":"22.688685,120.308651",]
     @IBAction func onClickShowNumberTicketPickView(_ sender: UITapGestureRecognizer) {
+        
+        print("GGGASDf")
+        (parent as! ViewController).tabBarController?.tabBar.isHidden = true
         
         (parent as! ViewController).ticketNumberPickViewBottomConstraint.constant = 0
         UIView.animate(withDuration: 0.5){
             (self.parent as! ViewController).view.layoutIfNeeded()
         }
+
+        
         
     }
+    
     @IBAction func onClickShowDatePickView(_ sender: Any) {
+        
+        
         (parent as! ViewController).datePickViewBottom.constant = 0
         UIView.animate(withDuration: 0.5){
             (self.parent as! ViewController).view.layoutIfNeeded()
         }
+        (parent as! ViewController).tabBarController?.tabBar.isHidden = true
         
     }
     
@@ -36,19 +59,16 @@ class MyBookingTableViewController: UITableViewController {
         
        
         if sender.selectedSegmentIndex == 0{
-//            print("AAAAAA")
+
             isCollapse = true
 
-//            tableView.reloadSections(IndexSet(integer: 0), with: .automatic)
-            bookingTableView.reloadData()
         }else{
             isCollapse = false
-//            print("GG")
 
-            bookingTableView.reloadData()
         }
         
-        
+        tableView.beginUpdates()
+        tableView.endUpdates()
         
     }
     
@@ -56,15 +76,31 @@ class MyBookingTableViewController: UITableViewController {
  
     
     @IBAction func onChoiceCarType(_ sender: UISegmentedControl) {
+        
+        var myNumberTicketVC: MyNumberTicketPickViewController!
+        
+        for vc in (self.parent?.childViewControllers)! {
+            if vc.restorationIdentifier == "numberTicketView" {
+                myNumberTicketVC = vc as! MyNumberTicketPickViewController
+                break
+            }
+        }
+//        let myNumberTicketVC = storyboard?.instantiateViewController(withIdentifier: "numberTicketView") as! MyNumberTicketPickViewController
+        
+        
         if sender.selectedSegmentIndex == 0{
             (view.viewWithTag(800) as! UILabel).isHidden = false
             //(view.viewWithTag(800) as! UILabel).text = "大學生"
-            let myNumberTicketView = storyboard?.instantiateViewController(withIdentifier: "numberTicketView")
+
+            myNumberTicketVC.numberOfType = 5
+            myNumberTicketVC.numberTicketPicker.reloadAllComponents()
+//          print(myNumberTicketVC.numberTicketPicker.selectedRow(inComponent: 4))
             
-//            myNumberTicketView.numberOfType = 4
-//            myNumberTicketView.numberTicketPicker.reloadAllComponents()
         }else{
 
+            myNumberTicketVC.numberOfType = 4
+            myNumberTicketVC.numberTicketPicker.reloadAllComponents()
+           
             (view.viewWithTag(800) as! UILabel).isHidden = true
         }
         
@@ -81,19 +117,102 @@ class MyBookingTableViewController: UITableViewController {
     @IBOutlet weak var date: UILabel!
     
     @IBAction func onClickShowPickView(_ sender: Any) {
+        (parent as! ViewController).tabBarController?.tabBar.isHidden = true
+        
         (parent as! ViewController).pickViewBottomConstraint.constant = 0
         UIView.animate(withDuration: 0.5){
             (self.parent as! ViewController).view.layoutIfNeeded()
         }
+//        print("GGGG")
+    }
+    
+    
+    var closestStation = "台北"
+    
+    
+    
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        print("MMM")
+        if let userLocation = locations.first{
+        
+            var distanceMin:Double = 100000
+            
+            print("緯度：\(userLocation.coordinate.latitude)")
+            print("經度：\(userLocation.coordinate.longitude)")
+            print("高度：\(userLocation.altitude)")
+            
+            for (stationName,stationGps) in gpsList{
+                //            print("\(stationName)    \(stationLocation)")
+                let station = stationName as! String
+                let stationLocation = (stationGps as! String).split(separator: ",")
+                
+                let distanceTmp = sqrt( pow(Double(stationLocation[0])! - Double(userLocation.coordinate.latitude),2) + pow(Double(stationLocation[1])! - Double(userLocation.coordinate.longitude),2))
+                if distanceTmp < distanceMin{
+                    closestStation = station
+                    distanceMin = distanceTmp
+                    
+                    
+                }
+            }
+            
+            
+//            print(closestStation)
+        }
+        
+        
+        
+
+        
+        
+    }
+    func resetOriginalStaion(){
+        print("GHASD")
+        (self.view.viewWithTag(100) as! UILabel).text = closestStation
+    }
+
+
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let user = UserDefaults.standard
+        
+        if let orginalStation = user.object(forKey: "orginalStation") as! String?{
+            
+            
+            (self.view.viewWithTag(100) as! UILabel).text = orginalStation
+            (self.view.viewWithTag(200) as! UILabel).text = user.object(forKey: "destStation") as! String?
+            
+        }else{
+            
+            (self.view.viewWithTag(100) as! UILabel).text = "台北"
+            (self.view.viewWithTag(200) as! UILabel).text = "左營"
+        }
+        
         
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         let timeString = formatter.string(from: Date())
         date.text = timeString
+        
+        
+        
+        lm.requestWhenInUseAuthorization()
+        lm.delegate = self
+        lm.startUpdatingLocation()
+        
+
+        
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -106,7 +225,34 @@ class MyBookingTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    func setStationInfo(orginalStation: String, destStation: String){
+        let user = UserDefaults.standard
+        user.set(orginalStation,forKey: "orginalStation")
+        user.set(destStation,forKey: "destStation")
+        
+    }
 
+
+//    override func viewWillAppear(_ animated: Bool) {
+//        let user = UserDefaults.standard
+//
+//        if let orginalStation = user.object(forKey: "orginalStation") as! String?{
+//
+//            (self.view.viewWithTag(100) as! UILabel).text = orginalStation
+//            print(orginalStation)
+//        }else{
+//            (self.view.viewWithTag(100) as! UILabel).text = "台北"
+//            //             (ViewController.viewWithTag(100) as!UILabel).text = "台北"
+//        }
+//    }
+    override func viewDidDisappear(_ animated: Bool) {
+
+        setStationInfo(orginalStation: (self.view.viewWithTag(100) as! UILabel).text!, destStation: (self.view.viewWithTag(200) as! UILabel).text!)
+//        print("MMGG")
+    }
+    
     // MARK: - Table view data source
 
 //    override func numberOfSections(in tableView: UITableView) -> Int {

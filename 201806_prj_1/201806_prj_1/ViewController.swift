@@ -13,12 +13,23 @@ class ViewController: UIViewController {
     @IBOutlet weak var ticketNumberPickViewBottomConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var pickViewBottomConstraint: NSLayoutConstraint!
+    
+    
+    override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
+        print("GGGADF")
+        print((self.view.viewWithTag(2000) as! UIView).viewWithTag(100))
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
     }
 
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

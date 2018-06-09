@@ -31,6 +31,7 @@ class MypickViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
         let destLabel = parentVc.view.viewWithTag(2000)?.viewWithTag(200) as! UILabel
         startLabel.text = leftPickedValue
         destLabel.text = rightPickedValue
+        (parent as! ViewController).tabBarController?.tabBar.isHidden = false
         
     }
     
@@ -43,6 +44,8 @@ class MypickViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
         picker.selectRow(leftpicked, inComponent: 1, animated: true)
         
     }
+    
+    
     let list = [["南港","台北","板橋","桃園","新竹","苗栗","台中","彰化","雲林","嘉義","台南","左營"],
                 ["南港","台北","板橋","桃園","新竹","苗栗","台中","彰化","雲林","嘉義","台南","左營"]
     ]

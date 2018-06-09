@@ -11,6 +11,16 @@ import UIKit
 class MyNumberTicketPickViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
     
     var numberOfType = 5
+//    @IBAction func onclickTest(_ sender: UIButton) {
+//        numberOfType = 5
+//        
+//        let this = numberTicketPicker
+//        print(numberOfType)
+//        print(this)
+//        this?.backgroundColor = .red
+//        numberTicketPicker.reloadAllComponents()
+//    }
+    
     
     @IBAction func onClickComplete(_ sender: UIButton) {
         
@@ -31,20 +41,31 @@ class MyNumberTicketPickViewController: UIViewController,UIPickerViewDelegate,UI
         let secondPickedValue = list[numberTicketPicker.selectedRow(inComponent: 1)]
         let thirdPickedValue = list[numberTicketPicker.selectedRow(inComponent: 2)]
         let fourthPickedValue = list[numberTicketPicker.selectedRow(inComponent: 3)]
-        let fifthPickedValue = list[numberTicketPicker.selectedRow(inComponent: 4)]
-        
+        if self.numberOfType == 5 {
+            let fifthPickedValue = list[numberTicketPicker.selectedRow(inComponent: 4)]
+            fifthLable.text = "大學生 \(fifthPickedValue)"
+        }
         firstLable.text = "全票 \(firstPickedValue)"
         secondLable.text = "孩童 \(secondPickedValue)"
         thirdLable.text = "敬老 \(thirdPickedValue)"
         fourthLable.text = "愛心 \(fourthPickedValue)"
-        fifthLable.text = "大學生 \(fifthPickedValue)"
+        
+        (parent as! ViewController).tabBarController?.tabBar.isHidden = false
         
     }
     
     @IBOutlet weak var numberTicketPicker: UIPickerView!
     
-    
-    
+//    func reloadMyTicketPickView(){
+////        let this = numberTicketPicker
+////        print(numberOfType)
+////        print(this)
+////        this?.backgroundColor = .red
+////        //print(numberTicketPicker)
+//        numberTicketPicker.reloadAllComponents()
+//        
+//    }
+//    
     let list = ["0","1","2","3","4","5","6","7","8","9","10"]
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -63,6 +84,7 @@ class MyNumberTicketPickViewController: UIViewController,UIPickerViewDelegate,UI
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -40,6 +40,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
    // called when entering the app
     func 資料準備好通知我(){
+//        print(jsonObject)
         print("data ready")
         jsonObject = app.uviData.getJsonObject()
         //calculateNumberRows(&numberOfRowsInSection)

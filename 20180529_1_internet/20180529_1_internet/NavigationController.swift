@@ -14,10 +14,11 @@ class NavigationController: UINavigationController,UINavigationControllerDelegat
     let reach = SCNetworkReachabilityCreateWithName(nil, "google.com.tw")
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
         delegate = self
+        super.viewDidLoad()
+
+        
+        
 
         // Do any additional setup after loading the view.
         
@@ -32,11 +33,12 @@ class NavigationController: UINavigationController,UINavigationControllerDelegat
             }
             
         }
+        
     }
 
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         print("Hello")
-        
+        viewController.navigationItem.titleView = UIImageView(image: UIImage(named: "title"))
         var btn = viewController.navigationItem.rightBarButtonItem      //first time would be nil
         if btn == nil{
             
@@ -45,6 +47,7 @@ class NavigationController: UINavigationController,UINavigationControllerDelegat
             
         }
     
+        
         checkNetwork(btn!)
         
         

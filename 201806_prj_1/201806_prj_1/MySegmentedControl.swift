@@ -14,8 +14,12 @@ class MySegmentedControl: UISegmentedControl {
         layer.cornerRadius = 3
         
         layer.borderColor = UIColor.clear.cgColor
-        layer.borderWidth = 1
+        layer.borderWidth = 0
         self.tintColor = UIColor.orange
+//
+//        setContentOffset(CGSize(width: 10, height: 10), forSegmentAt: 0)
+        
+        
         
 //        let unselectedAttributes = [kCTForegroundColorAttributeName: UIColor.red,
 //                                    kCTFontAttributeName:  UIFont.systemFont(ofSize: 103, weight: .regular)]

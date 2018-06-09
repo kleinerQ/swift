@@ -10,8 +10,9 @@ import UIKit
 
 class MyHomePageViewController: UIViewController {
 
+    @IBOutlet weak var textView: UITextView!
     @IBAction func onClickTicketingPage(_ sender: UIButton) {
-        print("AA")
+//        print("AA")
         
         let vc = parent as! UITabBarController
         vc.selectedIndex = 2
@@ -27,6 +28,10 @@ class MyHomePageViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let attributedString = NSMutableAttributedString(string: "Want to learn iOS? You should visit the best source of free iOS tutorials!")
+        attributedString.addAttribute(.link, value: "https://www.hackingwithswift.com", range: NSRange(location: 19, length: 55))
+        
+        textView.attributedText = attributedString
 
         // Do any additional setup after loading the view.
     }

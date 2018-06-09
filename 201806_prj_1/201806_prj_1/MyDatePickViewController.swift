@@ -14,6 +14,10 @@ class MyDatePickViewController: UIViewController {
     
     @IBAction func onClickComplete(_ sender: UIButton) {
         let dateLabel = parent?.view.viewWithTag(2000)?.viewWithTag(300) as! UILabel
+        
+
+        
+        
         dateLabel.text = timeString
         
         let parentVc = parent as! ViewController
@@ -23,7 +27,7 @@ class MyDatePickViewController: UIViewController {
             (self.parent as! ViewController).view.layoutIfNeeded()
         }
         
-        
+        (parent as! ViewController).tabBarController?.tabBar.isHidden = false
         
                 //print(timeString)
         
@@ -41,14 +45,15 @@ class MyDatePickViewController: UIViewController {
         datePick.minimumDate = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
-//        print("AAAA")
-//        print(sender.date)
         timeString = formatter.string(from: sender.date)
 
     }
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        timeString = formatter.string(from: Date())
         // Do any additional setup after loading the view.
     }
 
