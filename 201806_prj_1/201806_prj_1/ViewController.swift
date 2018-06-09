@@ -17,8 +17,15 @@ class ViewController: UIViewController {
     
     override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
         print("GGGADF")
-        print((self.view.viewWithTag(2000) as! UIView).viewWithTag(100))
         
+        var mybookingTableViewVC: MyBookingTableViewController!
+        for vc in (self.childViewControllers) {
+            if vc.restorationIdentifier == "bookingTableView" {
+                mybookingTableViewVC = vc as! MyBookingTableViewController
+                break
+            }
+        }
+        mybookingTableViewVC.resetOriginalStaion()
     }
     
     

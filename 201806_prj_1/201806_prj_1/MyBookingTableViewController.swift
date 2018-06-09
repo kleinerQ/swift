@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 class MyBookingTableViewController: UITableViewController,CLLocationManagerDelegate {
+    @IBOutlet weak var numberTicketCellHeightConstraint: NSLayoutConstraint!
     
     let lm = CLLocationManager()
 
@@ -67,8 +68,8 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
 
         }
         
-        tableView.beginUpdates()
-        tableView.endUpdates()
+        bookingTableView.beginUpdates()
+        bookingTableView.endUpdates()
         
     }
     
@@ -93,21 +94,34 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
             //(view.viewWithTag(800) as! UILabel).text = "大學生"
 
             myNumberTicketVC.numberOfType = 5
+            myNumberTicketVC.pickViewUniLabel.isHidden = false
             myNumberTicketVC.numberTicketPicker.reloadAllComponents()
 //          print(myNumberTicketVC.numberTicketPicker.selectedRow(inComponent: 4))
+                        numberTicketCellHeightConstraint.constant += (view.viewWithTag(800) as! UILabel).frame.size.height
+            bookingTableView.beginUpdates()
+            bookingTableView.endUpdates()
+
             
         }else{
 
             myNumberTicketVC.numberOfType = 4
             myNumberTicketVC.numberTicketPicker.reloadAllComponents()
            
+            myNumberTicketVC.pickViewUniLabel.isHidden = true
             (view.viewWithTag(800) as! UILabel).isHidden = true
+            
+
+            numberTicketCellHeightConstraint.constant -= (view.viewWithTag(800) as! UILabel).frame.size.height
+            bookingTableView.beginUpdates()
+            bookingTableView.endUpdates()
+            
         }
-        
+
         
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        print("BSDF")
         if indexPath.row == 2, isCollapse{
             return 0
         }
@@ -131,6 +145,7 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
     
     
     
+
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -158,7 +173,7 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
             }
             
             
-//            print(closestStation)
+            print(closestStation)
         }
         
         

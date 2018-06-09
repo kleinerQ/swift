@@ -12,7 +12,8 @@ class MyNumberTicketPickViewController: UIViewController,UIPickerViewDelegate,UI
     
     var numberOfType = 5
 //    @IBAction func onclickTest(_ sender: UIButton) {
-//        numberOfType = 5
+    @IBOutlet weak var pickViewUniLabel: UILabel!
+    //        numberOfType = 5
 //        
 //        let this = numberTicketPicker
 //        print(numberOfType)
@@ -30,6 +31,7 @@ class MyNumberTicketPickViewController: UIViewController,UIPickerViewDelegate,UI
         UIView.animate(withDuration: 0.5){
             (self.parent as! ViewController).view.layoutIfNeeded()
         }
+        
         
         let firstLable = parentVc.view.viewWithTag(2000)?.viewWithTag(400) as! UILabel
         let secondLable = parentVc.view.viewWithTag(2000)?.viewWithTag(500) as! UILabel
