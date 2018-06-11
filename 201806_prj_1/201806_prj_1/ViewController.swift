@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var backgroundLayerBottomContraint: NSLayoutConstraint!
     @IBOutlet weak var datePickViewBottom: NSLayoutConstraint!
     @IBOutlet weak var ticketNumberPickViewBottomConstraint: NSLayoutConstraint!
     

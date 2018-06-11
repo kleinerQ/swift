@@ -1,5 +1,5 @@
 //
-//  DeviceInputCam.swift
+//  DeviceInput.swift
 //  201806_prj_1
 //
 //  Created by Yen on 2018/6/9.
@@ -8,14 +8,14 @@
 
 import UIKit
 import AVFoundation
-class DeviceInputCam: NSObject {
-    
+class DeviceInput: NSObject {
+
     var frontWildAngleCamera: AVCaptureDeviceInput?
     var backWildAngleCamera: AVCaptureDeviceInput?
     var backTelephotoCamera: AVCaptureDeviceInput?
     var backDualCamera: AVCaptureDeviceInput?
     var microphone: AVCaptureDeviceInput?
-
+    
     func getAllCameras(){
         
         let cameraDevices = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera,.builtInTelephotoCamera,.builtInDualCamera], mediaType: .video, position: .unspecified).devices
@@ -62,5 +62,4 @@ class DeviceInputCam: NSObject {
         getAllCameras()
         getMicrophone()
     }
-    
 }

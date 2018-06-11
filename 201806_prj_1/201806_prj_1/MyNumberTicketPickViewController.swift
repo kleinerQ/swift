@@ -27,7 +27,7 @@ class MyNumberTicketPickViewController: UIViewController,UIPickerViewDelegate,UI
         
         let parentVc = parent as! ViewController
         parentVc.ticketNumberPickViewBottomConstraint.constant = -300
-        
+        parentVc.backgroundLayerBottomContraint.constant = -800
         UIView.animate(withDuration: 0.5){
             (self.parent as! ViewController).view.layoutIfNeeded()
         }

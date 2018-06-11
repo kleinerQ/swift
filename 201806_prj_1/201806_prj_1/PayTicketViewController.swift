@@ -11,11 +11,23 @@ import AVFoundation
 class PayTicketViewController: UIViewController {
 
     let session = AVCaptureSession()
-    let deviceInput = DeviceInputCam()
+    let deviceInput = DeviceInput()
+    
     
     @IBAction func frontBackToggle(_ sender: UISwitch) {
         session.beginConfiguration()
-        
+        session.removeInput(session.inputs.last!)
+        if sender.isOn{
+
+            session.addInput(deviceInput.backWildAngleCamera!)
+
+        }else{
+
+            session.addInput(deviceInput.frontWildAngleCamera!)
+
+        }
+
+        session.commitConfiguration()
         
     }
     
@@ -38,7 +50,7 @@ class PayTicketViewController: UIViewController {
         settingPreviewLayer()
         session.addInput(deviceInput.backWildAngleCamera!)
         session.startRunning()
-        // Do any additional setup after loading the view.
+//         Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

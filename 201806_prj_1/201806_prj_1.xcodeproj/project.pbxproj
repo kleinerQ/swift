@@ -17,7 +17,7 @@
 		AC22AA1B20C6B91200CC3CFF /* MypickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC22AA1A20C6B91200CC3CFF /* MypickViewController.swift */; };
 		AC854D1020C7F4AE0089256D /* MySegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC854D0F20C7F4AE0089256D /* MySegmentedControl.swift */; };
 		AC8C564E20CBBB2600329FC8 /* PayTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8C564D20CBBB2600329FC8 /* PayTicketViewController.swift */; };
-		AC8C565020CBBC7800329FC8 /* DeviceInputCam.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8C564F20CBBC7800329FC8 /* DeviceInputCam.swift */; };
+		AC8C565220CC05F000329FC8 /* DeviceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8C565120CC05F000329FC8 /* DeviceInput.swift */; };
 		AC90086E20C841BA00D788CF /* MyNumberTicketPickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC90086D20C841BA00D788CF /* MyNumberTicketPickViewController.swift */; };
 		ACBD2B6920C7AB1C0030C517 /* MyBookingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD2B6820C7AB1C0030C517 /* MyBookingTableViewController.swift */; };
 		ACBD2B6B20C7B0FC0030C517 /* MyDatePickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD2B6A20C7B0FC0030C517 /* MyDatePickViewController.swift */; };
@@ -36,7 +36,7 @@
 		AC22AA1A20C6B91200CC3CFF /* MypickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypickViewController.swift; sourceTree = "<group>"; };
 		AC854D0F20C7F4AE0089256D /* MySegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySegmentedControl.swift; sourceTree = "<group>"; };
 		AC8C564D20CBBB2600329FC8 /* PayTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTicketViewController.swift; sourceTree = "<group>"; };
-		AC8C564F20CBBC7800329FC8 /* DeviceInputCam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInputCam.swift; sourceTree = "<group>"; };
+		AC8C565120CC05F000329FC8 /* DeviceInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInput.swift; sourceTree = "<group>"; };
 		AC90086D20C841BA00D788CF /* MyNumberTicketPickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNumberTicketPickViewController.swift; sourceTree = "<group>"; };
 		ACBD2B6820C7AB1C0030C517 /* MyBookingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookingTableViewController.swift; sourceTree = "<group>"; };
 		ACBD2B6A20C7B0FC0030C517 /* MyDatePickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDatePickViewController.swift; sourceTree = "<group>"; };
@@ -81,12 +81,12 @@
 				AC11908120C58F15004DD48E /* Assets.xcassets */,
 				AC854D0F20C7F4AE0089256D /* MySegmentedControl.swift */,
 				AC11908320C58F15004DD48E /* LaunchScreen.storyboard */,
-				AC8C564F20CBBC7800329FC8 /* DeviceInputCam.swift */,
 				ACBD2B6A20C7B0FC0030C517 /* MyDatePickViewController.swift */,
 				AC11908620C58F15004DD48E /* Info.plist */,
 				AC11908C20C59695004DD48E /* MyTabBarViewController.swift */,
 				AC11908E20C59B76004DD48E /* MyHomePageViewController.swift */,
 				AC22AA1A20C6B91200CC3CFF /* MypickViewController.swift */,
+				AC8C565120CC05F000329FC8 /* DeviceInput.swift */,
 			);
 			path = 201806_prj_1;
 			sourceTree = "<group>";
@@ -169,8 +169,8 @@
 			files = (
 				AC11908F20C59B76004DD48E /* MyHomePageViewController.swift in Sources */,
 				ACBD2B6B20C7B0FC0030C517 /* MyDatePickViewController.swift in Sources */,
-				AC8C565020CBBC7800329FC8 /* DeviceInputCam.swift in Sources */,
 				AC11908D20C59695004DD48E /* MyTabBarViewController.swift in Sources */,
+				AC8C565220CC05F000329FC8 /* DeviceInput.swift in Sources */,
 				AC90086E20C841BA00D788CF /* MyNumberTicketPickViewController.swift in Sources */,
 				AC11907D20C58F13004DD48E /* ViewController.swift in Sources */,
 				AC22AA1B20C6B91200CC3CFF /* MypickViewController.swift in Sources */,
@@ -254,7 +254,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -308,7 +308,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -321,16 +321,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VB8HM5AT88;
 				INFOPLIST_FILE = 201806_prj_1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "tw.iii.-01806-prj-1";
+				PRODUCT_BUNDLE_IDENTIFIER = tw.iii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -338,16 +342,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VB8HM5AT88;
 				INFOPLIST_FILE = 201806_prj_1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "tw.iii.-01806-prj-1";
+				PRODUCT_BUNDLE_IDENTIFIER = tw.iii;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

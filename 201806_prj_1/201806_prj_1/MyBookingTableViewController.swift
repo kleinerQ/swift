@@ -9,6 +9,14 @@
 import UIKit
 import CoreLocation
 class MyBookingTableViewController: UITableViewController,CLLocationManagerDelegate {
+    
+    
+    var isCollapse:Bool = true
+    var isCollapseDiscountCell:Bool = true
+    
+    @IBOutlet weak var uniLabel: UILabel!
+    
+    
     @IBOutlet weak var numberTicketCellHeightConstraint: NSLayoutConstraint!
     
     let lm = CLLocationManager()
@@ -26,32 +34,81 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
                    "嘉義":"23.461747,120.323899",
                    "台南":"22.927007,120.285267",
                    "高雄":"22.688685,120.308651",]
+    
+    @IBOutlet weak var deptDateLabel: UILabel!
+    
+    @IBAction func onChoiceDiscountCar(_ sender: MySegmentedControl) {
+        
+
+        
+    }
+    
+    @IBAction func onClickShowReturnDatePickView(_ sender: UITapGestureRecognizer) {
+        
+        var myDateTicketVC: MyDatePickViewController!
+        
+        for vc in (self.parent?.childViewControllers)! {
+            if vc.restorationIdentifier == "datePickView" {
+                myDateTicketVC = vc as! MyDatePickViewController
+                break
+            }
+        }
+        
+        myDateTicketVC.dateTarget = 1
+        myDateTicketVC.datePick.minimumDate = myDateTicketVC.dateTmpForDeptAndReturn
+        let parentVC = (parent as! ViewController)
+        parentVC.tabBarController?.tabBar.isHidden = true
+        parentVC.backgroundLayerBottomContraint.constant = 0
+        parentVC.datePickViewBottom.constant = -50
+        UIView.animate(withDuration: 0.5){
+            (self.parent as! ViewController).view.layoutIfNeeded()
+        }
+        
+        
+    }
+    
     @IBAction func onClickShowNumberTicketPickView(_ sender: UITapGestureRecognizer) {
         
-        print("GGGASDf")
-        (parent as! ViewController).tabBarController?.tabBar.isHidden = true
+//        print("GGGASDf")
+        let parentVC = (parent as! ViewController)
+        parentVC.tabBarController?.tabBar.isHidden = true
         
-        (parent as! ViewController).ticketNumberPickViewBottomConstraint.constant = 0
+        parentVC.ticketNumberPickViewBottomConstraint.constant = -50
+        parentVC.backgroundLayerBottomContraint.constant = 0
         UIView.animate(withDuration: 0.5){
             (self.parent as! ViewController).view.layoutIfNeeded()
         }
 
         
         
+        
     }
     
-    @IBAction func onClickShowDatePickView(_ sender: Any) {
+    @IBAction func onClickShowDatePickView(_ sender: UITapGestureRecognizer) {
         
+        var myDateTicketVC: MyDatePickViewController!
         
-        (parent as! ViewController).datePickViewBottom.constant = 0
+        for vc in (self.parent?.childViewControllers)! {
+            if vc.restorationIdentifier == "datePickView" {
+                myDateTicketVC = vc as! MyDatePickViewController
+                break
+            }
+        }
+        
+        myDateTicketVC.dateTarget = 0
+        
+        let parentVC = (parent as! ViewController)
+        parentVC.tabBarController?.tabBar.isHidden = true
+        parentVC.backgroundLayerBottomContraint.constant = 0
+        parentVC.datePickViewBottom.constant = -50
         UIView.animate(withDuration: 0.5){
             (self.parent as! ViewController).view.layoutIfNeeded()
         }
-        (parent as! ViewController).tabBarController?.tabBar.isHidden = true
+        
         
     }
     
-    var isCollapse:Bool = true
+
     @IBOutlet var bookingTableView: UITableView!
     
     
@@ -74,7 +131,9 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
     }
     
     
- 
+
+    
+    
     
     @IBAction func onChoiceCarType(_ sender: UISegmentedControl) {
         
@@ -96,8 +155,7 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
             myNumberTicketVC.numberOfType = 5
             myNumberTicketVC.pickViewUniLabel.isHidden = false
             myNumberTicketVC.numberTicketPicker.reloadAllComponents()
-//          print(myNumberTicketVC.numberTicketPicker.selectedRow(inComponent: 4))
-                        numberTicketCellHeightConstraint.constant += (view.viewWithTag(800) as! UILabel).frame.size.height
+                        numberTicketCellHeightConstraint.constant += uniLabel.frame.size.height
             bookingTableView.beginUpdates()
             bookingTableView.endUpdates()
 
@@ -111,7 +169,7 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
             (view.viewWithTag(800) as! UILabel).isHidden = true
             
 
-            numberTicketCellHeightConstraint.constant -= (view.viewWithTag(800) as! UILabel).frame.size.height
+            numberTicketCellHeightConstraint.constant -= uniLabel.frame.size.height
             bookingTableView.beginUpdates()
             bookingTableView.endUpdates()
             
@@ -121,8 +179,12 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        print("BSDF")
+//        print("BSDF")
         if indexPath.row == 2, isCollapse{
+            return 0
+        }
+        
+        if indexPath.row == 5, isCollapseDiscountCell{
             return 0
         }
         return UITableViewAutomaticDimension
@@ -131,9 +193,11 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
     @IBOutlet weak var date: UILabel!
     
     @IBAction func onClickShowPickView(_ sender: Any) {
-        (parent as! ViewController).tabBarController?.tabBar.isHidden = true
+        let parentVC = (parent as! ViewController)
         
-        (parent as! ViewController).pickViewBottomConstraint.constant = 0
+        parentVC.tabBarController?.tabBar.isHidden = true
+        parentVC.backgroundLayerBottomContraint.constant = 0
+        parentVC.pickViewBottomConstraint.constant = -50
         UIView.animate(withDuration: 0.5){
             (self.parent as! ViewController).view.layoutIfNeeded()
         }
@@ -154,14 +218,14 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
         
             var distanceMin:Double = 100000
             
-            print("緯度：\(userLocation.coordinate.latitude)")
-            print("經度：\(userLocation.coordinate.longitude)")
-            print("高度：\(userLocation.altitude)")
+//            print("緯度：\(userLocation.coordinate.latitude)")
+//            print("經度：\(userLocation.coordinate.longitude)")
+//            print("高度：\(userLocation.altitude)")
             
             for (stationName,stationGps) in gpsList{
                 //            print("\(stationName)    \(stationLocation)")
-                let station = stationName as! String
-                let stationLocation = (stationGps as! String).split(separator: ",")
+                let station = stationName
+                let stationLocation = (stationGps).split(separator: ",")
                 
                 let distanceTmp = sqrt( pow(Double(stationLocation[0])! - Double(userLocation.coordinate.latitude),2) + pow(Double(stationLocation[1])! - Double(userLocation.coordinate.longitude),2))
                 if distanceTmp < distanceMin{
@@ -173,7 +237,7 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
             }
             
             
-            print(closestStation)
+//            print(closestStation)
         }
         
         

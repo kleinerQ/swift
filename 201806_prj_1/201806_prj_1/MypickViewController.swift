@@ -22,6 +22,7 @@ class MypickViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
         
         
         
+        parentVc.backgroundLayerBottomContraint.constant = -800
         parentVc.pickViewBottomConstraint.constant = -300
         UIView.animate(withDuration: 0.5){
             (self.parent as! ViewController).view.layoutIfNeeded()

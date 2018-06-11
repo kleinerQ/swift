@@ -10,7 +10,11 @@ import UIKit
 
 class ViewController: UIViewController,UIGestureRecognizerDelegate {
     
-
+    @IBAction func onTapClick(_ sender: UITapGestureRecognizer) {
+        print("OnTap")
+    }
+    
+    
     @IBOutlet weak var tubeWidth: NSLayoutConstraint!
     @IBOutlet weak var containerWidth: NSLayoutConstraint!
     
