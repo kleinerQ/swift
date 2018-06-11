@@ -23,7 +23,13 @@
                                 <color key="backgroundColor" red="1" green="0.57647058823529407" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="barTintColor" red="0.94901960780000005" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
-                                    <navigationItem title="訂票" id="Egj-0l-iXe"/>
+                                    <navigationItem title="訂票" id="Egj-0l-iXe">
+                                        <barButtonItem key="rightBarButtonItem" title="Item" id="K7t-kQ-epU">
+                                            <connections>
+                                                <action selector="onClickTicketQuery:" destination="BYZ-38-t0r" id="aHM-iB-3N9"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <containerView opaque="NO" tag="2000" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBx-B8-Ivu">
@@ -36,7 +42,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Raw-fs-AdZ">
-                                <rect key="frame" x="0.0" y="601" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="651" width="375" height="667"/>
                                 <connections>
                                     <segue destination="ljJ-U6-ssn" kind="embed" id="BEj-Ja-QmZ"/>
                                 </connections>
@@ -68,13 +74,21 @@
                                     <segue destination="DwJ-yG-a6n" kind="embed" id="Bwh-tW-hCI"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wXJ-Ie-fAI">
+                                <rect key="frame" x="-400" y="64" width="375" height="587"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="r3f-zu-7qr"/>
+                                </constraints>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.77311197919999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="yxO-gS-ybc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2al-05-ifq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="J2u-hs-B7f" secondAttribute="trailing" id="8xG-Gm-q7J"/>
                             <constraint firstItem="pkP-8n-Zax" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8zE-Ve-epf"/>
                             <constraint firstItem="E1Q-t8-dOE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9Dc-gN-2Kz"/>
+                            <constraint firstItem="Raw-fs-AdZ" firstAttribute="top" secondItem="wXJ-Ie-fAI" secondAttribute="bottom" id="B1T-Tp-hvm"/>
                             <constraint firstItem="ZBx-B8-Ivu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="D5Y-Ki-YFC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="J2u-hs-B7f" secondAttribute="bottom" constant="-250" id="EJr-cf-EW5"/>
                             <constraint firstItem="ZBx-B8-Ivu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GSH-c1-Bqw"/>
@@ -84,27 +98,39 @@
                             <constraint firstItem="J2u-hs-B7f" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V1m-yI-HJa"/>
                             <constraint firstItem="Raw-fs-AdZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="X7B-Pb-Lz2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZBx-B8-Ivu" secondAttribute="trailing" id="YCG-KD-CyY"/>
+                            <constraint firstItem="wXJ-Ie-fAI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="-400" id="bJY-RA-utR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Raw-fs-AdZ" secondAttribute="trailing" id="g2C-I7-HWw"/>
+                            <constraint firstItem="wXJ-Ie-fAI" firstAttribute="top" secondItem="yxO-gS-ybc" secondAttribute="bottom" id="hCX-DR-Tye"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="E1Q-t8-dOE" secondAttribute="bottom" constant="-250" id="hRg-zk-FhB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="E1Q-t8-dOE" secondAttribute="trailing" id="hfT-aH-Mts"/>
                             <constraint firstItem="ZBx-B8-Ivu" firstAttribute="top" secondItem="yxO-gS-ybc" secondAttribute="bottom" id="oQh-6r-ywz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="pkP-8n-Zax" secondAttribute="bottom" constant="-250" id="pMi-Kv-dKh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZBx-B8-Ivu" secondAttribute="trailing" id="pk6-em-zzC"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Raw-fs-AdZ" secondAttribute="bottom" constant="-650" id="qSf-T3-kza"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Raw-fs-AdZ" secondAttribute="bottom" constant="-700" id="qSf-T3-kza"/>
                             <constraint firstItem="pkP-8n-Zax" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="r2G-UJ-SF9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="sXC-g8-Lvy" appends="YES" id="IG0-Nr-rfy"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="訂票" id="IRz-dK-yCI"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backgroundLayerBottomContraint" destination="qSf-T3-kza" id="NSw-7P-t34"/>
+                        <outlet property="camVcLeftContraint" destination="bJY-RA-utR" id="Xy5-z7-t14"/>
                         <outlet property="datePickViewBottom" destination="hRg-zk-FhB" id="FeY-Zj-DQL"/>
                         <outlet property="pickViewBottomConstraint" destination="EJr-cf-EW5" id="bXz-1u-HXM"/>
                         <outlet property="ticketNumberPickViewBottomConstraint" destination="pMi-Kv-dKh" id="OLh-CQ-QP2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="sXC-g8-Lvy">
+                    <rectEdge key="edges" left="YES"/>
+                    <connections>
+                        <action selector="onPanEdgeGestureCamera:" destination="BYZ-38-t0r" id="6Mk-sU-O8D"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-506.39999999999998" y="1530.5847076461771"/>
         </scene>
@@ -667,26 +693,11 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eCn-PX-JSv">
-                                <rect key="frame" x="28" y="95" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="frontBackToggle:" destination="bRw-zG-yLu" eventType="valueChanged" id="wrv-Ep-UxZ"/>
-                                </connections>
-                            </switch>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x4U-Ba-kGX">
-                                <rect key="frame" x="47" y="161" width="260" height="245"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="vL5-mA-9j5"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="付款/取票" id="8Gc-1D-pF8"/>
-                    <connections>
-                        <outlet property="forPreview" destination="x4U-Ba-kGX" id="6fX-SC-cEB"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VuY-1z-AjL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -874,6 +885,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="akX-o4-GkH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="393" y="453"/>
+        </scene>
+        <!--My Cam View Controller-->
+        <scene sceneID="QyF-Pt-Jub">
+            <objects>
+                <viewController id="Ra6-oO-RcV" customClass="MyCamViewController" customModule="_01806_prj_1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cEm-hi-VdW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ema-LE-Z0c">
+                                <rect key="frame" x="16" y="71" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="frontBackCamSwitch:" destination="Ra6-oO-RcV" eventType="valueChanged" id="xYA-0S-h4N"/>
+                                </connections>
+                            </switch>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IH4-Nh-n0Y">
+                                <rect key="frame" x="83" y="0.0" width="292" height="208"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="208" id="0jT-cD-Tqz"/>
+                                    <constraint firstAttribute="width" constant="292" id="yAo-Hk-NaX"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="IH4-Nh-n0Y" secondAttribute="trailing" id="5xk-8J-VyL"/>
+                            <constraint firstItem="IH4-Nh-n0Y" firstAttribute="top" secondItem="cEm-hi-VdW" secondAttribute="top" id="W24-rn-a2l"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qTM-Yq-dDg"/>
+                    </view>
+                    <connections>
+                        <outlet property="forPreview" destination="IH4-Nh-n0Y" id="dwr-5q-qO9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KZb-E6-nzO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-868" y="2420.2398800599703"/>
         </scene>
     </scenes>
     <resources>

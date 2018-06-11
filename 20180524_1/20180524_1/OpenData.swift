@@ -83,9 +83,10 @@ class OpenData: NSObject {
     }
 
     private func loadJsonObject(){
-        
+//        print(jsonObject)
         let user = UserDefaults.standard
         jsonObject = user.object(forKey: "MY_UVI") as? [[String:Any]] ?? []
+        
         
         
         

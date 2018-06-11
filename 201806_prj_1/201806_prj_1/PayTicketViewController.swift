@@ -15,42 +15,34 @@ class PayTicketViewController: UIViewController {
     
     
     @IBAction func frontBackToggle(_ sender: UISwitch) {
-        session.beginConfiguration()
-        session.removeInput(session.inputs.last!)
-        if sender.isOn{
-
-            session.addInput(deviceInput.backWildAngleCamera!)
-
-        }else{
-
-            session.addInput(deviceInput.frontWildAngleCamera!)
-
-        }
-
-        session.commitConfiguration()
+//        session.beginConfiguration()
+//        session.removeInput(session.inputs.last!)
+//        if sender.isOn{
+//
+//            session.addInput(deviceInput.backWildAngleCamera!)
+//
+//        }else{
+//
+//            session.addInput(deviceInput.frontWildAngleCamera!)
+//
+//        }
+//
+//        session.commitConfiguration()
         
     }
     
     
-    @IBOutlet weak var forPreview: UIView!
-    
-    func settingPreviewLayer(){
-        let previewLayer = AVCaptureVideoPreviewLayer()
-        previewLayer.frame = forPreview.bounds
-        previewLayer.session = session
-        previewLayer.videoGravity = .resizeAspectFill
-        forPreview.layer.addSublayer(previewLayer)
-    }
+
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        settingPreviewLayer()
-        session.addInput(deviceInput.backWildAngleCamera!)
-        session.startRunning()
-//         Do any additional setup after loading the view.
+//        settingPreviewLayer()
+//        session.addInput(deviceInput.backWildAngleCamera!)
+//        session.startRunning()
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

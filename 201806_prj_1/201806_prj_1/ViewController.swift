@@ -9,6 +9,72 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+
+    @IBAction func onClickTicketQuery(_ sender: Any) {
+        print("BBBsdf")
+        let userQueryString = (self.view.viewWithTag(2000)?.viewWithTag(300) as! UILabel).text
+        let queryString = queryString?.split(separator: " ")
+        let queryTime = queryString![1]
+        
+        
+    }
+    
+    var originalX:CGFloat! = 0
+    
+    @IBAction func onPanEdgeGestureCamera(_ sender: UIScreenEdgePanGestureRecognizer) {
+        
+//        let location = sender.location(in: view)
+//        let camVCWidth = self.view.frame.size.width
+//        print(camVCWidth)
+//        //        print(location)
+//
+//        //        print(tubeWidth)
+//        //        print(containerWidth)
+//        //        print(movingBarWidth)
+//
+//        switch sender.state {
+//        case .began:
+//            originalX = location.x
+//
+//        case .ended:
+//            print(camVcLeftContraint.constant)
+//            if camVcLeftContraint.constant > 0{
+//                camVcLeftContraint.constant = 0
+//            }else if camVcLeftContraint.constant > (-1 * camVCWidth){
+//                camVcLeftContraint.constant = 0
+//            }
+//
+//
+//            UIView.animate(withDuration: 0.5){
+//                self.view.layoutIfNeeded()
+//            }
+//
+//
+//        case .changed:
+//            let movingQuantity = location.x - originalX
+//            if movingQuantity + ((-1) * camVCWidth) > 0 {
+//                camVcLeftContraint.constant = 0
+//            }else{
+//                camVcLeftContraint.constant = -1 * camVCWidth + movingQuantity
+//            }
+//
+//
+//            UIView.animate(withDuration: 0.5){
+//                self.view.layoutIfNeeded()
+//            }
+//
+//        default:
+//            break
+//        }
+        
+        
+    }
+    
+    
+    @IBOutlet weak var camVcLeftContraint: NSLayoutConstraint!
+    
+    
     @IBOutlet weak var backgroundLayerBottomContraint: NSLayoutConstraint!
     @IBOutlet weak var datePickViewBottom: NSLayoutConstraint!
     @IBOutlet weak var ticketNumberPickViewBottomConstraint: NSLayoutConstraint!
