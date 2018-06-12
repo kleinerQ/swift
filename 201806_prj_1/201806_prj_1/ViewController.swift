@@ -250,7 +250,7 @@ class ViewController: UIViewController {
     
     
     override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
-        print("GGGADF")
+//        print("GGGADF")
         
         var mybookingTableViewVC: MyBookingTableViewController!
         for vc in (self.childViewControllers) {
@@ -367,8 +367,13 @@ class ViewController: UIViewController {
                     if depTimeDateType?.compare(userDepTimeDateType!).rawValue as! Int > 0{
                         
                         
-                        let interval = Int((arrTimeDateType?.timeIntervalSince(depTimeDateType!))!)
+                        var interval = Int((arrTimeDateType?.timeIntervalSince(depTimeDateType!))!)
+                        if interval < 0 {
+                            interval = interval + 86400
+                        }
                         let (h,m) = secondsToHoursMinutesSeconds(seconds: interval)
+                        
+                        
                         
                         if m < 10{
                             sortedResult[depTimeDateType!] = generalTrainInfo["TrainNo"] as! String + "," + depTime + "," + arrTime + "," + "\(h):0\(m)"
