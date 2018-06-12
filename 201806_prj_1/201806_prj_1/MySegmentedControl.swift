@@ -9,7 +9,6 @@
 import UIKit
 
 class MySegmentedControl: UISegmentedControl {
-
     override func awakeFromNib() {
         layer.cornerRadius = 3
 //
