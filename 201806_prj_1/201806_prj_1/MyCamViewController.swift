@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class MyCamViewController: UIViewController {
+class MyCamViewController: UIViewController,AVCaptureMetadataOutputObjectsDelegate {
 
     
     let session = AVCaptureSession()
@@ -40,22 +40,42 @@ class MyCamViewController: UIViewController {
         previewLayer.session = session
         previewLayer.videoGravity = .resizeAspectFill
         forPreview.layer.addSublayer(previewLayer)
+        
     }
     
-    
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        
+        print("GGG")
+        for metaData in metadataObjects{
+            
+            if metaData is AVMetadataMachineReadableCodeObject{
+                
+                DispatchQueue.main.async {
+                    print("GGG")
+                }
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         settingPreviewLayer()
         session.addInput(deviceInput.backWildAngleCamera!)
-        session.startRunning()
+        
 
-        let previewLayer = AVCaptureVideoPreviewLayer()
-        previewLayer.frame = forPreview.bounds
-        previewLayer.session = session
-        previewLayer.videoGravity = .resizeAspectFill
-        forPreview.layer.addSublayer(previewLayer)
+//        let previewLayer = AVCaptureVideoPreviewLayer()
+//        previewLayer.frame = forPreview.bounds
+//        previewLayer.session = session
+//        previewLayer.videoGravity = .resizeAspectFill
+//        forPreview.layer.addSublayer(previewLayer)
+        
+        let output = AVCaptureMetadataOutput()
+        output.metadataObjectTypes = output.availableMetadataObjectTypes
+        output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+        session.addOutput(output)
+        session.startRunning()
         // Do any additional setup after loading the view.
+//        view.bringSubview(toFront: <#T##UIView#>)
     }
 
     override func didReceiveMemoryWarning() {

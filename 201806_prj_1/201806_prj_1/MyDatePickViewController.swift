@@ -21,6 +21,7 @@ class MyDatePickViewController: UIViewController {
         for vc in (self.parent?.childViewControllers)! {
             if vc.restorationIdentifier == "bookingTableView" {
                 myBookingTableViewVC = vc as! MyBookingTableViewController
+                
                 break
             }
         }
@@ -30,9 +31,9 @@ class MyDatePickViewController: UIViewController {
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         timeString = formatter.string(from: datePick.date)
         
-        let timeTest = datePick.date
-        print(timeTest)
-        print(Date())
+        let datePickDate = datePick.date
+//        print(timeTest)
+//        print(Date())
         //print(timeTest.compare(<#T##other: Date##Date#>))
         
 //        let timeForCompare = Calendar.current.nextDate(after: Date().addingTimeInterval(<#T##timeInterval: TimeInterval##TimeInterval#>), matching:
@@ -40,7 +41,7 @@ class MyDatePickViewController: UIViewController {
 //        print(timeForCompare)
         
         let date1 = Calendar.current.startOfDay(for: Date())
-        let date2 = Calendar.current.startOfDay(for: timeTest)
+        let date2 = Calendar.current.startOfDay(for: datePickDate)
         
         let dateDiff = Calendar.current.dateComponents([.day], from: date1, to: date2).day
         //print(components)

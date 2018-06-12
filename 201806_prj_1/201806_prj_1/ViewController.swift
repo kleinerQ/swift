@@ -27,9 +27,15 @@ class ViewController: UIViewController {
         
         
         
+        
         return stationId
+        
+        
     }
 
+
+    
+    
     @IBAction func onClickTicketQuery(_ sender: Any) {
 //        print("BBBsdf")
         let userQueryTimeString = (self.view.viewWithTag(2000)?.viewWithTag(300) as! UILabel).text
@@ -55,16 +61,105 @@ class ViewController: UIViewController {
         var direction = 1
         
         if Int(depId)! > Int(destId)!{
-            print("北上")
+//            print("北上")
             direction = 1
         }else{
-            print("難")
+//            print("難")
             direction = 0
         }
         
         
         let printList = timeTableQuery(jsonObject: jsonObject, userDepTime: queryTime, direction: direction, depId: depId, destId: destId, runningDay: runningDay)
 
+        
+        
+        var myTimeTableQueryVC: MyTimeTableQueryViewController!
+        
+        for vc in (self.childViewControllers) {
+            if vc.restorationIdentifier == "myTimeTableQueryVC" {
+                myTimeTableQueryVC = vc as! MyTimeTableQueryViewController
+                myTimeTableQueryVC.list = printList
+                myTimeTableQueryVC.queryResetData()
+                break
+            }
+        }
+        
+        self.timeTableQueryRightConstraint.constant = 0
+//        print(user)
+//        (myTimeTableQueryVC.view.viewWithTag(10) as! UILabel).text = userQueryDepStationString
+//        (myTimeTableQueryVC.view.viewWithTag(20) as! UILabel).text = userQueryDestStationString
+//        UIView.animate(withDuration: 0.5){
+//            self.view.layoutIfNeeded()
+//
+//        }
+        
+        
+        
+//        for item in printResult {
+//
+//            print(item)
+//        }
+        
+//        print(originalId)
+//        print(destId)
+        
+        
+        
+    }
+    
+    func reLoadTicketQuery(nowTimeString:String,shiftHour:Int) -> String{
+
+        
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        
+        //                    print(NSTimeZone.local)
+        formatter.timeZone = TimeZone.current
+        //dep time found
+        let timeZoneOffset = 0
+        let nowTimeDateType = formatter.date(from: nowTimeString)
+        let modifiedQueryTimeDateType = nowTimeDateType?.addingTimeInterval(TimeInterval(3600 * shiftHour))
+//        print(queryTimeDateType)
+        //let formatterForString = DateFormatter()
+        //formatterForString.dateFormat = "yyyy/MM/dd HH:mm"
+        let modifiedtimeString = formatter.string(from: modifiedQueryTimeDateType!)
+        
+//        let queryString = timeString.split(separator: " ")
+//        print("GG")
+//        print(timeString)
+        //let queryTime = "18:00"
+        let queryTime = modifiedtimeString
+        
+        
+        
+        let userQueryDepStationString = (self.view.viewWithTag(2000)?.viewWithTag(100) as! UILabel).text
+        
+        let userQueryDestStationString = (self.view.viewWithTag(2000)?.viewWithTag(200) as! UILabel).text
+        
+        
+        
+        
+        
+        let runningDay = "Tuesday"
+        let depId = transferStationNameToId(stationName: userQueryDepStationString!)
+        let destId = transferStationNameToId(stationName: userQueryDestStationString!)
+        //        print(jsonObject)
+        
+        
+        var direction = 1
+        
+        if Int(depId)! > Int(destId)!{
+            //            print("北上")
+            direction = 1
+        }else{
+            //            print("難")
+            direction = 0
+        }
+        
+        
+        let printList = timeTableQuery(jsonObject: jsonObject, userDepTime: queryTime, direction: direction, depId: depId, destId: destId, runningDay: runningDay)
+        
         
         
         var myTimeTableQueryVC: MyTimeTableQueryViewController!
@@ -86,20 +181,8 @@ class ViewController: UIViewController {
             
         }
         
-        
-        
-//        for item in printResult {
-//
-//            print(item)
-//        }
-        
-//        print(originalId)
-//        print(destId)
-        
-        
-        
+        return modifiedtimeString
     }
-    
     
     
     
@@ -206,6 +289,8 @@ class ViewController: UIViewController {
     }
 
 
+
+    
     func timeTableQuery(jsonObject: [[AnyHashable:Any]], userDepTime: String, direction: Int,depId:String,destId:String,runningDay: String ) -> [(key:Date,value:String)] {
         
         var sortedResult : [Date:String] = [:]
@@ -219,7 +304,7 @@ class ViewController: UIViewController {
             let generalTrainInfo = generalTimetable["GeneralTrainInfo"] as! [String: Any]
             let serviceDay = generalTimetable["ServiceDay"] as! [String: Int]
             let stopTimes = generalTimetable["StopTimes"] as! NSArray
-            print(serviceDay)
+//            print(serviceDay)
             //let stopInfo = stopTimes[0] as! [String:Any]
             
             //check direction
@@ -319,14 +404,14 @@ class ViewController: UIViewController {
             
         }
         
-        
-        for item in orderedResult{
-
-            print(type(of: item))
-            print(item)
-
-        }
-        
+//
+//        for item in orderedResult{
+//
+//            print(type(of: item))
+//            print(item)
+//
+//        }
+//
         return orderedResult
         
     }

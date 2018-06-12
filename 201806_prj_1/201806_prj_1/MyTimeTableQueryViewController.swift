@@ -11,13 +11,44 @@ import UIKit
 class MyTimeTableQueryViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     
+    var nowTimeString: String = ""
+    var reCountFlag = true
     @IBAction func onClickGoEarlyQuery(_ sender: UIButton) {
         
+        let parentVC = (parent as! ViewController)
+        if reCountFlag{
+            
+            let userQueryTimeString = (parentVC.view.viewWithTag(2000)?.viewWithTag(300) as! UILabel).text
+            let queryString = userQueryTimeString?.split(separator: " ")
+            let queryTime = String(queryString![1])
+            nowTimeString = queryTime
+            reCountFlag = !reCountFlag
+        }
+//        print(nowTimeString)
+        
+        nowTimeString = parentVC.reLoadTicketQuery(nowTimeString: nowTimeString, shiftHour: -2)
+//        print(nowTimeString)
         
         
     }
     
+
+
+    
     @IBAction func onClickGoLaterQuery(_ sender: UIButton) {
+
+        let parentVC = (parent as! ViewController)
+        if reCountFlag{
+            
+            let userQueryTimeString = (parentVC.view.viewWithTag(2000)?.viewWithTag(300) as! UILabel).text
+            let queryString = userQueryTimeString?.split(separator: " ")
+            let queryTime = String(queryString![1])
+            nowTimeString = queryTime
+            reCountFlag = !reCountFlag
+        }
+        //        print(nowTimeString)
+        
+        nowTimeString = parentVC.reLoadTicketQuery(nowTimeString: nowTimeString, shiftHour: 2)
     }
     let showTimeTableItemNumber = 5
     @IBOutlet weak var tableView: UITableView!
@@ -30,6 +61,8 @@ class MyTimeTableQueryViewController: UIViewController,UITableViewDataSource,UIT
         UIView.animate(withDuration: 0.5){
             (self.parent as! ViewController).view.layoutIfNeeded()
         }
+        
+        reCountFlag = true
 
     }
     
