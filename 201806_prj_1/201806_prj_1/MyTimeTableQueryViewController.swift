@@ -13,17 +13,23 @@ class MyTimeTableQueryViewController: UIViewController,UITableViewDataSource,UIT
     
     var nowTimeString: String = ""
     var reCountFlag = true
+    var returnFlag = false
+    
     @IBAction func onClickGoEarlyQuery(_ sender: UIButton) {
         
         let parentVC = (parent as! ViewController)
         var runningDay = ""
+        
+        
         if reCountFlag{
             
             var userQueryTimeString:String = ""
             if self.restorationIdentifier == "myTimeTableQueryVC"{
                 userQueryTimeString = (parentVC.view.viewWithTag(2000)?.viewWithTag(300) as! UILabel).text!
+                returnFlag = false
             }else if self.restorationIdentifier == "myTimeTableQueryVC2"{
                 userQueryTimeString = (parentVC.view.viewWithTag(2000)?.viewWithTag(301) as! UILabel).text!
+                returnFlag = true
                 
             }
             
@@ -47,9 +53,13 @@ class MyTimeTableQueryViewController: UIViewController,UITableViewDataSource,UIT
             nowTimeString = queryTime
             reCountFlag = !reCountFlag
         }
+        
+        
+
+        
 //        print(nowTimeString)
         
-        nowTimeString = parentVC.reLoadTicketQuery(nowTimeString: nowTimeString, shiftHour: -2, runningDay: runningDay, returnFlag: <#Bool#>)
+        nowTimeString = parentVC.reLoadTicketQuery(nowTimeString: nowTimeString, shiftHour: -2, runningDay: runningDay, returnFlag: returnFlag)
         
 //        print(runningDay)
         
@@ -63,19 +73,25 @@ class MyTimeTableQueryViewController: UIViewController,UITableViewDataSource,UIT
 
         let parentVC = (parent as! ViewController)
         var runningDay = ""
+        
+        
         if reCountFlag{
+            
             var userQueryTimeString:String = ""
             if self.restorationIdentifier == "myTimeTableQueryVC"{
                 userQueryTimeString = (parentVC.view.viewWithTag(2000)?.viewWithTag(300) as! UILabel).text!
+                returnFlag = false
             }else if self.restorationIdentifier == "myTimeTableQueryVC2"{
                 userQueryTimeString = (parentVC.view.viewWithTag(2000)?.viewWithTag(301) as! UILabel).text!
+                returnFlag = true
                 
             }
             
             let queryString = userQueryTimeString.split(separator: " ")
             let queryTime = String(queryString[1])
+            
             let queryWeekDay = String(queryString[0])
-     
+            
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy/MM/dd"
             let queryWeekDayDateType = formatter.date(from: queryWeekDay)
@@ -85,20 +101,51 @@ class MyTimeTableQueryViewController: UIViewController,UITableViewDataSource,UIT
             runningDay = weekdayList[weekdayIndex]
             
             
+            
+            
+            
             nowTimeString = queryTime
             reCountFlag = !reCountFlag
         }
+        
+        
+        
+        
         //        print(nowTimeString)
         
-        nowTimeString = parentVC.reLoadTicketQuery(nowTimeString: nowTimeString, shiftHour: 2, runningDay: runningDay)
+        nowTimeString = parentVC.reLoadTicketQuery(nowTimeString: nowTimeString, shiftHour: 2, runningDay: runningDay, returnFlag: returnFlag)
+        
+        //        print(runningDay)
     }
     let showTimeTableItemNumber = 5
     @IBOutlet weak var tableView: UITableView!
     
     
     @IBAction func onClickRequery(_ sender: UIBarButtonItem) {
+        
         let parentVc = parent as! ViewController
-        parentVc.timeTableQueryRightConstraint.constant = -380
+        
+        if self.restorationIdentifier == "myTimeTableQueryVC"{
+
+            
+            
+            parentVc.timeTableQueryRightConstraint.constant = -380
+            
+            if (parentVc.view.viewWithTag(2000)?.viewWithTag(10000) as! UISegmentedControl).selectedSegmentIndex == 0{
+                
+                parentVc.returnTimeQueryRightConstraint.constant = -380
+                
+            }
+            
+            
+        }else if self.restorationIdentifier == "myTimeTableQueryVC2"{
+
+            parentVc.timeTableQueryRightConstraint.constant = -380
+            parentVc.returnTimeQueryRightConstraint.constant = -380
+        }
+        
+        
+
         
         UIView.animate(withDuration: 0.5){
             (self.parent as! ViewController).view.layoutIfNeeded()

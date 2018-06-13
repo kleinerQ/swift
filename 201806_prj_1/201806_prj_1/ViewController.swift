@@ -156,10 +156,10 @@ class ViewController: UIViewController {
         if userQueryTimeReturnString != "請選擇回程日期"{
             
             
-            let queryReturnString = userQueryTimeString?.split(separator: " ")
+            let queryReturnString = userQueryTimeReturnString?.split(separator: " ")
             let queryReturnTime = String(queryReturnString![1])
             let queryReturnWeekDay = String(queryReturnString![0])
-            
+            print(queryReturnTime)
             
             
             let queryWeekDayReturnDateType = formatter.date(from: queryReturnWeekDay)
@@ -179,6 +179,7 @@ class ViewController: UIViewController {
         
         
         self.timeTableQueryRightConstraint.constant = 0
+//        print("GSDAF")
         self.returnTimeQueryRightConstraint.constant = 0
 //        print(user)
         (myTimeTableQueryVC.view.viewWithTag(10) as! UILabel).text = userQueryDepStationString
@@ -247,13 +248,14 @@ class ViewController: UIViewController {
         let userQueryDestStationString = (self.view.viewWithTag(2000)?.viewWithTag(200) as! UILabel).text
         
         
-        
+
         
         
         let runningDay = runningDay
-        let depId = transferStationNameToId(stationName: userQueryDepStationString!)
-        let destId = transferStationNameToId(stationName: userQueryDestStationString!)
+        var depId = transferStationNameToId(stationName: userQueryDepStationString!)
+        var destId = transferStationNameToId(stationName: userQueryDestStationString!)
         //        print(jsonObject)
+        
         
         
         
@@ -267,6 +269,15 @@ class ViewController: UIViewController {
             direction = 0
         }
         
+        if returnFlag == true{
+            let tmp = depId
+            depId = destId
+            destId = tmp
+            direction = abs(direction-1)
+            
+        }
+        
+        
         
         let printList = timeTableQuery(jsonObject: jsonObject, userDepTime: queryTime, direction: direction, depId: depId, destId: destId, runningDay: runningDay)
         
@@ -278,28 +289,37 @@ class ViewController: UIViewController {
         
         
         for vc in (self.childViewControllers) {
+            print(vc)
             if vc.restorationIdentifier == "myTimeTableQueryVC" {
                 myTimeTableQueryVC = vc as! MyTimeTableQueryViewController
-                myTimeTableQueryVC.list = printList
-                myTimeTableQueryVC.queryResetData()
+
+                print("MMM")
             }
             
             if vc.restorationIdentifier == "myTimeTableQueryVC2" {
                 myTimeTableQueryVC2 = vc as! MyTimeTableQueryViewController
-                myTimeTableQueryVC2.list = printList
-                myTimeTableQueryVC2.queryResetData()
+
+                print("NNN")
             }
         }
         
-        
+        if returnFlag == true {
+            myTimeTableQueryVC2.list = printList
+            myTimeTableQueryVC2.queryResetData()
+            
+        }else{
+            myTimeTableQueryVC.list = printList
+            myTimeTableQueryVC.queryResetData()
+            
+        }
         
         
 //        self.timeTableQueryRightConstraint.constant = 0
 //        self.returnTimeQueryRightConstraint.constant = 0
-        (myTimeTableQueryVC.view.viewWithTag(10) as! UILabel).text = userQueryDepStationString
-        (myTimeTableQueryVC.view.viewWithTag(20) as! UILabel).text = userQueryDestStationString
-        (myTimeTableQueryVC2.view.viewWithTag(10) as! UILabel).text = userQueryDepStationString
-        (myTimeTableQueryVC2.view.viewWithTag(20) as! UILabel).text = userQueryDestStationString
+//        (myTimeTableQueryVC.view.viewWithTag(10) as! UILabel).text = userQueryDepStationString
+//        (myTimeTableQueryVC.view.viewWithTag(20) as! UILabel).text = userQueryDestStationString
+//        (myTimeTableQueryVC2.view.viewWithTag(20) as! UILabel).text = userQueryDepStationString
+//        (myTimeTableQueryVC2.view.viewWithTag(10) as! UILabel).text = userQueryDestStationString
         
         UIView.animate(withDuration: 0.5){
             self.view.layoutIfNeeded()

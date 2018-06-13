@@ -9,7 +9,8 @@
 import UIKit
 import CoreLocation
 class MyBookingTableViewController: UITableViewController,CLLocationManagerDelegate {
-
+    @IBOutlet weak var roundTicketSegment: MySegmentedControl!
+    
     
     @IBOutlet weak var seatPrefereanceSegmented: MySegmentedControl!
     
