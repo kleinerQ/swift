@@ -20,6 +20,7 @@
 		AC8C565220CC05F000329FC8 /* DeviceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8C565120CC05F000329FC8 /* DeviceInput.swift */; };
 		AC90086E20C841BA00D788CF /* MyNumberTicketPickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC90086D20C841BA00D788CF /* MyNumberTicketPickViewController.swift */; };
 		ACA7A18420CF757000A9B365 /* MyTimeTableQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7A18320CF757000A9B365 /* MyTimeTableQueryViewController.swift */; };
+		ACA7A1C220D0D5FA00A9B365 /* MySeatPrefereancePickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7A1C120D0D5FA00A9B365 /* MySeatPrefereancePickViewController.swift */; };
 		ACB686AB20CE2A950038E769 /* MyCamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB686AA20CE2A950038E769 /* MyCamViewController.swift */; };
 		ACBD2B6920C7AB1C0030C517 /* MyBookingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD2B6820C7AB1C0030C517 /* MyBookingTableViewController.swift */; };
 		ACBD2B6B20C7B0FC0030C517 /* MyDatePickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBD2B6A20C7B0FC0030C517 /* MyDatePickViewController.swift */; };
@@ -41,6 +42,7 @@
 		AC8C565120CC05F000329FC8 /* DeviceInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInput.swift; sourceTree = "<group>"; };
 		AC90086D20C841BA00D788CF /* MyNumberTicketPickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNumberTicketPickViewController.swift; sourceTree = "<group>"; };
 		ACA7A18320CF757000A9B365 /* MyTimeTableQueryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTimeTableQueryViewController.swift; sourceTree = "<group>"; };
+		ACA7A1C120D0D5FA00A9B365 /* MySeatPrefereancePickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySeatPrefereancePickViewController.swift; sourceTree = "<group>"; };
 		ACB686AA20CE2A950038E769 /* MyCamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCamViewController.swift; sourceTree = "<group>"; };
 		ACBD2B6820C7AB1C0030C517 /* MyBookingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookingTableViewController.swift; sourceTree = "<group>"; };
 		ACBD2B6A20C7B0FC0030C517 /* MyDatePickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDatePickViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				AC8C564D20CBBB2600329FC8 /* PayTicketViewController.swift */,
 				AC11907E20C58F13004DD48E /* Main.storyboard */,
 				ACB686AA20CE2A950038E769 /* MyCamViewController.swift */,
+				ACA7A1C120D0D5FA00A9B365 /* MySeatPrefereancePickViewController.swift */,
 				ACBD2B6820C7AB1C0030C517 /* MyBookingTableViewController.swift */,
 				ACA7A18320CF757000A9B365 /* MyTimeTableQueryViewController.swift */,
 				AC90086D20C841BA00D788CF /* MyNumberTicketPickViewController.swift */,
@@ -184,6 +187,7 @@
 				AC11907B20C58F13004DD48E /* AppDelegate.swift in Sources */,
 				AC8C564E20CBBB2600329FC8 /* PayTicketViewController.swift in Sources */,
 				AC854D1020C7F4AE0089256D /* MySegmentedControl.swift in Sources */,
+				ACA7A1C220D0D5FA00A9B365 /* MySeatPrefereancePickViewController.swift in Sources */,
 				ACB686AB20CE2A950038E769 /* MyCamViewController.swift in Sources */,
 				ACBD2B6920C7AB1C0030C517 /* MyBookingTableViewController.swift in Sources */,
 			);

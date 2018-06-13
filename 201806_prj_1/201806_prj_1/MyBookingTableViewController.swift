@@ -9,7 +9,9 @@
 import UIKit
 import CoreLocation
 class MyBookingTableViewController: UITableViewController,CLLocationManagerDelegate {
+
     
+    @IBOutlet weak var seatPrefereanceSegmented: MySegmentedControl!
     
     var isCollapse:Bool = true
     var isCollapseDiscountCell:Bool = true
@@ -111,6 +113,32 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
 
     @IBOutlet var bookingTableView: UITableView!
     
+    @IBAction func onChoiceSeatPrefereance(_ sender: UISegmentedControl) {
+        
+        
+        
+        if sender.selectedSegmentIndex == 0{
+            //無
+            seatPrefereanceSegmented.setTitle("請選擇", forSegmentAt: 1)
+//            seatPrefereanceSegmented.selectedSegmentIndex = 1
+            
+        }else{
+           
+            let parentVC = (parent as! ViewController)
+            parentVC.seatPrefereancePickViewBottomConstraint.constant = -50
+            parentVC.backgroundLayerBottomContraint.constant = 0
+            parentVC.tabBarController?.tabBar.isHidden = true
+//            print("HH")
+            UIView.animate(withDuration: 0.5){
+                parentVC.view.layoutIfNeeded()
+            }
+            
+            
+        }
+        
+        
+        
+    }
     
     
     @IBAction func onChoiceTicketType(_ sender: UISegmentedControl) {
@@ -293,7 +321,9 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
         lm.delegate = self
         lm.startUpdatingLocation()
         
+        
 
+        
         
         
         

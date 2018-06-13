@@ -10,7 +10,9 @@ import UIKit
 import MapKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var seatPrefereancePickViewBottomConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var returnTimeQueryRightConstraint: NSLayoutConstraint!
     @IBAction func onClickNavigation(_ sender: Any) {
         
         
@@ -80,6 +82,14 @@ class ViewController: UIViewController {
         let queryTime = String(queryString![1])
         let queryWeekDay = String(queryString![0])
         
+        
+        
+        let userQueryTimeReturnString = (self.view.viewWithTag(2000)?.viewWithTag(301) as! UILabel).text
+        
+
+
+        
+        
         let userQueryDepStationString = (self.view.viewWithTag(2000)?.viewWithTag(100) as! UILabel).text
         
         let userQueryDestStationString = (self.view.viewWithTag(2000)?.viewWithTag(200) as! UILabel).text
@@ -92,9 +102,15 @@ class ViewController: UIViewController {
         let modifiedqueryWeekDayDateType = queryWeekDayDateType?.addingTimeInterval(TimeInterval(3600 * 8))
         let weekdayList = ["OnlyForShift","Sunday","Monday","TuesDay","Wednesday","Thursday","Friday","Saturday"]
         let weekdayIndex = Calendar.current.component(.weekday, from: modifiedqueryWeekDayDateType!)
-        
-        
         let runningDay = weekdayList[weekdayIndex]
+        
+        
+  
+
+
+        
+        
+        
 //        print(runningDay)
         let depId = transferStationNameToId(stationName: userQueryDepStationString!)
         let destId = transferStationNameToId(stationName: userQueryDestStationString!)
@@ -115,22 +131,60 @@ class ViewController: UIViewController {
         let printList = timeTableQuery(jsonObject: jsonObject, userDepTime: queryTime, direction: direction, depId: depId, destId: destId, runningDay: runningDay)
 
         
-        
         var myTimeTableQueryVC: MyTimeTableQueryViewController!
+        var myTimeTableQueryVC2: MyTimeTableQueryViewController!
         
         for vc in (self.childViewControllers) {
             if vc.restorationIdentifier == "myTimeTableQueryVC" {
                 myTimeTableQueryVC = vc as! MyTimeTableQueryViewController
                 myTimeTableQueryVC.list = printList
                 myTimeTableQueryVC.queryResetData()
-                break
+                
             }
+            
+            if vc.restorationIdentifier == "myTimeTableQueryVC2" {
+                myTimeTableQueryVC2 = vc as! MyTimeTableQueryViewController
+
+                
+            }
+            
+            
         }
         
+        
+        
+        if userQueryTimeReturnString != "請選擇回程日期"{
+            
+            
+            let queryReturnString = userQueryTimeString?.split(separator: " ")
+            let queryReturnTime = String(queryReturnString![1])
+            let queryReturnWeekDay = String(queryReturnString![0])
+            
+            
+            
+            let queryWeekDayReturnDateType = formatter.date(from: queryReturnWeekDay)
+            let modifiedqueryWeekDayReturnDateType = queryWeekDayReturnDateType?.addingTimeInterval(TimeInterval(3600 * 8))
+            
+            let weekdayReturnIndex = Calendar.current.component(.weekday, from: modifiedqueryWeekDayReturnDateType!)
+            let runningDayReturn = weekdayList[weekdayReturnIndex]
+            
+            let printListReturn = timeTableQuery(jsonObject: jsonObject, userDepTime: queryReturnTime, direction: abs(direction - 1), depId: destId, destId: depId, runningDay: runningDayReturn)
+            
+            myTimeTableQueryVC2.list = printListReturn
+            myTimeTableQueryVC2.queryResetData()
+            
+        }
+        
+        
+        
+        
         self.timeTableQueryRightConstraint.constant = 0
+        self.returnTimeQueryRightConstraint.constant = 0
 //        print(user)
-//        (myTimeTableQueryVC.view.viewWithTag(10) as! UILabel).text = userQueryDepStationString
-//        (myTimeTableQueryVC.view.viewWithTag(20) as! UILabel).text = userQueryDestStationString
+        (myTimeTableQueryVC.view.viewWithTag(10) as! UILabel).text = userQueryDepStationString
+        (myTimeTableQueryVC.view.viewWithTag(20) as! UILabel).text = userQueryDestStationString
+        (myTimeTableQueryVC2.view.viewWithTag(20) as! UILabel).text = userQueryDepStationString
+        (myTimeTableQueryVC2.view.viewWithTag(10) as! UILabel).text = userQueryDestStationString
 //        UIView.animate(withDuration: 0.5){
 //            self.view.layoutIfNeeded()
 //
@@ -150,7 +204,7 @@ class ViewController: UIViewController {
         
     }
     
-    func reLoadTicketQuery(nowTimeString:String,shiftHour:Int,runningDay:String) -> String{
+    func reLoadTicketQuery(nowTimeString:String,shiftHour:Int,runningDay:String, returnFlag:Bool) -> String{
 
         
         
@@ -186,7 +240,7 @@ class ViewController: UIViewController {
         let modifiedtimeString = formatter.string(from: modifiedQueryTimeDateType!)
         let queryTime = modifiedtimeString
         
-        print(modifiedtimeString)
+//        print(modifiedtimeString)
         
         let userQueryDepStationString = (self.view.viewWithTag(2000)?.viewWithTag(100) as! UILabel).text
         
@@ -200,6 +254,7 @@ class ViewController: UIViewController {
         let depId = transferStationNameToId(stationName: userQueryDepStationString!)
         let destId = transferStationNameToId(stationName: userQueryDestStationString!)
         //        print(jsonObject)
+        
         
         
         var direction = 1
@@ -217,20 +272,35 @@ class ViewController: UIViewController {
         
         
         
+        
         var myTimeTableQueryVC: MyTimeTableQueryViewController!
+        var myTimeTableQueryVC2: MyTimeTableQueryViewController!
+        
         
         for vc in (self.childViewControllers) {
             if vc.restorationIdentifier == "myTimeTableQueryVC" {
                 myTimeTableQueryVC = vc as! MyTimeTableQueryViewController
                 myTimeTableQueryVC.list = printList
                 myTimeTableQueryVC.queryResetData()
-                break
+            }
+            
+            if vc.restorationIdentifier == "myTimeTableQueryVC2" {
+                myTimeTableQueryVC2 = vc as! MyTimeTableQueryViewController
+                myTimeTableQueryVC2.list = printList
+                myTimeTableQueryVC2.queryResetData()
             }
         }
         
-        self.timeTableQueryRightConstraint.constant = 0
+        
+        
+        
+//        self.timeTableQueryRightConstraint.constant = 0
+//        self.returnTimeQueryRightConstraint.constant = 0
         (myTimeTableQueryVC.view.viewWithTag(10) as! UILabel).text = userQueryDepStationString
         (myTimeTableQueryVC.view.viewWithTag(20) as! UILabel).text = userQueryDestStationString
+        (myTimeTableQueryVC2.view.viewWithTag(10) as! UILabel).text = userQueryDepStationString
+        (myTimeTableQueryVC2.view.viewWithTag(20) as! UILabel).text = userQueryDestStationString
+        
         UIView.animate(withDuration: 0.5){
             self.view.layoutIfNeeded()
             
@@ -325,14 +395,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         do{
-            print("AA")
+            //print("AA")
             if let url = URL(string: "http://oz.nthu.edu.tw/~u9533141/thsr.json"){
                 let data = try Data(contentsOf: url)
                 self.jsonObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [[String:Any]]
                 //                print(jsonObject)
             }
         }catch{
-            print("BB")
+            //print("BB")
             print(error)
         }
         

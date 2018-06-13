@@ -19,11 +19,18 @@ class MyTimeTableQueryViewController: UIViewController,UITableViewDataSource,UIT
         var runningDay = ""
         if reCountFlag{
             
-            let userQueryTimeString = (parentVC.view.viewWithTag(2000)?.viewWithTag(300) as! UILabel).text
-            let queryString = userQueryTimeString?.split(separator: " ")
-            let queryTime = String(queryString![1])
+            var userQueryTimeString:String = ""
+            if self.restorationIdentifier == "myTimeTableQueryVC"{
+                userQueryTimeString = (parentVC.view.viewWithTag(2000)?.viewWithTag(300) as! UILabel).text!
+            }else if self.restorationIdentifier == "myTimeTableQueryVC2"{
+                userQueryTimeString = (parentVC.view.viewWithTag(2000)?.viewWithTag(301) as! UILabel).text!
+                
+            }
             
-            let queryWeekDay = String(queryString![0])
+            let queryString = userQueryTimeString.split(separator: " ")
+            let queryTime = String(queryString[1])
+            
+            let queryWeekDay = String(queryString[0])
             
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy/MM/dd"
@@ -42,7 +49,7 @@ class MyTimeTableQueryViewController: UIViewController,UITableViewDataSource,UIT
         }
 //        print(nowTimeString)
         
-        nowTimeString = parentVC.reLoadTicketQuery(nowTimeString: nowTimeString, shiftHour: -2, runningDay: runningDay)
+        nowTimeString = parentVC.reLoadTicketQuery(nowTimeString: nowTimeString, shiftHour: -2, runningDay: runningDay, returnFlag: <#Bool#>)
         
 //        print(runningDay)
         
@@ -57,11 +64,17 @@ class MyTimeTableQueryViewController: UIViewController,UITableViewDataSource,UIT
         let parentVC = (parent as! ViewController)
         var runningDay = ""
         if reCountFlag{
+            var userQueryTimeString:String = ""
+            if self.restorationIdentifier == "myTimeTableQueryVC"{
+                userQueryTimeString = (parentVC.view.viewWithTag(2000)?.viewWithTag(300) as! UILabel).text!
+            }else if self.restorationIdentifier == "myTimeTableQueryVC2"{
+                userQueryTimeString = (parentVC.view.viewWithTag(2000)?.viewWithTag(301) as! UILabel).text!
+                
+            }
             
-            let userQueryTimeString = (parentVC.view.viewWithTag(2000)?.viewWithTag(300) as! UILabel).text
-            let queryString = userQueryTimeString?.split(separator: " ")
-            let queryTime = String(queryString![1])
-            let queryWeekDay = String(queryString![0])
+            let queryString = userQueryTimeString.split(separator: " ")
+            let queryTime = String(queryString[1])
+            let queryWeekDay = String(queryString[0])
      
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy/MM/dd"

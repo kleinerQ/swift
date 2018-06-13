@@ -36,6 +36,7 @@ class MySegmentedControl: UISegmentedControl {
         
         
         
+        
         self.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.gray], for:.normal)
         
 
