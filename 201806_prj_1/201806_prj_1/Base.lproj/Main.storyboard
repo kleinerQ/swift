@@ -24,6 +24,11 @@
                                 <color key="barTintColor" red="0.94901960780000005" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem title="訂票" id="Egj-0l-iXe">
+                                        <barButtonItem key="leftBarButtonItem" title="車站導航" id="jZ8-wv-oy6">
+                                            <connections>
+                                                <action selector="onClickNavigation:" destination="BYZ-38-t0r" id="BRa-HB-2TI"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Item" id="K7t-kQ-epU">
                                             <connections>
                                                 <action selector="onClickTicketQuery:" destination="BYZ-38-t0r" id="aHM-iB-3N9"/>
@@ -1071,6 +1076,7 @@
                             <constraint firstItem="Fd5-d7-gPF" firstAttribute="top" secondItem="Jea-AO-kZG" secondAttribute="top" constant="44" id="ne0-AU-6J9"/>
                             <constraint firstItem="xYZ-2F-eUU" firstAttribute="leading" secondItem="Jea-AO-kZG" secondAttribute="leading" id="rKw-zU-n6p"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="rIx-9d-Mwq"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="xYZ-2F-eUU" id="DSn-6E-KSm"/>

@@ -16,18 +16,35 @@ class MyTimeTableQueryViewController: UIViewController,UITableViewDataSource,UIT
     @IBAction func onClickGoEarlyQuery(_ sender: UIButton) {
         
         let parentVC = (parent as! ViewController)
+        var runningDay = ""
         if reCountFlag{
             
             let userQueryTimeString = (parentVC.view.viewWithTag(2000)?.viewWithTag(300) as! UILabel).text
             let queryString = userQueryTimeString?.split(separator: " ")
             let queryTime = String(queryString![1])
+            
+            let queryWeekDay = String(queryString![0])
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd"
+            let queryWeekDayDateType = formatter.date(from: queryWeekDay)
+            let modifiedqueryWeekDayDateType = queryWeekDayDateType?.addingTimeInterval(TimeInterval(3600 * 8))
+            let weekdayList = ["OnlyForShift","Sunday","Monday","TuesDay","Wednesday","Thursday","Friday","Saturday"]
+            let weekdayIndex = Calendar.current.component(.weekday, from: modifiedqueryWeekDayDateType!)
+            runningDay = weekdayList[weekdayIndex]
+            
+            
+            
+            
+            
             nowTimeString = queryTime
             reCountFlag = !reCountFlag
         }
 //        print(nowTimeString)
         
-        nowTimeString = parentVC.reLoadTicketQuery(nowTimeString: nowTimeString, shiftHour: -2)
-//        print(nowTimeString)
+        nowTimeString = parentVC.reLoadTicketQuery(nowTimeString: nowTimeString, shiftHour: -2, runningDay: runningDay)
+        
+//        print(runningDay)
         
         
     }
@@ -38,17 +55,29 @@ class MyTimeTableQueryViewController: UIViewController,UITableViewDataSource,UIT
     @IBAction func onClickGoLaterQuery(_ sender: UIButton) {
 
         let parentVC = (parent as! ViewController)
+        var runningDay = ""
         if reCountFlag{
             
             let userQueryTimeString = (parentVC.view.viewWithTag(2000)?.viewWithTag(300) as! UILabel).text
             let queryString = userQueryTimeString?.split(separator: " ")
             let queryTime = String(queryString![1])
+            let queryWeekDay = String(queryString![0])
+     
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd"
+            let queryWeekDayDateType = formatter.date(from: queryWeekDay)
+            let modifiedqueryWeekDayDateType = queryWeekDayDateType?.addingTimeInterval(TimeInterval(3600 * 8))
+            let weekdayList = ["OnlyForShift","Sunday","Monday","TuesDay","Wednesday","Thursday","Friday","Saturday"]
+            let weekdayIndex = Calendar.current.component(.weekday, from: modifiedqueryWeekDayDateType!)
+            runningDay = weekdayList[weekdayIndex]
+            
+            
             nowTimeString = queryTime
             reCountFlag = !reCountFlag
         }
         //        print(nowTimeString)
         
-        nowTimeString = parentVC.reLoadTicketQuery(nowTimeString: nowTimeString, shiftHour: 2)
+        nowTimeString = parentVC.reLoadTicketQuery(nowTimeString: nowTimeString, shiftHour: 2, runningDay: runningDay)
     }
     let showTimeTableItemNumber = 5
     @IBOutlet weak var tableView: UITableView!

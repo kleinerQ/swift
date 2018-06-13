@@ -208,14 +208,16 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
     var closestStation = "台北"
     
     
+    var gpsUserLocation = CLLocation()
     
-
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 //        print("MMM")
         if let userLocation = locations.first{
-        
+         
+            
+            gpsUserLocation = userLocation
             var distanceMin:Double = 100000
             
 //            print("緯度：\(userLocation.coordinate.latitude)")
@@ -246,8 +248,10 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
         
         
     }
+    
+    
     func resetOriginalStaion(){
-        print("GHASD")
+//        print("GHASD")
         (self.view.viewWithTag(100) as! UILabel).text = closestStation
     }
 

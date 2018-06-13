@@ -7,9 +7,46 @@
 //
 
 import UIKit
+import MapKit
 
 class ViewController: UIViewController {
     
+    @IBAction func onClickNavigation(_ sender: Any) {
+        
+        
+        var myBookingTableViewVC: MyBookingTableViewController!
+        
+        for vc in (self.childViewControllers) {
+            if vc.restorationIdentifier == "bookingTableView" {
+                myBookingTableViewVC = vc as! MyBookingTableViewController
+                break
+            }
+        }
+        
+        let currentGpsLocation = myBookingTableViewVC.gpsUserLocation
+        let currentStaion = ((myBookingTableViewVC.view.viewWithTag(100) as! UILabel).text) as! String
+        let stationLocation = (myBookingTableViewVC.gpsList[currentStaion] as! String).split(separator: ",")
+        
+        
+        let startPoint = CLLocationCoordinate2D(latitude: currentGpsLocation.coordinate.latitude, longitude: currentGpsLocation.coordinate.longitude)
+        let destStation = CLLocationCoordinate2D(latitude: Double(stationLocation[0])!, longitude: Double(stationLocation[1])!)
+
+        let pA = MKPlacemark(coordinate: startPoint, addressDictionary: nil)
+        let pB = MKPlacemark(coordinate: destStation, addressDictionary: nil)
+
+
+        let miA = MKMapItem(placemark: pA)
+        let miB = MKMapItem(placemark: pB)
+        miA.name = "起點"
+        miB.name = "\(currentStaion)高鐵站"
+
+        let routes = [miA,miB]
+
+        let options = [MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving]
+        MKMapItem.openMaps(with: routes, launchOptions: options)
+        
+        
+    }
     @IBOutlet weak var timeTableQueryRightConstraint: NSLayoutConstraint!
     
     var jsonObject: [[AnyHashable:Any]] = []
@@ -41,8 +78,7 @@ class ViewController: UIViewController {
         let userQueryTimeString = (self.view.viewWithTag(2000)?.viewWithTag(300) as! UILabel).text
         let queryString = userQueryTimeString?.split(separator: " ")
         let queryTime = String(queryString![1])
-        
-        
+        let queryWeekDay = String(queryString![0])
         
         let userQueryDepStationString = (self.view.viewWithTag(2000)?.viewWithTag(100) as! UILabel).text
         
@@ -50,9 +86,16 @@ class ViewController: UIViewController {
         
         
 
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        let queryWeekDayDateType = formatter.date(from: queryWeekDay)
+        let modifiedqueryWeekDayDateType = queryWeekDayDateType?.addingTimeInterval(TimeInterval(3600 * 8))
+        let weekdayList = ["OnlyForShift","Sunday","Monday","TuesDay","Wednesday","Thursday","Friday","Saturday"]
+        let weekdayIndex = Calendar.current.component(.weekday, from: modifiedqueryWeekDayDateType!)
         
         
-        let runningDay = "Tuesday"
+        let runningDay = weekdayList[weekdayIndex]
+//        print(runningDay)
         let depId = transferStationNameToId(stationName: userQueryDepStationString!)
         let destId = transferStationNameToId(stationName: userQueryDestStationString!)
 //        print(jsonObject)
@@ -107,7 +150,7 @@ class ViewController: UIViewController {
         
     }
     
-    func reLoadTicketQuery(nowTimeString:String,shiftHour:Int) -> String{
+    func reLoadTicketQuery(nowTimeString:String,shiftHour:Int,runningDay:String) -> String{
 
         
         
@@ -117,21 +160,33 @@ class ViewController: UIViewController {
         //                    print(NSTimeZone.local)
         formatter.timeZone = TimeZone.current
         //dep time found
-        let timeZoneOffset = 0
-        let nowTimeDateType = formatter.date(from: nowTimeString)
-        let modifiedQueryTimeDateType = nowTimeDateType?.addingTimeInterval(TimeInterval(3600 * shiftHour))
-//        print(queryTimeDateType)
-        //let formatterForString = DateFormatter()
-        //formatterForString.dateFormat = "yyyy/MM/dd HH:mm"
-        let modifiedtimeString = formatter.string(from: modifiedQueryTimeDateType!)
         
-//        let queryString = timeString.split(separator: " ")
-//        print("GG")
-//        print(timeString)
-        //let queryTime = "18:00"
+        
+        
+        
+        
+        let nowTimeDateType = formatter.date(from: nowTimeString)
+        var modifiedQueryTimeDateType = nowTimeDateType?.addingTimeInterval(TimeInterval(3600 * shiftHour))
+
+        
+        
+        
+        let compareTimeString = "00:00"
+        let compareTimeDataType = formatter.date(from: compareTimeString)
+        
+        
+        let compareTimeString2 = "23:59"
+        let compareTime2DataType = formatter.date(from: compareTimeString2)
+        
+        if (modifiedQueryTimeDateType?.compare(compareTimeDataType!).rawValue as! Int) < 0 || (modifiedQueryTimeDateType?.compare(compareTime2DataType!).rawValue as! Int) > 0{
+//            print(modifiedQueryTimeDateType)
+            modifiedQueryTimeDateType = modifiedQueryTimeDateType?.addingTimeInterval(TimeInterval(-3600 * shiftHour))
+        
+        }
+        let modifiedtimeString = formatter.string(from: modifiedQueryTimeDateType!)
         let queryTime = modifiedtimeString
         
-        
+        print(modifiedtimeString)
         
         let userQueryDepStationString = (self.view.viewWithTag(2000)?.viewWithTag(100) as! UILabel).text
         
@@ -141,7 +196,7 @@ class ViewController: UIViewController {
         
         
         
-        let runningDay = "Tuesday"
+        let runningDay = runningDay
         let depId = transferStationNameToId(stationName: userQueryDepStationString!)
         let destId = transferStationNameToId(stationName: userQueryDestStationString!)
         //        print(jsonObject)
@@ -182,6 +237,9 @@ class ViewController: UIViewController {
         }
         
         return modifiedtimeString
+        
+        
+        
     }
     
     
