@@ -15,6 +15,7 @@
 		AC11908D20C59695004DD48E /* MyTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11908C20C59695004DD48E /* MyTabBarViewController.swift */; };
 		AC11908F20C59B76004DD48E /* MyHomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11908E20C59B76004DD48E /* MyHomePageViewController.swift */; };
 		AC22AA1B20C6B91200CC3CFF /* MypickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC22AA1A20C6B91200CC3CFF /* MypickViewController.swift */; };
+		AC6DA4B820D18BF900D36318 /* myNumberTickertAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6DA4B720D18BF900D36318 /* myNumberTickertAlertViewController.swift */; };
 		AC854D1020C7F4AE0089256D /* MySegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC854D0F20C7F4AE0089256D /* MySegmentedControl.swift */; };
 		AC8C564E20CBBB2600329FC8 /* PayTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8C564D20CBBB2600329FC8 /* PayTicketViewController.swift */; };
 		AC8C565220CC05F000329FC8 /* DeviceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8C565120CC05F000329FC8 /* DeviceInput.swift */; };
@@ -37,6 +38,7 @@
 		AC11908C20C59695004DD48E /* MyTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarViewController.swift; sourceTree = "<group>"; };
 		AC11908E20C59B76004DD48E /* MyHomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHomePageViewController.swift; sourceTree = "<group>"; };
 		AC22AA1A20C6B91200CC3CFF /* MypickViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypickViewController.swift; sourceTree = "<group>"; };
+		AC6DA4B720D18BF900D36318 /* myNumberTickertAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myNumberTickertAlertViewController.swift; sourceTree = "<group>"; };
 		AC854D0F20C7F4AE0089256D /* MySegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySegmentedControl.swift; sourceTree = "<group>"; };
 		AC8C564D20CBBB2600329FC8 /* PayTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTicketViewController.swift; sourceTree = "<group>"; };
 		AC8C565120CC05F000329FC8 /* DeviceInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInput.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				AC11907E20C58F13004DD48E /* Main.storyboard */,
 				ACB686AA20CE2A950038E769 /* MyCamViewController.swift */,
 				ACA7A1C120D0D5FA00A9B365 /* MySeatPrefereancePickViewController.swift */,
+				AC6DA4B720D18BF900D36318 /* myNumberTickertAlertViewController.swift */,
 				ACBD2B6820C7AB1C0030C517 /* MyBookingTableViewController.swift */,
 				ACA7A18320CF757000A9B365 /* MyTimeTableQueryViewController.swift */,
 				AC90086D20C841BA00D788CF /* MyNumberTicketPickViewController.swift */,
@@ -183,6 +186,7 @@
 				ACA7A18420CF757000A9B365 /* MyTimeTableQueryViewController.swift in Sources */,
 				AC90086E20C841BA00D788CF /* MyNumberTicketPickViewController.swift in Sources */,
 				AC11907D20C58F13004DD48E /* ViewController.swift in Sources */,
+				AC6DA4B820D18BF900D36318 /* myNumberTickertAlertViewController.swift in Sources */,
 				AC22AA1B20C6B91200CC3CFF /* MypickViewController.swift in Sources */,
 				AC11907B20C58F13004DD48E /* AppDelegate.swift in Sources */,
 				AC8C564E20CBBB2600329FC8 /* PayTicketViewController.swift in Sources */,

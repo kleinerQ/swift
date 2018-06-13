@@ -25,12 +25,10 @@ class MyNumberTicketPickViewController: UIViewController,UIPickerViewDelegate,UI
     
     @IBAction func onClickComplete(_ sender: UIButton) {
         
+        var numberArray: [Int] = []
+        
         let parentVc = parent as! ViewController
-        parentVc.ticketNumberPickViewBottomConstraint.constant = -300
-        parentVc.backgroundLayerBottomContraint.constant = -800
-        UIView.animate(withDuration: 0.5){
-            (self.parent as! ViewController).view.layoutIfNeeded()
-        }
+
         
         
         let firstLable = parentVc.view.viewWithTag(2000)?.viewWithTag(400) as! UILabel
@@ -43,16 +41,46 @@ class MyNumberTicketPickViewController: UIViewController,UIPickerViewDelegate,UI
         let secondPickedValue = list[numberTicketPicker.selectedRow(inComponent: 1)]
         let thirdPickedValue = list[numberTicketPicker.selectedRow(inComponent: 2)]
         let fourthPickedValue = list[numberTicketPicker.selectedRow(inComponent: 3)]
+    
+        numberArray.append(Int(firstPickedValue)!)
+        numberArray.append(Int(secondPickedValue)!)
+        numberArray.append(Int(thirdPickedValue)!)
+        numberArray.append(Int(fourthPickedValue)!)
+        
         if self.numberOfType == 5 {
             let fifthPickedValue = list[numberTicketPicker.selectedRow(inComponent: 4)]
             fifthLable.text = "大學生 \(fifthPickedValue)"
+            numberArray.append(Int(fifthPickedValue)!)
         }
-        firstLable.text = "全票 \(firstPickedValue)"
-        secondLable.text = "孩童 \(secondPickedValue)"
-        thirdLable.text = "敬老 \(thirdPickedValue)"
-        fourthLable.text = "愛心 \(fourthPickedValue)"
         
-        (parent as! ViewController).tabBarController?.tabBar.isHidden = false
+        var total = 0
+        for i in numberArray{
+            
+            total = total + i
+        }
+        
+        if total <= 10 {
+            parentVc.ticketNumberPickViewBottomConstraint.constant = -300
+            parentVc.backgroundLayerBottomContraint.constant = -800
+            UIView.animate(withDuration: 0.5){
+                (self.parent as! ViewController).view.layoutIfNeeded()
+            }
+            
+            firstLable.text = "全票 \(firstPickedValue)"
+            secondLable.text = "孩童 \(secondPickedValue)"
+            thirdLable.text = "敬老 \(thirdPickedValue)"
+            fourthLable.text = "愛心 \(fourthPickedValue)"
+            
+            (parent as! ViewController).tabBarController?.tabBar.isHidden = false
+            
+        }else{
+            
+            let alert = storyboard?.instantiateViewController(withIdentifier: "myNumbertTicketAlert")
+            present(alert!, animated: true, completion: nil)
+            
+        }
+        
+
         
     }
     

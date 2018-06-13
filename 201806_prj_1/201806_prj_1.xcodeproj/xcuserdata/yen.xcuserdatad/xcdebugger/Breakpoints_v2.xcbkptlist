@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "201806_prj_1/ViewController.swift"
-            timestampString = "550600118.280174"
+            timestampString = "550607275.448514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "404"
-            endingLineNumber = "404"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
             landmarkName = "motionBegan(_:with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "201806_prj_1/MyBookingTableViewController.swift"
-            timestampString = "550592291.331037"
+            timestampString = "550605031.098672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "64"
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "201806_prj_1/ViewController.swift"
-            timestampString = "550600118.280548"
+            timestampString = "550607275.44915"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "reLoadTicketQuery(nowTimeString:shiftHour:runningDay:returnFlag:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,43 +106,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "201806_prj_1/ViewController.swift"
-            timestampString = "550600118.280753"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
-            landmarkName = "reLoadTicketQuery(nowTimeString:shiftHour:runningDay:returnFlag:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "201806_prj_1/ViewController.swift"
-            timestampString = "550600118.280948"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
-            landmarkName = "reLoadTicketQuery(nowTimeString:shiftHour:runningDay:returnFlag:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "201806_prj_1/ViewController.swift"
-            timestampString = "550600118.281139"
+            timestampString = "550607275.4494179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "306"
             endingLineNumber = "306"
+            landmarkName = "reLoadTicketQuery(nowTimeString:shiftHour:runningDay:returnFlag:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "201806_prj_1/ViewController.swift"
+            timestampString = "550607275.449674"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
+            landmarkName = "reLoadTicketQuery(nowTimeString:shiftHour:runningDay:returnFlag:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "201806_prj_1/ViewController.swift"
+            timestampString = "550607275.449936"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "325"
+            endingLineNumber = "325"
             landmarkName = "reLoadTicketQuery(nowTimeString:shiftHour:runningDay:returnFlag:)"
             landmarkType = "7">
          </BreakpointContent>

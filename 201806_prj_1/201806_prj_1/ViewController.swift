@@ -77,17 +77,6 @@ class ViewController: UIViewController {
     
     @IBAction func onClickTicketQuery(_ sender: Any) {
 //        print("BBBsdf")
-        let userQueryTimeString = (self.view.viewWithTag(2000)?.viewWithTag(300) as! UILabel).text
-        let queryString = userQueryTimeString?.split(separator: " ")
-        let queryTime = String(queryString![1])
-        let queryWeekDay = String(queryString![0])
-        
-        
-        
-        let userQueryTimeReturnString = (self.view.viewWithTag(2000)?.viewWithTag(301) as! UILabel).text
-        
-
-
         
         
         let userQueryDepStationString = (self.view.viewWithTag(2000)?.viewWithTag(100) as! UILabel).text
@@ -95,111 +84,141 @@ class ViewController: UIViewController {
         let userQueryDestStationString = (self.view.viewWithTag(2000)?.viewWithTag(200) as! UILabel).text
         
         
-
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
-        let queryWeekDayDateType = formatter.date(from: queryWeekDay)
-        let modifiedqueryWeekDayDateType = queryWeekDayDateType?.addingTimeInterval(TimeInterval(3600 * 8))
-        let weekdayList = ["OnlyForShift","Sunday","Monday","TuesDay","Wednesday","Thursday","Friday","Saturday"]
-        let weekdayIndex = Calendar.current.component(.weekday, from: modifiedqueryWeekDayDateType!)
-        let runningDay = weekdayList[weekdayIndex]
-        
-        
-  
-
-
-        
-        
-        
-//        print(runningDay)
-        let depId = transferStationNameToId(stationName: userQueryDepStationString!)
-        let destId = transferStationNameToId(stationName: userQueryDestStationString!)
-//        print(jsonObject)
-        
-        
-        var direction = 1
-        
-        if Int(depId)! > Int(destId)!{
-//            print("北上")
-            direction = 1
+        if userQueryDepStationString == userQueryDestStationString{
+            
+            
+            let alert = storyboard?.instantiateViewController(withIdentifier: "sameStationAlert")
+            present(alert!,animated: true, completion: nil)
+            
+            
         }else{
-//            print("難")
-            direction = 0
-        }
-        
-        
-        let printList = timeTableQuery(jsonObject: jsonObject, userDepTime: queryTime, direction: direction, depId: depId, destId: destId, runningDay: runningDay)
-
-        
-        var myTimeTableQueryVC: MyTimeTableQueryViewController!
-        var myTimeTableQueryVC2: MyTimeTableQueryViewController!
-        
-        for vc in (self.childViewControllers) {
-            if vc.restorationIdentifier == "myTimeTableQueryVC" {
-                myTimeTableQueryVC = vc as! MyTimeTableQueryViewController
-                myTimeTableQueryVC.list = printList
-                myTimeTableQueryVC.queryResetData()
+            
+            
+            let userQueryTimeString = (self.view.viewWithTag(2000)?.viewWithTag(300) as! UILabel).text
+            let queryString = userQueryTimeString?.split(separator: " ")
+            let queryTime = String(queryString![1])
+            let queryWeekDay = String(queryString![0])
+            
+            
+            
+            let userQueryTimeReturnString = (self.view.viewWithTag(2000)?.viewWithTag(301) as! UILabel).text
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd"
+            let queryWeekDayDateType = formatter.date(from: queryWeekDay)
+            let modifiedqueryWeekDayDateType = queryWeekDayDateType?.addingTimeInterval(TimeInterval(3600 * 8))
+            let weekdayList = ["OnlyForShift","Sunday","Monday","TuesDay","Wednesday","Thursday","Friday","Saturday"]
+            let weekdayIndex = Calendar.current.component(.weekday, from: modifiedqueryWeekDayDateType!)
+            let runningDay = weekdayList[weekdayIndex]
+            
+            
+            
+            
+            
+            
+            
+            
+            //        print(runningDay)
+            let depId = transferStationNameToId(stationName: userQueryDepStationString!)
+            let destId = transferStationNameToId(stationName: userQueryDestStationString!)
+            //        print(jsonObject)
+            
+            
+            var direction = 1
+            
+            if Int(depId)! > Int(destId)!{
+                //            print("北上")
+                direction = 1
+            }else{
+                //            print("難")
+                direction = 0
+            }
+            
+            
+            let printList = timeTableQuery(jsonObject: jsonObject, userDepTime: queryTime, direction: direction, depId: depId, destId: destId, runningDay: runningDay)
+            
+            
+            var myTimeTableQueryVC: MyTimeTableQueryViewController!
+            var myTimeTableQueryVC2: MyTimeTableQueryViewController!
+            
+            for vc in (self.childViewControllers) {
+                if vc.restorationIdentifier == "myTimeTableQueryVC" {
+                    myTimeTableQueryVC = vc as! MyTimeTableQueryViewController
+                    myTimeTableQueryVC.list = printList
+                    myTimeTableQueryVC.queryResetData()
+                    
+                }
+                
+                if vc.restorationIdentifier == "myTimeTableQueryVC2" {
+                    myTimeTableQueryVC2 = vc as! MyTimeTableQueryViewController
+                    
+                    
+                }
+                
                 
             }
             
-            if vc.restorationIdentifier == "myTimeTableQueryVC2" {
-                myTimeTableQueryVC2 = vc as! MyTimeTableQueryViewController
-
+            
+            
+            if userQueryTimeReturnString != "請選擇回程日期"{
+                
+                
+                let queryReturnString = userQueryTimeReturnString?.split(separator: " ")
+                let queryReturnTime = String(queryReturnString![1])
+                let queryReturnWeekDay = String(queryReturnString![0])
+                print(queryReturnTime)
+                
+                
+                let queryWeekDayReturnDateType = formatter.date(from: queryReturnWeekDay)
+                let modifiedqueryWeekDayReturnDateType = queryWeekDayReturnDateType?.addingTimeInterval(TimeInterval(3600 * 8))
+                
+                let weekdayReturnIndex = Calendar.current.component(.weekday, from: modifiedqueryWeekDayReturnDateType!)
+                let runningDayReturn = weekdayList[weekdayReturnIndex]
+                
+                let printListReturn = timeTableQuery(jsonObject: jsonObject, userDepTime: queryReturnTime, direction: abs(direction - 1), depId: destId, destId: depId, runningDay: runningDayReturn)
+                
+                myTimeTableQueryVC2.list = printListReturn
+                myTimeTableQueryVC2.queryResetData()
                 
             }
             
             
+            
+            
+            self.timeTableQueryRightConstraint.constant = 0
+            //        print("GSDAF")
+            self.returnTimeQueryRightConstraint.constant = 0
+            //        print(user)
+            (myTimeTableQueryVC.view.viewWithTag(10) as! UILabel).text = userQueryDepStationString
+            (myTimeTableQueryVC.view.viewWithTag(20) as! UILabel).text = userQueryDestStationString
+            (myTimeTableQueryVC2.view.viewWithTag(20) as! UILabel).text = userQueryDepStationString
+            (myTimeTableQueryVC2.view.viewWithTag(10) as! UILabel).text = userQueryDestStationString
+            //        UIView.animate(withDuration: 0.5){
+            //            self.view.layoutIfNeeded()
+            //
+            //        }
+            
+            
+            
+            //        for item in printResult {
+            //
+            //            print(item)
+            //        }
+            
+            //        print(originalId)
+            //        print(destId)
+            
+            
         }
         
-        
-        
-        if userQueryTimeReturnString != "請選擇回程日期"{
-            
-            
-            let queryReturnString = userQueryTimeReturnString?.split(separator: " ")
-            let queryReturnTime = String(queryReturnString![1])
-            let queryReturnWeekDay = String(queryReturnString![0])
-            print(queryReturnTime)
-            
-            
-            let queryWeekDayReturnDateType = formatter.date(from: queryReturnWeekDay)
-            let modifiedqueryWeekDayReturnDateType = queryWeekDayReturnDateType?.addingTimeInterval(TimeInterval(3600 * 8))
-            
-            let weekdayReturnIndex = Calendar.current.component(.weekday, from: modifiedqueryWeekDayReturnDateType!)
-            let runningDayReturn = weekdayList[weekdayReturnIndex]
-            
-            let printListReturn = timeTableQuery(jsonObject: jsonObject, userDepTime: queryReturnTime, direction: abs(direction - 1), depId: destId, destId: depId, runningDay: runningDayReturn)
-            
-            myTimeTableQueryVC2.list = printListReturn
-            myTimeTableQueryVC2.queryResetData()
-            
-        }
-        
-        
-        
-        
-        self.timeTableQueryRightConstraint.constant = 0
-//        print("GSDAF")
-        self.returnTimeQueryRightConstraint.constant = 0
-//        print(user)
-        (myTimeTableQueryVC.view.viewWithTag(10) as! UILabel).text = userQueryDepStationString
-        (myTimeTableQueryVC.view.viewWithTag(20) as! UILabel).text = userQueryDestStationString
-        (myTimeTableQueryVC2.view.viewWithTag(20) as! UILabel).text = userQueryDepStationString
-        (myTimeTableQueryVC2.view.viewWithTag(10) as! UILabel).text = userQueryDestStationString
-//        UIView.animate(withDuration: 0.5){
-//            self.view.layoutIfNeeded()
-//
-//        }
-        
-        
-        
-//        for item in printResult {
-//
-//            print(item)
-//        }
-        
-//        print(originalId)
-//        print(destId)
         
         
         

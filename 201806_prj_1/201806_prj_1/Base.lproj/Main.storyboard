@@ -643,6 +643,62 @@
             </objects>
             <point key="canvasLocation" x="540" y="2097.8873239436621"/>
         </scene>
+        <!--My Number Tickert Alert View Controller-->
+        <scene sceneID="Fej-tZ-da0">
+            <objects>
+                <viewController storyboardIdentifier="myNumbertTicketAlert" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="lTK-Qu-hQv" customClass="myNumberTickertAlertViewController" customModule="_01806_prj_1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xl8-7p-l9r">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GBa-mc-8yc">
+                                <rect key="frame" x="28" y="159" width="264" height="250"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qjR-PZ-cyV">
+                                        <rect key="frame" x="0.0" y="220" width="264" height="30"/>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="確 定"/>
+                                        <connections>
+                                            <action selector="onClickConfirm:" destination="lTK-Qu-hQv" eventType="touchUpInside" id="OvZ-zV-89i"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="numberTicketAlert" translatesAutoresizingMaskIntoConstraints="NO" id="3ff-Ob-mJ1">
+                                        <rect key="frame" x="0.0" y="0.0" width="264" height="166.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="264" id="cVt-ox-OWe"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="6Wo-je-I0g"/>
+                                    <constraint firstAttribute="bottom" secondItem="qjR-PZ-cyV" secondAttribute="bottom" id="7C2-x7-kSI"/>
+                                    <constraint firstAttribute="trailing" secondItem="qjR-PZ-cyV" secondAttribute="trailing" id="CJs-6e-kIF"/>
+                                    <constraint firstItem="3ff-Ob-mJ1" firstAttribute="top" secondItem="GBa-mc-8yc" secondAttribute="top" id="DAU-3w-xNb"/>
+                                    <constraint firstItem="3ff-Ob-mJ1" firstAttribute="height" secondItem="GBa-mc-8yc" secondAttribute="height" multiplier="1:1.5" id="EWU-uC-DI3"/>
+                                    <constraint firstItem="qjR-PZ-cyV" firstAttribute="width" secondItem="GBa-mc-8yc" secondAttribute="width" id="TOz-3G-W8X"/>
+                                    <constraint firstItem="qjR-PZ-cyV" firstAttribute="leading" secondItem="GBa-mc-8yc" secondAttribute="leading" id="gZT-Wo-5Fn"/>
+                                    <constraint firstItem="3ff-Ob-mJ1" firstAttribute="leading" secondItem="GBa-mc-8yc" secondAttribute="leading" id="pg7-gU-ddL"/>
+                                    <constraint firstAttribute="width" constant="264" id="seT-Y3-0dO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.54991319444444442" alpha="0.55744327910958902" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GBa-mc-8yc" firstAttribute="centerX" secondItem="Xl8-7p-l9r" secondAttribute="centerX" id="Bmw-2b-hNS"/>
+                            <constraint firstItem="GBa-mc-8yc" firstAttribute="centerY" secondItem="Xl8-7p-l9r" secondAttribute="centerY" id="lNp-oC-z3P"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2ni-Kc-GGM"/>
+                    </view>
+                    <connections>
+                        <outlet property="myNumberAlertView" destination="GBa-mc-8yc" id="jd5-Pe-bPV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ngI-5I-n22" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1091.25" y="2600.7042253521126"/>
+        </scene>
         <!--My Date Pick View Controller-->
         <scene sceneID="dKE-3H-05b">
             <objects>
@@ -1460,8 +1516,66 @@
             </objects>
             <point key="canvasLocation" x="1185" y="614"/>
         </scene>
+        <!--My Number Tickert Alert View Controller-->
+        <scene sceneID="dbD-b8-faJ">
+            <objects>
+                <viewController storyboardIdentifier="sameStationAlert" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="OKO-DK-nJj" customClass="myNumberTickertAlertViewController" customModule="_01806_prj_1" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZSa-mN-DxF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrF-w1-h9c">
+                                <rect key="frame" x="28" y="159" width="264" height="250"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORc-wr-YFf">
+                                        <rect key="frame" x="0.0" y="220" width="264" height="30"/>
+                                        <color key="backgroundColor" red="0.94901960780000005" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="確 定"/>
+                                        <connections>
+                                            <action selector="onClickConfirm:" destination="OKO-DK-nJj" eventType="touchUpInside" id="ReC-ga-4X5"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sameStationAlert" translatesAutoresizingMaskIntoConstraints="NO" id="neh-FH-odB">
+                                        <rect key="frame" x="0.0" y="0.0" width="264" height="166.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="264" id="or8-fA-0n5"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="neh-FH-odB" firstAttribute="leading" secondItem="rrF-w1-h9c" secondAttribute="leading" id="64C-ZX-xVT"/>
+                                    <constraint firstItem="neh-FH-odB" firstAttribute="height" secondItem="rrF-w1-h9c" secondAttribute="height" multiplier="1:1.5" id="7EX-2h-hC4"/>
+                                    <constraint firstItem="neh-FH-odB" firstAttribute="top" secondItem="rrF-w1-h9c" secondAttribute="top" id="SNo-3n-RIH"/>
+                                    <constraint firstItem="ORc-wr-YFf" firstAttribute="leading" secondItem="rrF-w1-h9c" secondAttribute="leading" id="V2A-cm-c48"/>
+                                    <constraint firstItem="ORc-wr-YFf" firstAttribute="width" secondItem="rrF-w1-h9c" secondAttribute="width" id="XAN-lG-B2r"/>
+                                    <constraint firstAttribute="bottom" secondItem="ORc-wr-YFf" secondAttribute="bottom" id="XhL-rD-CIf"/>
+                                    <constraint firstAttribute="width" constant="264" id="bjh-mM-PQD"/>
+                                    <constraint firstAttribute="trailing" secondItem="ORc-wr-YFf" secondAttribute="trailing" id="cZx-34-O2t"/>
+                                    <constraint firstAttribute="height" constant="250" id="uSx-Ti-GIB"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.54991319439999997" alpha="0.55744327910000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rrF-w1-h9c" firstAttribute="centerY" secondItem="ZSa-mN-DxF" secondAttribute="centerY" id="Lc4-YH-cV7"/>
+                            <constraint firstItem="rrF-w1-h9c" firstAttribute="centerX" secondItem="ZSa-mN-DxF" secondAttribute="centerX" id="OH3-Xc-8ow"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vOG-v6-c0W"/>
+                    </view>
+                    <connections>
+                        <outlet property="myNumberAlertView" destination="rrF-w1-h9c" id="HBo-Z1-b9f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TDo-X3-Yau" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2089" y="2226"/>
+        </scene>
     </scenes>
     <resources>
         <image name="homepage" width="640" height="996"/>
+        <image name="numberTicketAlert" width="553" height="282"/>
+        <image name="sameStationAlert" width="571" height="399"/>
     </resources>
 </document>
