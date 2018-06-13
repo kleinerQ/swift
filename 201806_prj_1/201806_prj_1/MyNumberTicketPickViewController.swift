@@ -11,7 +11,7 @@ import UIKit
 class MyNumberTicketPickViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
     
     var numberOfType = 5
-//    @IBAction func onclickTest(_ sender: UIButton) {
+
     @IBOutlet weak var pickViewUniLabel: UILabel!
     //        numberOfType = 5
 //        
@@ -85,6 +85,8 @@ class MyNumberTicketPickViewController: UIViewController,UIPickerViewDelegate,UI
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        numberTicketPicker.selectRow(1, inComponent: 0, animated: false)
+        
         // Do any additional setup after loading the view.
         
     }

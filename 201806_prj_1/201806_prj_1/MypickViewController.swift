@@ -69,6 +69,9 @@ class MypickViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let picker = view.viewWithTag(1000) as! UIPickerView
+        picker.selectRow(1, inComponent: 0, animated: false)
+        picker.selectRow(11, inComponent: 1, animated: false)
         // Do any additional setup after loading the view.
     }
 

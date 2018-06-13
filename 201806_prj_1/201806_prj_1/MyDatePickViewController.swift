@@ -112,6 +112,7 @@ class MyDatePickViewController: UIViewController {
         timeString = formatter.string(from: Date())
         // Do any additional setup after loading the view.
         datePick.backgroundColor = UIColor.white
+        
     }
 
     override func didReceiveMemoryWarning() {
