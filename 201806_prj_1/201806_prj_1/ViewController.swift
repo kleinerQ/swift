@@ -27,6 +27,8 @@ class ViewController: UIViewController {
         
         let currentGpsLocation = myBookingTableViewVC.gpsUserLocation
         let currentStaion = ((myBookingTableViewVC.view.viewWithTag(100) as! UILabel).text) as! String
+//        print(currentStaion)
+//        print(myBookingTableViewVC.gpsList)
         let stationLocation = (myBookingTableViewVC.gpsList[currentStaion] as! String).split(separator: ",")
         
         
@@ -313,6 +315,7 @@ class ViewController: UIViewController {
                 myTimeTableQueryVC = vc as! MyTimeTableQueryViewController
 
                 print("MMM")
+                
             }
             
             if vc.restorationIdentifier == "myTimeTableQueryVC2" {

@@ -36,7 +36,7 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
                    "雲林":"23.738777,120.417013",
                    "嘉義":"23.461747,120.323899",
                    "台南":"22.927007,120.285267",
-                   "高雄":"22.688685,120.308651",]
+                   "左營":"22.688685,120.308651",]
     
     @IBOutlet weak var deptDateLabel: UILabel!
     
