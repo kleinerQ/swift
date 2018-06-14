@@ -9,7 +9,30 @@
 import UIKit
 
 class MyTimeTableQueryViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+    @IBOutlet weak var ticketQueryNavigationBar: UINavigationBar!
     
+    @IBAction func onTap(_ sender: UITapGestureRecognizer) {
+        
+//        print("GGG")
+        let parentVc = parent as! ViewController
+        
+        
+        if self.restorationIdentifier == "myTimeTableQueryVC2"{
+            
+            
+          
+            
+            parentVc.returnTimeQueryRightConstraint.constant = -380
+            
+        }
+        
+        
+        parentVc.timeTableQueryRightConstraint.constant = -380
+        UIView.animate(withDuration: 0.5){
+            (self.parent as! ViewController).view.layoutIfNeeded()
+        }
+        
+    }
     
     var nowTimeString: String = ""
     var reCountFlag = true
@@ -125,33 +148,34 @@ class MyTimeTableQueryViewController: UIViewController,UITableViewDataSource,UIT
         
         let parentVc = parent as! ViewController
         
-        if self.restorationIdentifier == "myTimeTableQueryVC"{
-
-            
-            
-            parentVc.timeTableQueryRightConstraint.constant = -380
-            
-            if (parentVc.view.viewWithTag(2000)?.viewWithTag(10000) as! UISegmentedControl).selectedSegmentIndex == 0{
-                
-                parentVc.returnTimeQueryRightConstraint.constant = -380
-                
-            }
-            
-            
-        }else if self.restorationIdentifier == "myTimeTableQueryVC2"{
-
-            parentVc.timeTableQueryRightConstraint.constant = -380
-            parentVc.returnTimeQueryRightConstraint.constant = -380
-        }
-        
-        
+//        if self.restorationIdentifier == "myTimeTableQueryVC"{
+//
+//
+//
+//            parentVc.timeTableQueryRightConstraint.constant = -380
+//
+//            if (parentVc.view.viewWithTag(2000)?.viewWithTag(10000) as! UISegmentedControl).selectedSegmentIndex == 0{
+//
+//                parentVc.returnTimeQueryRightConstraint.constant = -380
+//
+//            }
+//
+//
+//        }else if self.restorationIdentifier == "myTimeTableQueryVC2"{
+//
+//            parentVc.timeTableQueryRightConstraint.constant = -380
+//            parentVc.returnTimeQueryRightConstraint.constant = -380
+//        }
+        parentVc.bookingUserInfoViewRightConstraint.constant = -380
+        parentVc.timeTableQueryRightConstraint.constant = -380
+        parentVc.returnTimeQueryRightConstraint.constant = -380
 
         
         UIView.animate(withDuration: 0.5){
             (self.parent as! ViewController).view.layoutIfNeeded()
         }
         
-        reCountFlag = true
+//        reCountFlag = true
 
     }
     
@@ -202,6 +226,10 @@ class MyTimeTableQueryViewController: UIViewController,UITableViewDataSource,UIT
         depTimeLabel.text = String(item[1])
         arrTimeNoLabel.text = String(item[2])
         timeDiffNoLabel.text = String(item[3])
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.onTap(_:)))
+        cell.addGestureRecognizer(tap)
+        
         return cell
         
     }
@@ -211,6 +239,7 @@ class MyTimeTableQueryViewController: UIViewController,UITableViewDataSource,UIT
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Do any additional setup after loading the view.
     }
 

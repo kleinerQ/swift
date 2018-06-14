@@ -9,6 +9,8 @@
 import UIKit
 import CoreLocation
 class MyBookingTableViewController: UITableViewController,CLLocationManagerDelegate {
+    
+    
     @IBOutlet weak var roundTicketSegment: MySegmentedControl!
     
     
@@ -147,6 +149,7 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
        
         if sender.selectedSegmentIndex == 0{
 
+            (self.view.viewWithTag(301) as! UILabel).text = "請選擇回程日期"
             isCollapse = true
 
         }else{

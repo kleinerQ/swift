@@ -1,29 +1,29 @@
 //
-//  MyHomePageViewController.swift
+//  MybookingUserInfoInputViewController.swift
 //  201806_prj_1
 //
-//  Created by Yen on 2018/6/5.
+//  Created by Yen on 2018/6/14.
 //  Copyright © 2018年 Yen. All rights reserved.
 //
 
 import UIKit
 
-class MyHomePageViewController: UIViewController {
+class MybookingUserInfoInputViewController: UIViewController {
 
-    @IBAction func onClickTicketingPage(_ sender: UIButton) {
-//        print("AA")
+    @IBAction func onClickRequery(_ sender: UIBarButtonItem) {
         
-        let vc = parent as! UITabBarController
-        vc.selectedIndex = 2
+        let parentVc = parent as! ViewController
+        
+        parentVc.bookingUserInfoViewRightConstraint.constant = -380
+        parentVc.timeTableQueryRightConstraint.constant = -380
+        parentVc.returnTimeQueryRightConstraint.constant = -380
         
         
-    }
-    
-    
-    @IBAction func onClickBookingPage(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.5){
+            (self.parent as! ViewController).view.layoutIfNeeded()
+        }
         
-        let vc = parent as! UITabBarController
-        vc.selectedIndex = 1
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()

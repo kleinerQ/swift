@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var bookingUserInfoViewRightConstraint: NSLayoutConstraint!
     @IBOutlet weak var seatPrefereancePickViewBottomConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var returnTimeQueryRightConstraint: NSLayoutConstraint!
@@ -26,10 +27,10 @@ class ViewController: UIViewController {
         }
         
         let currentGpsLocation = myBookingTableViewVC.gpsUserLocation
-        let currentStaion = ((myBookingTableViewVC.view.viewWithTag(100) as! UILabel).text) as! String
+        let currentStaion = ((myBookingTableViewVC.view.viewWithTag(100) as! UILabel).text!)
 //        print(currentStaion)
 //        print(myBookingTableViewVC.gpsList)
-        let stationLocation = (myBookingTableViewVC.gpsList[currentStaion] as! String).split(separator: ",")
+        let stationLocation = (myBookingTableViewVC.gpsList[currentStaion]! ).split(separator: ",")
         
         
         let startPoint = CLLocationCoordinate2D(latitude: currentGpsLocation.coordinate.latitude, longitude: currentGpsLocation.coordinate.longitude)
@@ -161,7 +162,7 @@ class ViewController: UIViewController {
                 
                 if vc.restorationIdentifier == "myTimeTableQueryVC2" {
                     myTimeTableQueryVC2 = vc as! MyTimeTableQueryViewController
-                    
+
                     
                 }
                 
@@ -176,7 +177,7 @@ class ViewController: UIViewController {
                 let queryReturnString = userQueryTimeReturnString?.split(separator: " ")
                 let queryReturnTime = String(queryReturnString![1])
                 let queryReturnWeekDay = String(queryReturnString![0])
-                print(queryReturnTime)
+//                print(queryReturnTime)
                 
                 
                 let queryWeekDayReturnDateType = formatter.date(from: queryReturnWeekDay)
@@ -189,15 +190,31 @@ class ViewController: UIViewController {
                 
                 myTimeTableQueryVC2.list = printListReturn
                 myTimeTableQueryVC2.queryResetData()
+                self.returnTimeQueryRightConstraint.constant = 0
+                
+                
+                (myTimeTableQueryVC2.view.viewWithTag(1000) as!UILabel).text =  queryReturnWeekDay + "回程"
+            }
+            
+        
+            let ticketTypeSegment = self.view.viewWithTag(2000)?.viewWithTag(10000) as! UISegmentedControl
+            if ticketTypeSegment.selectedSegmentIndex == 0{
+                
+                (myTimeTableQueryVC.view.viewWithTag(1000) as!UILabel).text = queryWeekDay + " 單程"
+                
+            }else{
+                
+                
+                (myTimeTableQueryVC.view.viewWithTag(1000) as!UILabel).text = queryWeekDay + " 去程"
                 
             }
             
             
             
-            
             self.timeTableQueryRightConstraint.constant = 0
+            self.bookingUserInfoViewRightConstraint.constant = 0 
             //        print("GSDAF")
-            self.returnTimeQueryRightConstraint.constant = 0
+            
             //        print(user)
             (myTimeTableQueryVC.view.viewWithTag(10) as! UILabel).text = userQueryDepStationString
             (myTimeTableQueryVC.view.viewWithTag(20) as! UILabel).text = userQueryDestStationString
@@ -310,18 +327,18 @@ class ViewController: UIViewController {
         
         
         for vc in (self.childViewControllers) {
-            print(vc)
+//            print(vc)
             if vc.restorationIdentifier == "myTimeTableQueryVC" {
                 myTimeTableQueryVC = vc as! MyTimeTableQueryViewController
 
-                print("MMM")
+//                print("MMM")
                 
             }
             
             if vc.restorationIdentifier == "myTimeTableQueryVC2" {
                 myTimeTableQueryVC2 = vc as! MyTimeTableQueryViewController
 
-                print("NNN")
+//                print("NNN")
             }
         }
         
