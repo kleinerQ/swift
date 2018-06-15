@@ -181,8 +181,8 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
         
         
         if sender.selectedSegmentIndex == 0{
-            (view.viewWithTag(800) as! UILabel).isHidden = false
-            //(view.viewWithTag(800) as! UILabel).text = "大學生"
+//            (view.viewWithTag(800) as! UILabel).isHidden = false
+            (view.viewWithTag(800) as! UILabel).text = "大學生"
 
             myNumberTicketVC.numberOfType = 5
             myNumberTicketVC.pickViewUniLabel.isHidden = false
@@ -200,8 +200,8 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
             myNumberTicketVC.numberTicketPicker.reloadAllComponents()
            
             myNumberTicketVC.pickViewUniLabel.isHidden = true
-//            uniLabel.text = ""
-            (view.viewWithTag(800) as! UILabel).isHidden = true
+            uniLabel.text = ""
+//            (view.viewWithTag(800) as! UILabel).isHidden = true
 //            uniLabelHeight.constant = 0
 
             toggleTag = !toggleTag
