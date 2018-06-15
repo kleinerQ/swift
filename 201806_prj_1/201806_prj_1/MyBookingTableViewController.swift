@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 class MyBookingTableViewController: UITableViewController,CLLocationManagerDelegate {
     
+    @IBOutlet weak var uniLabelHeight: NSLayoutConstraint!
     
     @IBOutlet weak var roundTicketSegment: MySegmentedControl!
     
@@ -18,11 +19,10 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
     
     var isCollapse:Bool = true
     var isCollapseDiscountCell:Bool = true
-    
+    var toggleTag = false
     @IBOutlet weak var uniLabel: UILabel!
     
     
-    @IBOutlet weak var numberTicketCellHeightConstraint: NSLayoutConstraint!
     
     let lm = CLLocationManager()
 
@@ -187,7 +187,9 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
             myNumberTicketVC.numberOfType = 5
             myNumberTicketVC.pickViewUniLabel.isHidden = false
             myNumberTicketVC.numberTicketPicker.reloadAllComponents()
-                        numberTicketCellHeightConstraint.constant += uniLabel.frame.size.height
+//            numberTicketCellHeightConstraint.constant = 0
+//            uniLabelHeight.constant = 20
+            toggleTag = !toggleTag
             bookingTableView.beginUpdates()
             bookingTableView.endUpdates()
 
@@ -198,10 +200,12 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
             myNumberTicketVC.numberTicketPicker.reloadAllComponents()
            
             myNumberTicketVC.pickViewUniLabel.isHidden = true
+//            uniLabel.text = ""
             (view.viewWithTag(800) as! UILabel).isHidden = true
-            
+//            uniLabelHeight.constant = 0
 
-            numberTicketCellHeightConstraint.constant -= uniLabel.frame.size.height
+            toggleTag = !toggleTag
+//            numberTicketCellHeightConstraint.constant = 0
             bookingTableView.beginUpdates()
             bookingTableView.endUpdates()
             
@@ -218,6 +222,9 @@ class MyBookingTableViewController: UITableViewController,CLLocationManagerDeleg
         
         if indexPath.row == 5, isCollapseDiscountCell{
             return 0
+        }
+        if indexPath.row == 7, toggleTag {
+            return (2 * uniLabelHeight.constant + 20)
         }
         return UITableViewAutomaticDimension
     }
