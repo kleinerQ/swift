@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC1A552C20F1DB4E007596CF /* rainPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A552B20F1DB4E007596CF /* rainPopViewController.swift */; };
+		AC1A552E20F1DD91007596CF /* CircleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1A552D20F1DD91007596CF /* CircleViewController.swift */; };
 		AC752EBA20E762BB0068CC62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC752EB920E762BB0068CC62 /* AppDelegate.swift */; };
 		AC752EBC20E762BB0068CC62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC752EBB20E762BB0068CC62 /* ViewController.swift */; };
 		AC752EBF20E762BB0068CC62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC752EBD20E762BB0068CC62 /* Main.storyboard */; };
 		AC752EC120E762BE0068CC62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC752EC020E762BE0068CC62 /* Assets.xcassets */; };
 		AC752EC420E762BE0068CC62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC752EC220E762BE0068CC62 /* LaunchScreen.storyboard */; };
+		AC752ECC20E7671B0068CC62 /* StreamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC752ECB20E7671B0068CC62 /* StreamingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC1A552B20F1DB4E007596CF /* rainPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rainPopViewController.swift; sourceTree = "<group>"; };
+		AC1A552D20F1DD91007596CF /* CircleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleViewController.swift; sourceTree = "<group>"; };
 		AC752EB620E762BB0068CC62 /* finalPrj_chihyen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finalPrj_chihyen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC752EB920E762BB0068CC62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC752EBB20E762BB0068CC62 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,8 @@
 		AC752EC020E762BE0068CC62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC752EC320E762BE0068CC62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC752EC520E762BE0068CC62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC752ECB20E7671B0068CC62 /* StreamingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingViewController.swift; sourceTree = "<group>"; };
+		AC752EEB20EF484E0068CC62 /* finalPrj_chihyen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = finalPrj_chihyen.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +61,12 @@
 		AC752EB820E762BB0068CC62 /* finalPrj_chihyen */ = {
 			isa = PBXGroup;
 			children = (
+				AC752EEB20EF484E0068CC62 /* finalPrj_chihyen.entitlements */,
 				AC752EB920E762BB0068CC62 /* AppDelegate.swift */,
 				AC752EBB20E762BB0068CC62 /* ViewController.swift */,
+				AC752ECB20E7671B0068CC62 /* StreamingViewController.swift */,
+				AC1A552D20F1DD91007596CF /* CircleViewController.swift */,
+				AC1A552B20F1DB4E007596CF /* rainPopViewController.swift */,
 				AC752EBD20E762BB0068CC62 /* Main.storyboard */,
 				AC752EC020E762BE0068CC62 /* Assets.xcassets */,
 				AC752EC220E762BE0068CC62 /* LaunchScreen.storyboard */,
@@ -96,6 +107,11 @@
 				TargetAttributes = {
 					AC752EB520E762BB0068CC62 = {
 						CreatedOnToolsVersion = 9.4;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -137,6 +153,9 @@
 			files = (
 				AC752EBC20E762BB0068CC62 /* ViewController.swift in Sources */,
 				AC752EBA20E762BB0068CC62 /* AppDelegate.swift in Sources */,
+				AC1A552E20F1DD91007596CF /* CircleViewController.swift in Sources */,
+				AC1A552C20F1DB4E007596CF /* rainPopViewController.swift in Sources */,
+				AC752ECC20E7671B0068CC62 /* StreamingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,14 +299,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = finalPrj_chihyen/finalPrj_chihyen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76T5KWEPVV;
 				INFOPLIST_FILE = finalPrj_chihyen/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "tw.iii.finalPrj-chihyen";
+				PRODUCT_BUNDLE_IDENTIFIER = "Simon-Chang.-socketchat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -298,14 +319,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = finalPrj_chihyen/finalPrj_chihyen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76T5KWEPVV;
 				INFOPLIST_FILE = finalPrj_chihyen/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "tw.iii.finalPrj-chihyen";
+				PRODUCT_BUNDLE_IDENTIFIER = "Simon-Chang.-socketchat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

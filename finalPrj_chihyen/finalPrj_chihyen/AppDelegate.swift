@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,10 +16,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert,.badge,.sound]){ (granted, error) in
+            if granted {
+                
+                DispatchQueue.main.async {
+                    application.registerForRemoteNotifications()
+                    center.setNotificationCategories(self.setCategories())
+                    let content = UNMutableNotificationContent()
+                    content.categoryIdentifier = "c1"
+                }
+            }
+            
+        }
         // Override point for customization after application launch.
         return true
     }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.map {String(format: "%02.2hhx", $0)}.joined()
+        print(token)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print(error)
+    }
 
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -30,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
+        application.applicationIconBadgeNumber = 0
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
 
@@ -41,6 +67,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func setCategories() -> Set<UNNotificationCategory>{
+        
+        var set = Set<UNNotificationCategory>()
+        
+        let a1 = UNNotificationAction(
+            identifier: "a1", title: "按鈕1", options: []
+        )
+        
+        let c1 = UNNotificationCategory(
+        
+            identifier: "c1", actions: [a1], intentIdentifiers: [], options: []
+        )
+     
+        set.insert(c1)
+        return set
+        
+        
+        
+    }
+    
+    
+    
 
 }
 

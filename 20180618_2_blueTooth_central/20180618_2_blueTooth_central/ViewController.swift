@@ -75,7 +75,7 @@ class ViewController: UIViewController,CBCentralManagerDelegate,CBPeripheralDele
         }
         print("找到藍牙裝置: \(deviceName)")
         
-        guard deviceName.range(of: "我的ABC 裝置") != nil || deviceName.range(of: "MacBook") != nil else {
+        guard deviceName.range(of: "kleinerq") != nil || deviceName.range(of: "Kleinerq") != nil else {
             return
         }
         
