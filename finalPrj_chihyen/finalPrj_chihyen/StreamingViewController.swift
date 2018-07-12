@@ -10,27 +10,7 @@ import UIKit
 import WebKit
 class StreamingViewController: UIViewController {
 
-    @IBAction func onSwitchStreaming(_ sender: UISwitch) {
-        
-        if sender.isOn{
-            
 
-            
-
-            
-            //streamingWebView.reload()
-            
-            print("On")
-
-            
-        }else{
-
-            
-
-            print("Off")
-            
-        }
-    }
     
     @IBOutlet weak var streamingWebView: WKWebView!
     override func viewDidLoad() {
@@ -64,12 +44,12 @@ class StreamingViewController: UIViewController {
                 
             }catch{
                 
-                print("Error")
+                print("Open Streaming Fail")
             }
             
             
         }
-        print("SDFg")
+        //print("SDFg")
         sleep(4)
         let url = URL(string: "http://192.168.211.153/streaming/stream.m3u8")
         let request = URLRequest(url: url!)
@@ -81,9 +61,15 @@ class StreamingViewController: UIViewController {
         let stopStreamUrl = URL(string: "http://192.168.211.153/cgi-bin/stopStreaming.cgi")
         
         DispatchQueue.global().async {
-            let _ = try! String(contentsOf: stopStreamUrl!)
+            do{
+                let _ = try String(contentsOf: stopStreamUrl!)
+            }catch{
+                
+                print("Stop Streaming Fail")
+            }
+            
         }
-        print("viewdiddisAppear")
+        //print("viewdiddisAppear")
     }
     /*
     // MARK: - Navigation

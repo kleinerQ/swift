@@ -18,13 +18,39 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     @IBAction func onClickOpenLockBtn(_ sender: Any) {
         
         DispatchQueue.global().async {
-            let _ = try! String(contentsOf: self.url!)
+            do{
+                
+                let _ = try String(contentsOf: self.url!)
+                
+            }catch{
+                
+                print("Open Lock Fail")
+                
+            }
+            
+            
+
             
         }
         
+        //print("btn pressed")
+        let image2 = UIImage(named: "unlock.png")
+        self.openLockBtn.setImage(image2, for: .normal)
+        
+        var timer:Timer!
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
+        
+//        sleep(3)
+//        let image = UIImage(named: "lock.png")
+//        self.openLockBtn.setImage(image, for: .normal)
         
     }
     
+    @objc func runTimedCode(){
+        let image = UIImage(named: "lock.png")
+        self.openLockBtn.setImage(image, for: .normal)
+        
+    }
     @IBOutlet weak var openLockBtn: UIButton!
     let lm = CLLocationManager()
     override func viewDidLoad() {
@@ -42,34 +68,55 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         // 用來接收進入區域或離開區域的通知。觸發2號與3號method
         lm.startMonitoring(for: region)
         // Do any additional setup after loading the view, typically from a nib.
+        let image = UIImage(named: "lock.png")
+        openLockBtn.setImage(image, for: .normal)
+        openLockBtn.imageEdgeInsets = UIEdgeInsetsMake(150,150, 150,150);
         
-
     }
     override func viewDidAppear(_ animated: Bool) {
-
+        print("BBBBAAAA")
     }
+    
+    
+    var blueToothDetect: Set = [false,false,false]
+    var blueToothDetectCounter = 0
     /* 1號method */
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         for beacon in beacons {
             print("major=\(beacon.major) minor=\(beacon.minor) accury=\(beacon.accuracy) rssi=\(beacon.rssi)")
+            
             switch beacon.proximity {
             case .far:
                 print("beacon距離遠")
-                openLockBtn.isEnabled = false
+                //openLockBtn.isEnabled = false
                 
             case .near:
                 print("beacon距離近")
-                openLockBtn.isEnabled = false
+                //openLockBtn.isEnabled = false
                 
             case .immediate:
                 print("beacon就在旁邊")
-                openLockBtn.isEnabled = true
+                //openLockBtn.isEnabled = true
+                blueToothDetect.insert(true)
                 
             case .unknown:
                 print("beacon距離未知")
+                //openLockBtn.isEnabled = false
+            }
+            
+            if blueToothDetect.contains(true){
+                openLockBtn.isEnabled = true
+            }else{
                 openLockBtn.isEnabled = false
             }
+            
         }
+        
+        blueToothDetectCounter += 1
+        if blueToothDetectCounter % 3 == 0{
+            blueToothDetect = []
+        }
+        
     }
     
     /* 2號method */
@@ -89,6 +136,10 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        print("AAAABBBBB")
+    }
 
+    
 }
 

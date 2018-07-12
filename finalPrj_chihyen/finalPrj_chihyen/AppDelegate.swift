@@ -10,7 +10,7 @@ import UIKit
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -18,14 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         let center = UNUserNotificationCenter.current()
+        center.delegate = self
         center.requestAuthorization(options: [.alert,.badge,.sound]){ (granted, error) in
             if granted {
                 
                 DispatchQueue.main.async {
-                    application.registerForRemoteNotifications()
                     center.setNotificationCategories(self.setCategories())
-                    let content = UNMutableNotificationContent()
-                    content.categoryIdentifier = "c1"
+                    application.registerForRemoteNotifications()
+                    
+//                    let content = UNMutableNotificationContent()
+//                    content.categoryIdentifier = "c1"
                 }
             }
             
@@ -72,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var set = Set<UNNotificationCategory>()
         
         let a1 = UNNotificationAction(
-            identifier: "a1", title: "按鈕1", options: []
+            identifier: "a1", title: "按鈕1", options: [.foreground]
         )
         
         let c1 = UNNotificationCategory(
@@ -87,6 +89,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        //print("1111111")
+        let action = response.actionIdentifier
+        _ = response.notification.request
+        if action == "a1"{
+            print("asadfsdfasdfsaf")
+            let tabbarcontroller = self.window?.rootViewController as! tabBarViewController
+            
+            tabbarcontroller.selectedIndex = 3
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeViewController = storyboard.instantiateViewController(withIdentifier: "NotiVC") as! breakInPhotoViewController
+            self.window?.rootViewController?.navigationController?.present(homeViewController, animated: true, completion: nil)
+            
+            
+            
+        }
+        completionHandler()
+    }
     
     
 

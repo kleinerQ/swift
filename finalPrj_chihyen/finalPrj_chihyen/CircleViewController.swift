@@ -10,7 +10,7 @@ import UIKit
 
 class CircleViewController: UIViewController {
     
-    var currentValue:CGFloat = 0
+    var currentValue:CGFloat? = nil
     
     
     func drawCircle(withColor color: CGColor) -> CAShapeLayer{
@@ -90,9 +90,15 @@ class CircleViewController: UIViewController {
         
         let ani = CAKeyframeAnimation(keyPath: "strokeColor")
         ani.duration = 3
-        
-        ani.values = [UIColor.red.cgColor,UIColor.green.cgColor]
-        
+        if Int(currentValue!) < 30{
+            ani.values = [UIColor.green.cgColor,UIColor.green.cgColor]
+        }else if Int(currentValue!) < 60{
+            ani.values = [UIColor.green.cgColor,UIColor.yellow.cgColor]
+        }else{
+            
+            ani.values = [UIColor.green.cgColor,UIColor.red.cgColor]
+            
+        }
         
         
         ani.isRemovedOnCompletion = false
@@ -113,20 +119,25 @@ class CircleViewController: UIViewController {
         //bgLayer.add(strokeEndAnimation(to: 10), forKey: nil)
         view.layer.addSublayer(bgLayer)
         
-        
-        let currentColor = UIColor.white
-        let currentLayer = drawCircle(withColor: currentColor.cgColor)
-        currentLayer.add(strokeEndAnimationSlow(to: currentValue), forKey: nil)
-        currentLayer.add(strokeEndAnimationChangeColor(to: currentValue), forKey: nil)
-        view.layer.addSublayer(currentLayer)
-        
+        if let currentValue = currentValue{
+            let currentColor = UIColor.white
+            let currentLayer = drawCircle(withColor: currentColor.cgColor)
+            currentLayer.add(strokeEndAnimationSlow(to: currentValue), forKey: nil)
+            currentLayer.add(strokeEndAnimationChangeColor(to: currentValue), forKey: nil)
+            label.text = "\(Int(currentValue)) % "
+            view.layer.addSublayer(currentLayer)
+        }else{
+            
+            label.text = "請輸入區域 "
+            
+        }
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        label.text = "\(Int(currentValue)) % "
+        //label.text = " 請選擇區域 "
         
         // Do any additional setup after loading the view.
     }

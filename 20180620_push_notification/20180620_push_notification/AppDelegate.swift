@@ -99,7 +99,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         var set = Set<UNNotificationCategory>()
         
         let a1 = UNNotificationAction(
-            identifier: "a1", title: "按鈕1", options: []
+            identifier: "a1", title: "按鈕1", options: [.foreground]
+            
         )
         
         let c1 = UNNotificationCategory(
@@ -131,6 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
 
     
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print("adsf")
         let action = response.actionIdentifier
@@ -139,15 +141,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if action == "a1"{
             
             print("AAA")
+//            self.window = UIWindow(frame: UIScreen.main.bounds)
+//
+//
+//            let storyboard = UIStoryboard(name: "Main", bundle: Bundle(identifier: "tw.iii.-0180620-push"))
+            let tabbarcontroller = self.window?.rootViewController as! tabBarViewController
+            
+            tabbarcontroller.selectedIndex = 2
             
             
-
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let NotiVC = storyboard.instantiateViewController(withIdentifier: "NotiVC") as! ViewController
-            print(NotiVC.url)
-
-
-            self.window?.rootViewController?.present(NotiVC, animated: true, completion: {})//            var presentedVC = self.window?.rootViewController as! ViewController
+            var homeViewController = storyboard.instantiateViewController(withIdentifier: "NotiVC") as! ViewController
+            self.window?.rootViewController?.navigationController?.present(homeViewController, animated: true, completion: nil)
+            
+            
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let NotiVC = storyboard.instantiateViewController(withIdentifier: "NotiVC") as! ViewController
+//
+//
+//
+//            print(NotiVC.url)
+//            //self.window?.rootViewController = NotiVC
+//            self.window?.rootViewController?.present(NotiVC, animated: true, completion: nil)
+//
+//
+            //self.window?.rootViewController?.present(NotiVC, animated: false, completion: nil)
+            //            var presentedVC = self.window?.rootViewController as! ViewController
+            
+//            self.window?.makeKeyAndVisible()
             
 //            while (presentedVC.presentedViewController != nil)  {
 //                print("BBB")

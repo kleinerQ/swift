@@ -1,3 +1,4 @@
+
 //
 //  rainPopViewController.swift
 //  finalPrj_chihyen
@@ -64,16 +65,21 @@ class rainPopViewController: UIViewController,UIPickerViewDelegate,UIPickerViewD
                 let rainPop = (((closestTimePop ["elementValue"] as! NSArray)[0]) as! NSDictionary )["value"] as! String
                 print(Int(rainPop))
                 
+                circleView.currentValue = CGFloat(Int(rainPop)!)
+                print(circleView.currentValue)
+                circleView.viewDidAppear(true)
+                
+                
                 
                 let rainSignURL = "http://192.168.211.153/cgi-bin/rainPossibilityLedCellControl.cgi?rainPossibility="
                 let showLEDUrl = URL(string: (rainSignURL + rainPop))
                 DispatchQueue.global().async {
                     do{
-                        let _ = try! String(contentsOf: showLEDUrl!)
+                        let _ = try String(contentsOf: showLEDUrl!)
                         
                     }catch{
                         
-                        print("Read Pi fail")
+                        print("Read Pi Fail")
                     }
                     
                 }
@@ -87,13 +93,24 @@ class rainPopViewController: UIViewController,UIPickerViewDelegate,UIPickerViewD
         
     }
     
+    var circleView = CircleViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("AA")
-        for VC in self.parent?.childViewControllers{
-            
+        //print(self.view.subviews)
+        
+        
+        for vc in (self.childViewControllers) {
+            if vc.restorationIdentifier == "circleView" {
+                print(vc)
+                circleView = vc as! CircleViewController
+                
+                //print(circleView.currentValue)
+                break
+            }
         }
-        print(self.parent?.childViewControllers)
+        
         print("BB")
         // Do any additional setup after loading the view.
     }

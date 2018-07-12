@@ -15,6 +15,8 @@
 		AC752EC120E762BE0068CC62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC752EC020E762BE0068CC62 /* Assets.xcassets */; };
 		AC752EC420E762BE0068CC62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC752EC220E762BE0068CC62 /* LaunchScreen.storyboard */; };
 		AC752ECC20E7671B0068CC62 /* StreamingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC752ECB20E7671B0068CC62 /* StreamingViewController.swift */; };
+		ACD2D91E20F4883B00EE2DDA /* breakInPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD2D91D20F4883B00EE2DDA /* breakInPhotoViewController.swift */; };
+		ACD2D92020F48FC900EE2DDA /* tabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD2D91F20F48FC900EE2DDA /* tabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		AC752EC520E762BE0068CC62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC752ECB20E7671B0068CC62 /* StreamingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingViewController.swift; sourceTree = "<group>"; };
 		AC752EEB20EF484E0068CC62 /* finalPrj_chihyen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = finalPrj_chihyen.entitlements; sourceTree = "<group>"; };
+		ACD2D91D20F4883B00EE2DDA /* breakInPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = breakInPhotoViewController.swift; sourceTree = "<group>"; };
+		ACD2D91F20F48FC900EE2DDA /* tabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 				AC1A552D20F1DD91007596CF /* CircleViewController.swift */,
 				AC1A552B20F1DB4E007596CF /* rainPopViewController.swift */,
 				AC752EBD20E762BB0068CC62 /* Main.storyboard */,
+				ACD2D91F20F48FC900EE2DDA /* tabBarViewController.swift */,
+				ACD2D91D20F4883B00EE2DDA /* breakInPhotoViewController.swift */,
 				AC752EC020E762BE0068CC62 /* Assets.xcassets */,
 				AC752EC220E762BE0068CC62 /* LaunchScreen.storyboard */,
 				AC752EC520E762BE0068CC62 /* Info.plist */,
@@ -154,7 +160,9 @@
 				AC752EBC20E762BB0068CC62 /* ViewController.swift in Sources */,
 				AC752EBA20E762BB0068CC62 /* AppDelegate.swift in Sources */,
 				AC1A552E20F1DD91007596CF /* CircleViewController.swift in Sources */,
+				ACD2D92020F48FC900EE2DDA /* tabBarViewController.swift in Sources */,
 				AC1A552C20F1DB4E007596CF /* rainPopViewController.swift in Sources */,
+				ACD2D91E20F4883B00EE2DDA /* breakInPhotoViewController.swift in Sources */,
 				AC752ECC20E7671B0068CC62 /* StreamingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
