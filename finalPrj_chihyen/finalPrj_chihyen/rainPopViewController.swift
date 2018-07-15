@@ -66,7 +66,16 @@ class rainPopViewController: UIViewController,UIPickerViewDelegate,UIPickerViewD
                 print(Int(rainPop))
                 
                 circleView.currentValue = CGFloat(Int(rainPop)!)
+                circleView.currentValue = CGFloat(100)
                 print(circleView.currentValue)
+            
+                circleView.addLayerFlag = true
+
+//
+//                
+//                //bgLayer.add(strokeEndAnimation(to: 10), forKey: nil)
+//                
+                
                 circleView.viewDidAppear(true)
                 
                 
@@ -75,7 +84,7 @@ class rainPopViewController: UIViewController,UIPickerViewDelegate,UIPickerViewD
                 let showLEDUrl = URL(string: (rainSignURL + rainPop))
                 DispatchQueue.global().async {
                     do{
-                        let _ = try String(contentsOf: showLEDUrl!)
+                        //let _ = try String(contentsOf: showLEDUrl!)
                         
                     }catch{
                         

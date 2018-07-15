@@ -10,21 +10,62 @@ import UIKit
 
 class CircleViewController: UIViewController {
     
+    let url = URL(string: "http://192.168.43.6/cgi-bin/openLockerCgi.cgi")
+    @IBOutlet weak var openLockBtn: UIButton!
+    @IBAction func onClickOpenLockBtn(_ sender: Any) {
+        
+        DispatchQueue.global().async {
+            do{
+                
+                let _ = try String(contentsOf: self.url!)
+                
+            }catch{
+                
+                print("Open Lock Fail")
+                
+            }
+            
+            
+            
+            
+        }
+        
+        //print("btn pressed")
+        let image2 = UIImage(named: "unlock.png")
+        self.openLockBtn.setImage(image2, for: .normal)
+        
+        var timer:Timer!
+        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
+        currentValue = 100
+        addLayerFlag = true
+        viewDidAppear(true)
+        
+        
+    }
+    
     var currentValue:CGFloat? = nil
     
+    @objc func runTimedCode(){
+        let image = UIImage(named: "lock.png")
+        self.openLockBtn.setImage(image, for: .normal)
+        
+    }
     
     func drawCircle(withColor color: CGColor) -> CAShapeLayer{
         
         var radius:CGFloat = 0
-        let paintLineWidth:CGFloat = 20
+        let paintLineWidth:CGFloat = 9
         //horizental
+
+
+        
         if view.frame.size.width > view.frame.size.height {
             
-            radius = view.frame.size.height / 2 - paintLineWidth / 2
+            radius = view.frame.size.height / 2 - 4 * paintLineWidth / 2
             
         }else{
             
-            radius = view.frame.size.width / 2 - paintLineWidth / 2
+            radius = view.frame.size.width / 2 - 4.5 * paintLineWidth / 2
             
         }
         
@@ -33,8 +74,8 @@ class CircleViewController: UIViewController {
         let circlePath = UIBezierPath(
             arcCenter: CGPoint(x: view.center.x, y: view.center.y),
             radius: radius,
-            startAngle: 120 * CGFloat.pi / 180 ,        //radius
-            endAngle: 420 * CGFloat.pi / 180,
+            startAngle: -90 * CGFloat.pi / 180 ,        //radius
+            endAngle: 270 * CGFloat.pi / 180,
             clockwise: true)
         shapeLayer.strokeColor = color
         shapeLayer.fillColor = UIColor.clear.cgColor
@@ -49,10 +90,50 @@ class CircleViewController: UIViewController {
         
     }
 
+    
+    func drawCircle2(withColor color: CGColor) -> CAShapeLayer{
+        
+        var radius:CGFloat = 0
+        let paintLineWidth:CGFloat = 18
+        //horizental
+        
+        
+        
+        if view.frame.size.width > view.frame.size.height {
+            
+            radius = view.frame.size.height / 2 - 2 * paintLineWidth / 2
+            
+        }else{
+            
+            radius = view.frame.size.width / 2 - 2 * paintLineWidth / 2
+            
+        }
+        
+        
+        let shapeLayer = CAShapeLayer()
+        let circlePath = UIBezierPath(
+            arcCenter: CGPoint(x: view.center.x, y: view.center.y),
+            radius: radius,
+            startAngle: -90 * CGFloat.pi / 180 ,        //radius
+            endAngle: 270 * CGFloat.pi / 180,
+            clockwise: true)
+        shapeLayer.strokeColor = color
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.lineWidth = paintLineWidth
+        shapeLayer.path = circlePath.cgPath
+        
+        
+        
+        return shapeLayer
+        
+        //119 103 69
+        
+    }
+    
     func strokeEndAnimation(to: CGFloat)-> CABasicAnimation {
         
         let ani = CABasicAnimation(keyPath: "strokeEnd")
-        ani.duration = 3
+        ani.duration = 2
         ani.fromValue = 0
         ani.toValue = to / 100.0
         ani.isRemovedOnCompletion = false
@@ -90,16 +171,17 @@ class CircleViewController: UIViewController {
         
         let ani = CAKeyframeAnimation(keyPath: "strokeColor")
         ani.duration = 3
-        if Int(currentValue!) < 30{
-            ani.values = [UIColor.green.cgColor,UIColor.green.cgColor]
-        }else if Int(currentValue!) < 60{
-            ani.values = [UIColor.green.cgColor,UIColor.yellow.cgColor]
-        }else{
-            
-            ani.values = [UIColor.green.cgColor,UIColor.red.cgColor]
-            
-        }
+//        if Int(currentValue!) < 30{
+//            ani.values = [UIColor.green.cgColor,UIColor.green.cgColor]
+//        }else if Int(currentValue!) < 60{
+//            ani.values = [UIColor.green.cgColor,UIColor.yellow.cgColor]
+//        }else{
+//
+//            ani.values = [UIColor.green.cgColor,UIColor.red.cgColor]
+//
+//        }
         
+        ani.values = [UIColor.green.cgColor,UIColor.green.cgColor]
         
         ani.isRemovedOnCompletion = false
         
@@ -111,31 +193,82 @@ class CircleViewController: UIViewController {
     
     
     @IBOutlet weak var label: UILabel!
+    var addLayerFlag = false
+    func addLayer(){
+        let bgColor = UIColor(red: 200/255.0 , green: 200/255.0, blue: 200/255.0, alpha: 1)
+        let bgLayer3 = drawCircle2(withColor: bgColor.cgColor)
+        bgLayer3.name = "Layer3";
+        self.view.layer.addSublayer(bgLayer3)
+        
+        while true{
+            if self.view.layer.
+            sleep(1)
+        }
+    }
+    
+    @objc func rmLayer(){
+        for layer in self.view.layer.sublayers!{
+            if layer.name == "Layer3"{
+                layer.removeFromSuperlayer()
+            }
+        }
+        
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let bgColor = UIColor(red: 119/255.0 , green: 103/255.0, blue: 69/255.0, alpha: 1)
+    
         
+//        for layer in self.view.layer.sublayers!{
+//            layer.removeFromSuperlayer()
+//            
+//        }
+        let bgColor = UIColor(red: 0/255.0 , green: 255/255.0, blue: 0/255.0, alpha: 1)
+        let bgColor2 = UIColor(red: 255/255.0 , green: 255/255.0, blue: 255/255.0, alpha: 1)
         let bgLayer = drawCircle(withColor: bgColor.cgColor)
+        let bgLayer2 = drawCircle2(withColor: bgColor2.cgColor)
         //bgLayer.add(strokeEndAnimation(to: 10), forKey: nil)
+        bgLayer.name = "Layer1";
+        bgLayer2.name = "Layer2";
+        view.layer.addSublayer(bgLayer2)
         view.layer.addSublayer(bgLayer)
         
+        print(addLayerFlag)
+        if addLayerFlag{
+            print("GGGGGG")
+            addLayer()
+
+        }else{
+            
+        }
+
         if let currentValue = currentValue{
             let currentColor = UIColor.white
             let currentLayer = drawCircle(withColor: currentColor.cgColor)
+            //let currentLayer2 = drawCircle(withColor: currentColor.cgColor)
             currentLayer.add(strokeEndAnimationSlow(to: currentValue), forKey: nil)
             currentLayer.add(strokeEndAnimationChangeColor(to: currentValue), forKey: nil)
-            label.text = "\(Int(currentValue)) % "
+            //label.text = "\(Int(currentValue)) % "
             view.layer.addSublayer(currentLayer)
         }else{
             
-            label.text = "請輸入區域 "
+            //label.text = "請輸入區域 "
             
         }
+        
+        addLayerFlag = false
+        currentValue = nil
+        
+        var timer:Timer!
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(rmLayer), userInfo: nil, repeats: false)
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        //self.view.frame.size.height = self.view.frame.size.width
+        //self.view.layer.cornerRadius = self.view.frame.size.width
 
         //label.text = " 請選擇區域 "
         

@@ -13,7 +13,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
 
     
-    let url = URL(string: "http://192.168.211.153/cgi-bin/openLockerCgi.cgi")
+    let url = URL(string: "http://192.168.43.6/cgi-bin/openLockerCgi.cgi")
     
     @IBAction func onClickOpenLockBtn(_ sender: Any) {
         
@@ -55,7 +55,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     let lm = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         lm.requestAlwaysAuthorization()
         lm.requestWhenInUseAuthorization()
         lm.delegate = self

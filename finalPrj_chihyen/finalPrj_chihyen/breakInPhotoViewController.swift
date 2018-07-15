@@ -12,7 +12,7 @@ import WebKit
 class breakInPhotoViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
 
     @IBOutlet weak var webView: WKWebView!
-    var startUrl = "http://192.168.211.153/streaming/streamingFile"
+    var startUrl = "http://192.168.43.6/streaming/streamingFile"
     var pageTitle: String?
     var requestUrl: String?
     
@@ -73,9 +73,8 @@ class breakInPhotoViewController: UIViewController, WKUIDelegate, WKNavigationDe
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        print("AAsafdsf")
+    override func viewWillAppear(_ animated: Bool) {
         webView.reload()
     }
+
 }
