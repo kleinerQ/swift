@@ -35,7 +35,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         
         //print("btn pressed")
         let image2 = UIImage(named: "unlock.png")
-        self.openLockBtn.setImage(image2, for: .normal)
+        //self.openLockBtn.setImage(image2, for: .normal)
         
         var timer:Timer!
         timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
@@ -48,17 +48,38 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
     @objc func runTimedCode(){
         let image = UIImage(named: "lock.png")
-        self.openLockBtn.setImage(image, for: .normal)
+        //self.openLockBtn.setImage(image, for: .normal)
         
     }
-    @IBOutlet weak var openLockBtn: UIButton!
+    //@IBOutlet weak var openLockBtn: UIButton!
+    
+    var circleViewVC: CircleViewController!
+    
     let lm = CLLocationManager()
     override func viewDidLoad() {
+        
+        
+        
+        
         super.viewDidLoad()
+        
+        
+        
+        
+        for vc in (self.childViewControllers) {
+            if vc.restorationIdentifier == "CircleView" {
+                circleViewVC = vc as! CircleViewController
+                break
+            }
+        }
+        
+        
         lm.requestAlwaysAuthorization()
         lm.requestWhenInUseAuthorization()
         lm.delegate = self
-        openLockBtn.isEnabled = false
+        //openLockBtn.isEnabled = false
+        //openLockBtn.isHidden = true
+        circleViewVC.openLockBtn.isEnabled = true
         let uuid = UUID(uuidString: "E20A39F4-73F5-4BC4-A12F-17D1AD07A961") //Brand ID
         let region = CLBeaconRegion(proximityUUID: uuid!, identifier: "myregion")
         
@@ -68,8 +89,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         lm.startMonitoring(for: region)
         // Do any additional setup after loading the view, typically from a nib.
         let image = UIImage(named: "lock.png")
-        openLockBtn.setImage(image, for: .normal)
-        openLockBtn.imageEdgeInsets = UIEdgeInsetsMake(150,150, 150,150);
+        //openLockBtn.setImage(image, for: .normal)
+        //openLockBtn.imageEdgeInsets = UIEdgeInsetsMake(150,150, 150,150);
         
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -96,6 +117,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             case .immediate:
                 print("beacon就在旁邊")
                 //openLockBtn.isEnabled = true
+                
                 blueToothDetect.insert(true)
                 
             case .unknown:
@@ -104,9 +126,12 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             }
             
             if blueToothDetect.contains(true){
-                openLockBtn.isEnabled = true
+                //
+                //openLockBtn.isEnabled = true
+                circleViewVC.openLockBtn.isEnabled = true
             }else{
-                openLockBtn.isEnabled = false
+                //openLockBtn.isEnabled = false
+                circleViewVC.openLockBtn.isEnabled = false
             }
             
         }
