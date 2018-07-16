@@ -15,6 +15,18 @@ class CircleViewController: UIViewController {
     @IBOutlet weak var openLockBtn: UIButton!
     @IBAction func onClickOpenLockBtn(_ sender: Any) {
         
+        
+        for layer in self.view.layer.sublayers!{
+            
+            print(layer.name)
+            if layer.name == "LayerWhite" || layer.name == "LayerGreen" || layer.name == "LayerGreenAni" || layer.name == "LayerGrey" {
+                print("AA")
+                layer.removeFromSuperlayer()
+            }
+            
+        }
+        
+        
         DispatchQueue.global().async {
             do{
                 
@@ -35,11 +47,11 @@ class CircleViewController: UIViewController {
         let image2 = UIImage(named: "unlock.png")
         self.openLockBtn.setImage(image2, for: .normal)
         self.openLockBtn.isEnabled = false
+        
         var timer:Timer!
-        timer = Timer.scheduledTimer(timeInterval: 3.1, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
-        currentValue = 100
-        addGreyLayerFlag = true
-        viewDidAppear(true)
+        timer = Timer.scheduledTimer(timeInterval: 3.1, target: self, selector: #selector(goLockStatus), userInfo: nil, repeats: false)
+        addGreyLayer()
+        addGreenInnerLayerAnimation()
         
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
@@ -60,10 +72,14 @@ class CircleViewController: UIViewController {
     
     var currentValue:CGFloat? = nil
     
-    @objc func runTimedCode(){
+    @objc func goLockStatus(){
         let image = UIImage(named: "lock.png")
         self.openLockBtn.setImage(image, for: .normal)
         self.openLockBtn.isEnabled = true
+        addWhiteLayer()
+        addGreenInnerLayer()
+        
+        
     }
     
     func drawCircle(withColor color: CGColor) -> CAShapeLayer{
@@ -106,7 +122,7 @@ class CircleViewController: UIViewController {
     }
 
     
-    func drawCircle2(withColor color: CGColor) -> CAShapeLayer{
+    func drawCircleOuter(withColor color: CGColor) -> CAShapeLayer{
         
         var radius:CGFloat = 0
         let paintLineWidth:CGFloat = 18
@@ -210,27 +226,48 @@ class CircleViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
     var addGreyLayerFlag = false
     func addGreyLayer(){
-        let bgColor = UIColor(red: 200/255.0 , green: 200/255.0, blue: 200/255.0, alpha: 1)
-        let bgLayer3 = drawCircle2(withColor: bgColor.cgColor)
-        bgLayer3.name = "Layer3";
-        self.view.layer.addSublayer(bgLayer3)
-        
-//        while true{
-//
-//            for layer in self.view.layer.sublayers!{
-//                if layer.name == "Layer3"{
-//                    layer.removeFromSuperlayer()
-//                    break
-//                }
-//            }
-//            sleep(1)
-//            
-//        }
+        let bgColorGrey = UIColor(red: 200/255.0 , green: 200/255.0, blue: 200/255.0, alpha: 1)
+        let bgLayerGrey = drawCircleOuter(withColor: bgColorGrey.cgColor)
+        bgLayerGrey.name = "LayerGrey";
+        view.layer.addSublayer(bgLayerGrey)
+
     }
+    
+    func addWhiteLayer(){
+        let bgColorGrey = UIColor(red: 255/255.0 , green: 255/255.0, blue: 255/255.0, alpha: 1)
+        let bgLayerGrey = drawCircleOuter(withColor: bgColorGrey.cgColor)
+        bgLayerGrey.name = "LayerWhite";
+        view.layer.addSublayer(bgLayerGrey)
+        
+
+    }
+    
+    func addGreenInnerLayer(){
+        let bgColorGrey = UIColor(red: 0/255.0 , green: 255/255.0, blue: 0/255.0, alpha: 1)
+        let bgLayerGrey = drawCircle(withColor:bgColorGrey.cgColor)
+        bgLayerGrey.name = "LayerGreen";
+        view.layer.addSublayer(bgLayerGrey)
+        
+        
+    }
+    
+    func addGreenInnerLayerAnimation(){
+
+        
+        let currentColor = UIColor.green
+        let currentLayer = drawCircle(withColor: currentColor.cgColor)
+        currentLayer.name = "LayerGreenAni"
+        currentLayer.add(strokeEndAnimationSlow(to: 100), forKey: nil)
+
+        view.layer.addSublayer(currentLayer)
+        
+        
+    }
+    
     
     @objc func rmLayer(){
         for layer in self.view.layer.sublayers!{
-            if layer.name == "Layer3"{
+            if layer.name == "Layer3", layer.name == "Layer2",layer.name == "Layer1"{
                 layer.removeFromSuperlayer()
             }
         }
@@ -240,53 +277,25 @@ class CircleViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     
+    
         
-//        for layer in self.view.layer.sublayers!{
-//            layer.removeFromSuperlayer()
-//            
-//        }
-        let bgColor = UIColor(red: 0/255.0 , green: 255/255.0, blue: 0/255.0, alpha: 1)
-        let bgColor2 = UIColor(red: 255/255.0 , green: 255/255.0, blue: 255/255.0, alpha: 1)
-        let bgLayer = drawCircle(withColor: bgColor.cgColor)
-        let bgLayer2 = drawCircle2(withColor: bgColor2.cgColor)
-        //bgLayer.add(strokeEndAnimation(to: 10), forKey: nil)
-        bgLayer.name = "Layer1";
-        bgLayer2.name = "Layer2";
-        view.layer.addSublayer(bgLayer2)
-        view.layer.addSublayer(bgLayer)
-        
-        //print(addGreyLayerFlag)
-        if addGreyLayerFlag{
-            print("GGGGGG")
-            addGreyLayer()
 
-        }else{
+        addGreyLayer()
+
+        
+        if self.openLockBtn.isEnabled{
             
-        }
-
-        if let currentValue = currentValue{
-            if currentValue != 0{
-                print("print")
-                
-                let currentColor = UIColor.orange
-                let currentLayer = drawCircle(withColor: currentColor.cgColor)
-                //let currentLayer2 = drawCircle(withColor: currentColor.cgColor)
-                currentLayer.add(strokeEndAnimationSlow(to: currentValue), forKey: nil)
-                currentLayer.add(strokeEndAnimationChangeColor(to: currentValue), forKey: nil)
-                //label.text = "\(Int(currentValue)) % "
-                view.layer.addSublayer(currentLayer)
-            }
-        }else{
-
-            //label.text = "請輸入區域 "
-
+            addWhiteLayer()
+            addGreenInnerLayer()
         }
         
-        addGreyLayerFlag = false
-        currentValue = nil
+
         
-        var timer:Timer!
-        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(rmLayer), userInfo: nil, repeats: false)
+//        addGreyLayerFlag = false
+//        currentValue = nil
+//
+//        var timer:Timer!
+//        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(rmLayer), userInfo: nil, repeats: false)
         
     }
     

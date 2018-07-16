@@ -69,7 +69,7 @@ class rainPopViewController: UIViewController,UIPickerViewDelegate,UIPickerViewD
                 circleView.currentValue = CGFloat(100)
                 print(circleView.currentValue)
             
-                circleView.addLayerFlag = true
+                circleView.addGreyLayerFlag = true
 
 //
 //                
