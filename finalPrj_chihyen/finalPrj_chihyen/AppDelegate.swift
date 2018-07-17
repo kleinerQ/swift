@@ -58,6 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         application.applicationIconBadgeNumber = 0
+        
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
 

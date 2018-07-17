@@ -10,9 +10,10 @@ import UIKit
 import WebKit
 
 class breakInPhotoViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
-
+    @IBOutlet weak var activityIcon: UIActivityIndicatorView!
+    
     @IBOutlet weak var webView: WKWebView!
-    var startUrl = "http://192.168.43.6/streaming/streamingFile"
+    var startUrl = "http://10.3.141.111/streaming/streamingFile"
     var pageTitle: String?
     var requestUrl: String?
     
@@ -26,10 +27,12 @@ class breakInPhotoViewController: UIViewController, WKUIDelegate, WKNavigationDe
         super.viewDidLoad()
         
         webView.allowsBackForwardNavigationGestures = true
+        activityIcon.startAnimating()
         
         if let url = URL(string: startUrl) {
             let request = URLRequest(url: url)
             webView.load(request)
+            
         }
     }
     
@@ -68,6 +71,7 @@ class breakInPhotoViewController: UIViewController, WKUIDelegate, WKNavigationDe
     
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        self.activityIcon.stopAnimating()
     }
     
     override func didReceiveMemoryWarning() {

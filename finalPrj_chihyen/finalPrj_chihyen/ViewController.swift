@@ -13,44 +13,44 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
 
     
-    let url = URL(string: "http://192.168.43.6/cgi-bin/openLockerCgi.cgi")
+    let url = URL(string: "http://10.3.141.111/cgi-bin/openLockerCgi.cgi")
     
-    @IBAction func onClickOpenLockBtn(_ sender: Any) {
-        
-        DispatchQueue.global().async {
-            do{
-                
-                let _ = try String(contentsOf: self.url!)
-                
-            }catch{
-                
-                print("Open Lock Fail")
-                
-            }
-            
-            
-
-            
-        }
-        
-        //print("btn pressed")
-        let image2 = UIImage(named: "unlock.png")
-        //self.openLockBtn.setImage(image2, for: .normal)
-        
-        var timer:Timer!
-        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
-        
-//        sleep(3)
-//        let image = UIImage(named: "lock.png")
-//        self.openLockBtn.setImage(image, for: .normal)
-        
-    }
+//    @IBAction func onClickOpenLockBtn(_ sender: Any) {
+//
+//        DispatchQueue.global().async {
+//            do{
+//
+//                let _ = try String(contentsOf: self.url!)
+//
+//            }catch{
+//
+//                print("Open Lock Fail")
+//
+//            }
+//
+//
+//
+//
+//        }
+//
+//        //print("btn pressed")
+//        let image2 = UIImage(named: "unlock.png")
+//        //self.openLockBtn.setImage(image2, for: .normal)
+//
+//        var timer:Timer!
+//        timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: false)
+//
+////        sleep(3)
+////        let image = UIImage(named: "lock.png")
+////        self.openLockBtn.setImage(image, for: .normal)
+//
+//    }
     
-    @objc func runTimedCode(){
-        let image = UIImage(named: "lock.png")
-        //self.openLockBtn.setImage(image, for: .normal)
-        
-    }
+//    @objc func runTimedCode(){
+//        //let image = UIImage(named: "lock.png")
+//        //self.openLockBtn.setImage(image, for: .normal)
+//        
+//    }
     //@IBOutlet weak var openLockBtn: UIButton!
     
     var circleViewVC: CircleViewController!
@@ -62,6 +62,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         
         
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(clearBtnStatusToDisable), name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
         
         
         
@@ -79,7 +81,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         lm.delegate = self
         //openLockBtn.isEnabled = false
         //openLockBtn.isHidden = true
-        circleViewVC.openLockBtn.isEnabled = true
+        //circleViewVC.openLockBtn.isEnabled = true
         let uuid = UUID(uuidString: "E20A39F4-73F5-4BC4-A12F-17D1AD07A961") //Brand ID
         let region = CLBeaconRegion(proximityUUID: uuid!, identifier: "myregion")
         
@@ -88,15 +90,19 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         // 用來接收進入區域或離開區域的通知。觸發2號與3號method
         lm.startMonitoring(for: region)
         // Do any additional setup after loading the view, typically from a nib.
-        let image = UIImage(named: "lock.png")
+        //let image = UIImage(named: "lock.png")
         //openLockBtn.setImage(image, for: .normal)
         //openLockBtn.imageEdgeInsets = UIEdgeInsetsMake(150,150, 150,150);
         
     }
-    override func viewDidAppear(_ animated: Bool) {
-        print("BBBBAAAA")
+
+    @objc func clearBtnStatusToDisable(){
+        blueToothDetect = [false,false,false]
+        circleViewVC.openLockBtn.isEnabled = false
     }
     
+    
+
     
     var blueToothDetect: Set = [false,false,false]
     var blueToothDetectCounter = 0
@@ -125,13 +131,32 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
                 //openLockBtn.isEnabled = false
             }
             
+            
+            
+            
+            
+            
             if blueToothDetect.contains(true){
                 //
                 //openLockBtn.isEnabled = true
-                circleViewVC.openLockBtn.isEnabled = true
+                
+                print("111111")
+                if !circleViewVC.layerChangingStatus{
+                    circleViewVC.openLockBtn.isEnabled = true
+                    circleViewVC.addWhiteLayer()
+                    circleViewVC.addGreenInnerLayer()
+                }
+
+                
             }else{
                 //openLockBtn.isEnabled = false
-                circleViewVC.openLockBtn.isEnabled = false
+                
+                
+
+                if !circleViewVC.layerChangingStatus{
+                    circleViewVC.openLockBtn.isEnabled = false
+                    circleViewVC.addGreyLayer()
+                }
             }
             
         }
@@ -162,6 +187,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         print("AAAABBBBB")
+        clearBtnStatusToDisable()
     }
 
     

@@ -10,11 +10,12 @@ import UIKit
 
 class CircleViewController: UIViewController {
     
-    let url = URL(string: "http://192.168.43.6/cgi-bin/openLockerCgi.cgi")
+    let url = URL(string: "http://10.3.141.111/cgi-bin/openLockerCgi.cgi")
     var timeRecorderOrder = 0;
+    var layerChangingStatus:Bool = false
     @IBOutlet weak var openLockBtn: UIButton!
     @IBAction func onClickOpenLockBtn(_ sender: Any) {
-        
+        layerChangingStatus = true
         
         for layer in self.view.layer.sublayers!{
             
@@ -25,7 +26,7 @@ class CircleViewController: UIViewController {
             }
             
         }
-        
+        //print(counter)
         
         DispatchQueue.global().async {
             do{
@@ -70,14 +71,22 @@ class CircleViewController: UIViewController {
         
     }
     
+
     var currentValue:CGFloat? = nil
     
     @objc func goLockStatus(){
         let image = UIImage(named: "lock.png")
         self.openLockBtn.setImage(image, for: .normal)
-        self.openLockBtn.isEnabled = true
-        addWhiteLayer()
-        addGreenInnerLayer()
+        //self.openLockBtn.isEnabled = true
+        if self.openLockBtn.isEnabled{
+            addWhiteLayer()
+            addGreenInnerLayer()
+        }else{
+            
+            addGreyLayer()
+        }
+
+        self.layerChangingStatus = false
         
         
     }
@@ -192,6 +201,7 @@ class CircleViewController: UIViewController {
         
         ani.fillMode = kCAFillModeForwards
         ani.repeatCount = 0
+        
         
         return ani
     }
@@ -313,8 +323,17 @@ class CircleViewController: UIViewController {
         //label.text = " 請選擇區域 "
         
         // Do any additional setup after loading the view.
+        
+        
+
+        
     }
 
+    
+
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
