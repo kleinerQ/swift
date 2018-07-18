@@ -108,6 +108,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     var blueToothDetectCounter = 0
     /* 1號method */
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+        print(beacons)
         for beacon in beacons {
             print("major=\(beacon.major) minor=\(beacon.minor) accury=\(beacon.accuracy) rssi=\(beacon.rssi)")
             

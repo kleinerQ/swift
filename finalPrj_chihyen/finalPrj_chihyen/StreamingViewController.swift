@@ -51,7 +51,7 @@ class StreamingViewController: UIViewController {
 
 
             do{
-                DispatchQueue.main.sync {
+                DispatchQueue.main.async {
                     self.activityIcon.startAnimating()
                 }
                 let _ = try String(contentsOf: stopStreamUrl!)
@@ -59,8 +59,7 @@ class StreamingViewController: UIViewController {
                 print("abcde")
                 let _ = try String(contentsOf: openStreamUrl!)
 
-                var timer:Timer!
-                timer = Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(self.loadWebView), userInfo: nil, repeats: false)
+
 
                 
                 
@@ -74,6 +73,8 @@ class StreamingViewController: UIViewController {
         
         //sleep(10)
 
+        var timer:Timer!
+        timer = Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(self.loadWebView), userInfo: nil, repeats: false)
         
 
 
@@ -83,10 +84,13 @@ class StreamingViewController: UIViewController {
     
     
     @objc func loadWebView(){
-        self.activityIcon.stopAnimating()
-        let url = URL(string: "http://10.3.141.111/streaming/stream.m3u8")
-        let request = URLRequest(url: url!)
-        self.streamingWebView.load(request)
+        DispatchQueue.main.async {
+            self.activityIcon.stopAnimating()
+            let url = URL(string: "http://10.3.141.111/streaming/stream.m3u8")
+            let request = URLRequest(url: url!)
+            self.streamingWebView.load(request)
+        }
+
         
         
     }
