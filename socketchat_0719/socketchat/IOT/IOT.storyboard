@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--安心鎖-->
+        <!--保險箱開鎖-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="安心鎖" id="BYZ-38-t0r" customClass="UnlockViewController" customModule="socketchat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="UnlockViewController" customModule="socketchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -256,10 +256,10 @@
             </objects>
             <point key="canvasLocation" x="-1452" y="572"/>
         </scene>
-        <!--直播串流-->
+        <!--直撥串流-->
         <scene sceneID="r6D-sy-5Pr">
             <objects>
-                <viewController id="Ohq-pA-BFZ" customClass="StreamingViewController" customModule="socketchat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="直撥串流" id="Ohq-pA-BFZ" customClass="StreamingViewController" customModule="socketchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p4N-I1-3lB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -301,7 +301,7 @@
         <!--照片-->
         <scene sceneID="3kW-aq-f5t">
             <objects>
-                <viewController restorationIdentifier="NotiVC" storyboardIdentifier="NotiVC" id="cEk-py-RxH" customClass="BreakInPhotoViewController" customModule="socketchat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="NotiVC" storyboardIdentifier="NotiVC" title="照片" id="cEk-py-RxH" customClass="BreakInPhotoViewController" customModule="socketchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KSd-SC-K3L">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

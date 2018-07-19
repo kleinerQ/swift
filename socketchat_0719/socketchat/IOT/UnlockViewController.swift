@@ -46,8 +46,6 @@ class UnlockViewController: UIViewController,CLLocationManagerDelegate {
         
         
         
-        
-        
         for vc in (self.childViewControllers) {
             if vc.restorationIdentifier == "CircleView" {
                 circleViewVC = vc as! CircleViewController
@@ -175,7 +173,12 @@ class UnlockViewController: UIViewController,CLLocationManagerDelegate {
         
         //self.navigationController?.navigationBar.topItem?.title = "asdf"
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            
+            self.navigationController?.title = "BBB"
+        }
+    }
     
     func queryBtnRecordList()->NSArray{
         var btnPressTimeList =  NSArray()

@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         print("APP Delegate")
         if #available(iOS 10.0, *) {
             let center = UNUserNotificationCenter.current()
+            center.delegate = self
             center.requestAuthorization(options: [.alert,.badge,.sound]) { (granted, error) in
                 if granted {
                     DispatchQueue.main.async {
@@ -92,7 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         var set = Set<UNNotificationCategory>()
         
         let a1 = UNNotificationAction(
-            identifier: "a1", title: "按鈕1", options: [.foreground]
+            identifier: "a1", title: "照片", options: [.foreground]
         )
         
         let c1 = UNNotificationCategory(
@@ -109,18 +110,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         
-        //print("1111111")
+        print("AAAAA1111111")
         let action = response.actionIdentifier
         _ = response.notification.request
         if action == "a1"{
             print("asadfsdfasdfsaf")
-            let tabbarcontroller = self.window?.rootViewController as! TabBarViewController
+            let story = UIStoryboard(name: "IOT", bundle: Bundle(identifier: "Simon-Chang.-socketchat"))
+            let vc = story.instantiateViewController(withIdentifier: "IOT_tabbar_ctrl") as! TabBarViewController
+//            let tabbarcontroller = self.window?.rootViewController as! TabBarViewController
+            self.window?.rootViewController?.show(vc, sender: nil)
+            vc.selectedIndex = 2
+//            tabbarcontroller.selectedIndex = 3
             
-            tabbarcontroller.selectedIndex = 3
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let homeViewController = storyboard.instantiateViewController(withIdentifier: "NotiVC") as! BreakInPhotoViewController
-            self.window?.rootViewController?.navigationController?.present(homeViewController, animated: true, completion: nil)
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let homeViewController = storyboard.instantiateViewController(withIdentifier: "NotiVC") as! BreakInPhotoViewController
+//            self.window?.rootViewController?.navigationController?.present(homeViewController, animated: true, completion: nil)
             
             
             

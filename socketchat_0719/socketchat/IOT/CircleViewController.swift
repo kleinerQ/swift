@@ -15,25 +15,26 @@ class CircleViewController: UIViewController {
     var layerChangingStatus:Bool = false
     @IBOutlet weak var openLockBtn: UIButton!
     @IBAction func onClickOpenLockBtn(_ sender: Any) {
-        TouchID.verify {
+//        TouchID.verify {
 
-            
-            
-            
+        TouchID.verify {
+            print("verifyOK")
             
             self.layerChangingStatus = true
-            
-            for layer in self.view.layer.sublayers!{
-                
-                print(layer.name)
-                if layer.name == "LayerWhite" || layer.name == "LayerGreen" || layer.name == "LayerGreenAni" || layer.name == "LayerGrey" {
-                    print("AA")
-                    layer.removeFromSuperlayer()
+            DispatchQueue.main.async {
+                for layer in self.view.layer.sublayers!{
+                    
+                    print(layer.name)
+                    if layer.name == "LayerWhite" || layer.name == "LayerGreen" || layer.name == "LayerGreenAni" || layer.name == "LayerGrey" {
+                        print("AA")
+                        layer.removeFromSuperlayer()
+                    }
+                    
                 }
-                
             }
-            //print(counter)
-            
+
+            //            //print(counter)
+            //
             DispatchQueue.global().async {
                 do{
                     
@@ -50,50 +51,49 @@ class CircleViewController: UIViewController {
                 
             }
             
-            //print("btn pressed")
-            let image2 = UIImage(named: "unlock.png")
-            self.openLockBtn.setImage(image2, for: .normal)
-            self.openLockBtn.isEnabled = false
-            
-            var timer:Timer!
-            timer = Timer.scheduledTimer(timeInterval: 3.1, target: self, selector: #selector(self.goLockStatus), userInfo: nil, repeats: false)
-            self.addGreyLayer()
-            self.addGreenInnerLayerAnimation()
-            
-            
-            
-            
-            ////        let formatter = DateFormatter()
-            ////        formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-            ////
-            ////        let timeString = formatter.string(from: Date())
-            //        if timeRecorderOrder == 0{
-            //
-            //            (self.parent?.view.viewWithTag(100) as! UILabel).text = "    時間：" + timeString
-            //            timeRecorderOrder = 1
-            //        }else{
-            //            (self.parent?.view.viewWithTag(200) as! UILabel).text = "    時間：" + timeString
-            //
-            //            timeRecorderOrder = 0
-            //        }
-            
-            var btnPressTimeList:NSArray = self.loadBtnRecordList()
-            
-            (self.parent?.view.viewWithTag(100) as! UILabel).text = "    時間：" + ((btnPressTimeList[0] as! NSDictionary)["time"] as! String)
-            
-            (self.parent?.view.viewWithTag(200) as! UILabel).text = "    時間：" + ((btnPressTimeList[1] as! NSDictionary)["time"] as! String)
-            
-            
-            
-            
+            DispatchQueue.main.async {
+                let image2 = UIImage(named: "unlock.png")
+                self.openLockBtn.setImage(image2, for: .normal)
+                self.openLockBtn.isEnabled = false
+                
+                var timer:Timer!
+                timer = Timer.scheduledTimer(timeInterval: 3.1, target: self, selector: #selector(self.goLockStatus), userInfo: nil, repeats: false)
+                self.addGreyLayer()
+                self.addGreenInnerLayerAnimation()
+                var btnPressTimeList:NSArray = self.loadBtnRecordList()
+                
+                (self.parent?.view.viewWithTag(100) as! UILabel).text = "    時間：" + ((btnPressTimeList[0] as! NSDictionary)["time"] as! String)
+                
+                (self.parent?.view.viewWithTag(200) as! UILabel).text = "    時間：" + ((btnPressTimeList[1] as! NSDictionary)["time"] as! String)
+                
+            }
             
         }
+//
+//
+//
+
+
+            //print("btn pressed")
+        
+        
+
+
+
+//
+//
+//
+//
+        
+            
+        
+    }
         
 
         
         
         
-    }
+//    }
     
     
     var currentValue:CGFloat? = nil

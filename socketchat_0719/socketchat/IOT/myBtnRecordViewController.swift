@@ -32,6 +32,14 @@ class myBtnRecordViewController: UIViewController,UITableViewDataSource,UITableV
 //        navigationItem.backBarButtonItem = backItem
         
         // Do any additional setup after loading the view.
+        
+
+//        let barBtn = UIBarButtonItem(title: "AAA", style: .plain, target: self, action: #selector(backAction))
+        
+    }
+    
+    @objc func backAction() {
+        self.navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {
