@@ -170,15 +170,17 @@ class UnlockViewController: UIViewController,CLLocationManagerDelegate {
         (self.view.viewWithTag(100) as! UILabel).text = "  時間:" + ((btnPressTimeList[0] as! NSDictionary)["time"] as! String)
         (self.view.viewWithTag(200) as! UILabel).text = "  時間:" + ((btnPressTimeList[1] as! NSDictionary)["time"] as! String)
         
+    
         
         //self.navigationController?.navigationBar.topItem?.title = "asdf"
     }
     override func viewDidAppear(_ animated: Bool) {
         DispatchQueue.main.async {
             
-            self.navigationController?.title = "BBB"
+            
         }
     }
+    
     
     func queryBtnRecordList()->NSArray{
         var btnPressTimeList =  NSArray()
